@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    read_files.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    read_files.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    read_files.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
