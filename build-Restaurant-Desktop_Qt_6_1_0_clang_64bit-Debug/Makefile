@@ -631,7 +631,11 @@ mainwindow.o: ../Restaurant/mainwindow.cpp ../Restaurant/mainwindow.h \
 read_files.o: ../Restaurant/read_files.cpp ../Restaurant/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_read_files.h
+		ui_read_files.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o read_files.o ../Restaurant/read_files.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -18,7 +18,7 @@ read_files::~read_files()
 
 void read_files::on_pushButton_clicked()
 {
-    QFile file("myfile.txt");
+    QFile file("user_pass.txt");
     if(!file.open(QFile::ReadOnly | QFile::Text))
     {
         QMessageBox::warning(this,"title","file not opened");

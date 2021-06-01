@@ -29,35 +29,38 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_signup_clicked()
 {
-    QFile file("myfile.txt");
-    if(!file.open(QFile::WriteOnly | QFile::Text ))
+    QFile file("user_pass.txt");
+    if(! file.open( QIODevice::WriteOnly | QIODevice::Append ))
     {
         QMessageBox::warning(this,"title","file not opened");
     }
-    //file.open( QIODevice::WriteOnly | QIODevice::Append );
     if (file.size()== 0) {
         QTextStream out(&file);
         out << "username :"+this->ui->username->text()+'\n';
-        out << "password :"+this->ui->password->text()+'\n';
+        out << "password :"+this->ui->password->text()+"\n\n";
     }
     else {
-        QString searchString(this->ui->username->text());
+        file.close();
+        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        QString searchString="username :"+this->ui->username->text();
         QTextStream in (&file);
         QString line;
         bool alredy_exist=false;
         do {
             line = in.readLine();
-            if (!line.contains(searchString, Qt::CaseSensitive)) {
-                // do something
+            if (line.contains(searchString, Qt::CaseSensitive)) {
                  QMessageBox::warning(this,"title","exists!");
                 alredy_exist=true;
+                break;
             }
         } while (!line.isNull());
         if(!alredy_exist)
         {
+            file.close();
+            file.open( QIODevice::WriteOnly | QIODevice::Append );
             QTextStream out(&file);
             out << "username :"+this->ui->username->text()+'\n';
-            out << "password :"+this->ui->password->text()+'\n';
+            out << "password :"+this->ui->password->text()+"\n\n";
         }
     }
 
@@ -67,7 +70,38 @@ void MainWindow::on_signup_clicked()
 
 void MainWindow::on_login_clicked()
 {
-
+    QFile file("user_pass.txt");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+          QMessageBox::warning(this,"title","file not opened");
+    }
+    else{
+        QString searchString="username :"+this->ui->username->text();
+        QTextStream in (&file);
+        QString line;
+        bool alredy_exist=false;
+        do {
+            line = in.readLine();
+            if (line.contains(searchString, Qt::CaseSensitive)) {
+                line=in.readLine();
+                searchString="password :"+this->ui->password->text();
+                 if (!line.contains(searchString, Qt::CaseSensitive))
+                 {
+                      QMessageBox::warning(this,"title","Invalid password!");
+                 }
+                 else
+                 {
+                     //enter new area
+                 }
+                alredy_exist=true;
+                break;
+            }
+        } while (!line.isNull());
+        if(!alredy_exist)
+        {
+            QMessageBox::warning(this,"title","Invalid Username!");
+        }
+    }
 }
 
 
