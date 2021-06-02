@@ -53,12 +53,16 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Restaurant/main.cpp \
+		../Restaurant/main_page.cpp \
 		../Restaurant/mainwindow.cpp \
-		../Restaurant/read_files.cpp moc_mainwindow.cpp \
+		../Restaurant/read_files.cpp moc_main_page.cpp \
+		moc_mainwindow.cpp \
 		moc_read_files.cpp
 OBJECTS       = main.o \
+		main_page.o \
 		mainwindow.o \
 		read_files.o \
+		moc_main_page.o \
 		moc_mainwindow.o \
 		moc_read_files.o
 DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
@@ -189,8 +193,10 @@ DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/lex.prf \
-		../Restaurant/Restaurant.pro ../Restaurant/mainwindow.h \
+		../Restaurant/Restaurant.pro ../Restaurant/main_page.h \
+		../Restaurant/mainwindow.h \
 		../Restaurant/read_files.h ../Restaurant/main.cpp \
+		../Restaurant/main_page.cpp \
 		../Restaurant/mainwindow.cpp \
 		../Restaurant/read_files.cpp
 QMAKE_TARGET  = Restaurant
@@ -212,7 +218,7 @@ include /Users/omrani/Qt/6.1.0/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-Restaurant.app/Contents/MacOS/Restaurant: ui_mainwindow.h ui_read_files.h $(OBJECTS)  
+Restaurant.app/Contents/MacOS/Restaurant: ui_main_page.h ui_mainwindow.h ui_read_files.h $(OBJECTS)  
 	@test -d Restaurant.app/Contents/MacOS/ || mkdir -p Restaurant.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -511,9 +517,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Restaurant/mainwindow.h ../Restaurant/read_files.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Restaurant/main.cpp ../Restaurant/mainwindow.cpp ../Restaurant/read_files.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Restaurant/mainwindow.ui ../Restaurant/read_files.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Restaurant/main_page.h ../Restaurant/mainwindow.h ../Restaurant/read_files.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Restaurant/main.cpp ../Restaurant/main_page.cpp ../Restaurant/mainwindow.cpp ../Restaurant/read_files.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Restaurant/main_page.ui ../Restaurant/mainwindow.ui ../Restaurant/read_files.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -548,9 +554,16 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -mmacosx-version-min=10.14 -Wall -Wextra -dM -E -o moc_predefs.h ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_read_files.cpp
+compiler_moc_header_make_all: moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_read_files.cpp
+	-$(DEL_FILE) moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
+moc_main_page.cpp: ../Restaurant/main_page.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		moc_predefs.h \
+		../../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Restaurant/build-Restaurant-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Restaurant/Restaurant -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Restaurant/main_page.h -o moc_main_page.cpp
+
 moc_mainwindow.cpp: ../Restaurant/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -575,9 +588,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_read_files.h
+compiler_uic_make_all: ui_main_page.h ui_mainwindow.h ui_read_files.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_read_files.h
+	-$(DEL_FILE) ui_main_page.h ui_mainwindow.h ui_read_files.h
+ui_main_page.h: ../Restaurant/main_page.ui \
+		../../../../Qt/6.1.0/clang_64/libexec/uic
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Restaurant/main_page.ui -o ui_main_page.h
+
 ui_mainwindow.h: ../Restaurant/mainwindow.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Restaurant/mainwindow.ui -o ui_mainwindow.h
@@ -611,6 +628,12 @@ main.o: ../Restaurant/main.cpp ../Restaurant/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Restaurant/main.cpp
 
+main_page.o: ../Restaurant/main_page.cpp ../Restaurant/main_page.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		ui_main_page.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Restaurant/main_page.cpp
+
 mainwindow.o: ../Restaurant/mainwindow.cpp ../Restaurant/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -637,6 +660,9 @@ read_files.o: ../Restaurant/read_files.cpp ../Restaurant/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o read_files.o ../Restaurant/read_files.cpp
+
+moc_main_page.o: moc_main_page.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_main_page.o moc_main_page.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>img/340.png</file>
+        <file>img/add.png</file>
+        <file>img/basket.png</file>
+        <file>img/close.png</file>
+        <file>img/delete.jpeg</file>
+        <file>img/download (1).jpeg</file>
+        <file>img/download.jpeg</file>
+        <file>img/download.png</file>
+        <file>img/edit.png</file>
+        <file>img/erase_delete_remove_wipe_out-128.png</file>
+        <file>img/groups.png</file>
+        <file>img/home.png</file>
+        <file>img/images.png</file>
+        <file>img/login.png</file>
+        <file>img/logout.jpeg</file>
+        <file>img/logoutt.jpeg</file>
+        <file>img/pass_user.png</file>
+        <file>img/pass.jpeg</file>
+        <file>img/pass.png</file>
+        <file>img/search.jpeg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_page</class>
+ <widget class="QMainWindow" name="main_page">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>561</width>
+    <height>395</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>561</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuuser_s_info">
+    <property name="title">
+     <string>user's info</string>
+    </property>
+    <widget class="QMenu" name="menuSettings">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <addaction name="actionchange_user_pass"/>
+     <addaction name="separator"/>
+     <addaction name="actionEdit_my_basket"/>
+    </widget>
+    <addaction name="actionuser_s_name"/>
+    <addaction name="separator"/>
+    <addaction name="actionGroups"/>
+    <addaction name="separator"/>
+    <addaction name="actionMy_products"/>
+    <addaction name="separator"/>
+    <addaction name="menuSettings"/>
+    <addaction name="separator"/>
+    <addaction name="actionLog_out"/>
+   </widget>
+   <addaction name="menuuser_s_info"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionuser_s_name">
+   <property name="icon">
+    <iconset>
+     <normaloff>download.jpeg</normaloff>download.jpeg</iconset>
+   </property>
+   <property name="text">
+    <string>user's name</string>
+   </property>
+  </action>
+  <action name="actionGroups">
+   <property name="icon">
+    <iconset>
+     <normaloff>groups.png</normaloff>groups.png</iconset>
+   </property>
+   <property name="text">
+    <string>Groups</string>
+   </property>
+  </action>
+  <action name="actionMy_products">
+   <property name="text">
+    <string>My products</string>
+   </property>
+  </action>
+  <action name="actionchange_user_pass">
+   <property name="text">
+    <string>change user &amp;pass</string>
+   </property>
+  </action>
+  <action name="actionEdit_my_basket">
+   <property name="text">
+    <string>Edit my basket</string>
+   </property>
+  </action>
+  <action name="actionLog_out">
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

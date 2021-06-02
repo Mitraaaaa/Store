@@ -10,14 +10,17 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
+    main_page.cpp \
     mainwindow.cpp \
     read_files.cpp
 
 HEADERS += \
+    main_page.h \
     mainwindow.h \
     read_files.h
 
 FORMS += \
+    main_page.ui \
     mainwindow.ui \
     read_files.ui
 
@@ -25,3 +28,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    recources.qrc
