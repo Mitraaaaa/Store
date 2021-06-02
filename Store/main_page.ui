@@ -23,8 +23,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
+      <x>30</x>
+      <y>10</y>
       <width>661</width>
       <height>461</height>
      </rect>
@@ -63,7 +63,7 @@
         <x>20</x>
         <y>0</y>
         <width>81</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -95,7 +95,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -124,7 +124,11 @@
        <item>
         <widget class="QPushButton" name="pushButton_5">
          <property name="text">
-          <string>PushButton</string>
+          <string>details</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/details.png</normaloff>img/details.png</iconset>
          </property>
         </widget>
        </item>
@@ -222,7 +226,11 @@
     </property>
     <widget class="QMenu" name="menuSettings">
      <property name="title">
-      <string>Settings</string>
+      <string>settings</string>
+     </property>
+     <property name="icon">
+      <iconset resource="recources.qrc">
+       <normaloff>:/rec/img/download (1).jpeg</normaloff>:/rec/img/download (1).jpeg</iconset>
      </property>
      <addaction name="actionchange_user_pass"/>
      <addaction name="separator"/>
