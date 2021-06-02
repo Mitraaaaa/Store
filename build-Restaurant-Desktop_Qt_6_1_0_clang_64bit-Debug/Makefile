@@ -55,13 +55,15 @@ OBJECTS_DIR   = ./
 SOURCES       = ../Restaurant/main.cpp \
 		../Restaurant/main_page.cpp \
 		../Restaurant/mainwindow.cpp \
-		../Restaurant/read_files.cpp moc_main_page.cpp \
+		../Restaurant/read_files.cpp qrc_recources.cpp \
+		moc_main_page.cpp \
 		moc_mainwindow.cpp \
 		moc_read_files.cpp
 OBJECTS       = main.o \
 		main_page.o \
 		mainwindow.o \
 		read_files.o \
+		qrc_recources.o \
 		moc_main_page.o \
 		moc_mainwindow.o \
 		moc_read_files.o
@@ -351,6 +353,7 @@ Makefile: ../Restaurant/Restaurant.pro ../../../../Qt/6.1.0/clang_64/mkspecs/mac
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/lex.prf \
 		../Restaurant/Restaurant.pro \
+		../Restaurant/recources.qrc \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Resources/QtWidgets.prl \
 		../../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Resources/QtGui.prl \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Resources/QtCore.prl
@@ -484,6 +487,7 @@ Makefile: ../Restaurant/Restaurant.pro ../../../../Qt/6.1.0/clang_64/mkspecs/mac
 ../../../../Qt/6.1.0/clang_64/mkspecs/features/yacc.prf:
 ../../../../Qt/6.1.0/clang_64/mkspecs/features/lex.prf:
 ../Restaurant/Restaurant.pro:
+../Restaurant/recources.qrc:
 ../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Resources/QtWidgets.prl:
 ../../../../Qt/6.1.0/clang_64/lib/QtGui.framework/Resources/QtGui.prl:
 ../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Resources/QtCore.prl:
@@ -516,6 +520,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Restaurant/recources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Restaurant/main_page.h ../Restaurant/mainwindow.h ../Restaurant/read_files.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Restaurant/main.cpp ../Restaurant/main_page.cpp ../Restaurant/mainwindow.cpp ../Restaurant/read_files.cpp $(DISTDIR)/
@@ -546,8 +551,34 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_recources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_recources.cpp
+qrc_recources.cpp: ../Restaurant/recources.qrc \
+		../../../../Qt/6.1.0/clang_64/libexec/rcc \
+		../Restaurant/img/download.jpeg \
+		../Restaurant/img/download.png \
+		../Restaurant/img/pass_user.png \
+		../Restaurant/img/add.png \
+		../Restaurant/img/download\ (1).jpeg \
+		../Restaurant/img/delete.jpeg \
+		../Restaurant/img/erase_delete_remove_wipe_out-128.png \
+		../Restaurant/img/login.png \
+		../Restaurant/img/groups.png \
+		../Restaurant/img/serchh.png \
+		../Restaurant/img/edit.png \
+		../Restaurant/img/search.jpeg \
+		../Restaurant/img/pass.jpeg \
+		../Restaurant/img/basket.png \
+		../Restaurant/img/pass.png \
+		../Restaurant/img/logout.jpeg \
+		../Restaurant/img/340.png \
+		../Restaurant/img/close.png \
+		../Restaurant/img/images.png \
+		../Restaurant/img/home.png \
+		../Restaurant/img/logoutt.jpeg
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/rcc -name recources ../Restaurant/recources.qrc -o qrc_recources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -611,7 +642,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -631,7 +662,9 @@ main.o: ../Restaurant/main.cpp ../Restaurant/mainwindow.h \
 main_page.o: ../Restaurant/main_page.cpp ../Restaurant/main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_main_page.h
+		ui_main_page.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Restaurant/main_page.cpp
 
 mainwindow.o: ../Restaurant/mainwindow.cpp ../Restaurant/mainwindow.h \
@@ -648,7 +681,8 @@ mainwindow.o: ../Restaurant/mainwindow.cpp ../Restaurant/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../Restaurant/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Restaurant/main_page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Restaurant/mainwindow.cpp
 
 read_files.o: ../Restaurant/read_files.cpp ../Restaurant/read_files.h \
@@ -660,6 +694,9 @@ read_files.o: ../Restaurant/read_files.cpp ../Restaurant/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o read_files.o ../Restaurant/read_files.cpp
+
+qrc_recources.o: qrc_recources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_recources.o qrc_recources.cpp
 
 moc_main_page.o: moc_main_page.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_main_page.o moc_main_page.cpp

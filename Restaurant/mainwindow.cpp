@@ -4,6 +4,7 @@
 #include<QMessageBox>
 #include<iostream>
 #include <read_files.h>
+#include<main_page.h>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -91,7 +92,8 @@ void MainWindow::on_login_clicked()
                  }
                  else
                  {
-                     //enter new area
+                     main_page *newmain= new main_page();
+                     newmain->show();
                  }
                 alredy_exist=true;
                 break;

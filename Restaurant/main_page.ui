@@ -6,20 +6,204 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>561</width>
-    <height>395</height>
+    <width>717</width>
+    <height>555</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>661</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>search</string>
+     </attribute>
+     <widget class="QPushButton" name="searchbutton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>75</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+      <property name="icon">
+       <iconset resource="recources.qrc">
+        <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>511</width>
+        <height>402</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>21</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listWidget"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>delete</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>add to group</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>img/add to groups 2.png</normaloff>img/add to groups 2.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>16</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>edit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/edit.png</normaloff>:/rec/img/edit.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>add to list</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>561</width>
+     <width>717</width>
      <height>24</height>
     </rect>
    </property>
@@ -27,8 +211,14 @@
     <bool>false</bool>
    </property>
    <widget class="QMenu" name="menuuser_s_info">
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>user's info</string>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>true</bool>
     </property>
     <widget class="QMenu" name="menuSettings">
      <property name="title">
@@ -53,8 +243,8 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionuser_s_name">
    <property name="icon">
-    <iconset>
-     <normaloff>download.jpeg</normaloff>download.jpeg</iconset>
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/download.jpeg</normaloff>:/rec/img/download.jpeg</iconset>
    </property>
    <property name="text">
     <string>user's name</string>
@@ -62,34 +252,55 @@
   </action>
   <action name="actionGroups">
    <property name="icon">
-    <iconset>
-     <normaloff>groups.png</normaloff>groups.png</iconset>
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/groups.png</normaloff>:/rec/img/groups.png</iconset>
    </property>
    <property name="text">
     <string>Groups</string>
    </property>
   </action>
   <action name="actionMy_products">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/basket.png</normaloff>:/rec/img/basket.png</iconset>
+   </property>
    <property name="text">
-    <string>My products</string>
+    <string>My basket</string>
+   </property>
+   <property name="toolTip">
+    <string>My basket</string>
    </property>
   </action>
   <action name="actionchange_user_pass">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/pass.png</normaloff>:/rec/img/pass.png</iconset>
+   </property>
    <property name="text">
     <string>change user &amp;pass</string>
    </property>
   </action>
   <action name="actionEdit_my_basket">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/edit.png</normaloff>:/rec/img/edit.png</iconset>
+   </property>
    <property name="text">
     <string>Edit my basket</string>
    </property>
   </action>
   <action name="actionLog_out">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/logout.jpeg</normaloff>:/rec/img/logout.jpeg</iconset>
+   </property>
    <property name="text">
     <string>Log out</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>

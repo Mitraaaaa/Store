@@ -15,6 +15,9 @@ public:
     explicit main_page(QWidget *parent = nullptr);
     ~main_page();
 
+private slots:
+    void on_actionuser_s_name_triggered();
+
 private:
     Ui::main_page *ui;
 };
