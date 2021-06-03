@@ -106,7 +106,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="serchzone">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -119,10 +119,27 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QTreeWidget" name="treeWidget">
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="addtolist">
+         <property name="text">
+          <string>add to list</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="details">
          <property name="text">
           <string>details</string>
          </property>
@@ -133,7 +150,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="delete_2">
          <property name="text">
           <string>delete</string>
          </property>
@@ -144,7 +161,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="addtogroup">
          <property name="text">
           <string>add to group</string>
          </property>
@@ -161,24 +178,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="edit">
          <property name="text">
           <string>edit</string>
          </property>
          <property name="icon">
           <iconset resource="recources.qrc">
            <normaloff>:/rec/img/edit.png</normaloff>:/rec/img/edit.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>add to list</string>
-         </property>
-         <property name="icon">
-          <iconset resource="recources.qrc">
-           <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
          </property>
         </widget>
        </item>

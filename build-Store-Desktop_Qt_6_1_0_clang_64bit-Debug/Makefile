@@ -52,16 +52,20 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Store/main.cpp \
+SOURCES       = ../Store/customer.cpp \
+		../Store/main.cpp \
 		../Store/main_page.cpp \
 		../Store/mainwindow.cpp \
+		../Store/products.cpp \
 		../Store/read_files.cpp qrc_recources.cpp \
 		moc_main_page.cpp \
 		moc_mainwindow.cpp \
 		moc_read_files.cpp
-OBJECTS       = main.o \
+OBJECTS       = customer.o \
+		main.o \
 		main_page.o \
 		mainwindow.o \
+		products.o \
 		read_files.o \
 		qrc_recources.o \
 		moc_main_page.o \
@@ -195,11 +199,15 @@ DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/lex.prf \
-		../Store/Store.pro ../Store/main_page.h \
+		../Store/Store.pro ../Store/customer.h \
+		../Store/main_page.h \
 		../Store/mainwindow.h \
-		../Store/read_files.h ../Store/main.cpp \
+		../Store/products.h \
+		../Store/read_files.h ../Store/customer.cpp \
+		../Store/main.cpp \
 		../Store/main_page.cpp \
 		../Store/mainwindow.cpp \
+		../Store/products.cpp \
 		../Store/read_files.cpp
 QMAKE_TARGET  = Store
 DESTDIR       = 
@@ -522,8 +530,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Store/recources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/main_page.h ../Store/mainwindow.h ../Store/read_files.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/read_files.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/customer.h ../Store/main_page.h ../Store/mainwindow.h ../Store/products.h ../Store/read_files.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/customer.cpp ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/products.cpp ../Store/read_files.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Store/main_page.ui ../Store/mainwindow.ui ../Store/read_files.ui $(DISTDIR)/
 
 
@@ -646,6 +654,20 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
+customer.o: ../Store/customer.cpp ../Store/customer.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QRegularExpression \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qregularexpression.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QRegularExpressionMatch
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customer.o ../Store/customer.cpp
+
 main.o: ../Store/main.cpp ../Store/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -664,7 +686,9 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Store/main_page.cpp
 
 mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
@@ -684,6 +708,11 @@ mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../Store/main_page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Store/mainwindow.cpp
+
+products.o: ../Store/products.cpp ../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o products.o ../Store/products.cpp
 
 read_files.o: ../Store/read_files.cpp ../Store/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
