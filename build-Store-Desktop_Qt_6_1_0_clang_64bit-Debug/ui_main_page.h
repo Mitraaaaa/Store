@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -39,15 +40,17 @@ public:
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *tab_3;
-    QPushButton *searchbutton;
-    QWidget *layoutWidget;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QLineEdit *serchzone;
+    QPushButton *searchbutton;
     QTreeWidget *treeWidget;
-    QPushButton *addtolist;
     QPushButton *details;
-    QPushButton *delete_2;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *addtolist;
     QPushButton *addtogroup;
+    QPushButton *delete_2;
     QPushButton *edit;
     QWidget *tab_5;
     QWidget *tab_4;
@@ -98,7 +101,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(30, 10, 661, 461));
+        tabWidget->setGeometry(QRect(20, 0, 661, 461));
         tabWidget->setLayoutDirection(Qt::LeftToRight);
         tabWidget->setTabPosition(QTabWidget::North);
         tabWidget->setTabShape(QTabWidget::Rounded);
@@ -107,9 +110,20 @@ public:
         tabWidget->setMovable(false);
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        searchbutton = new QPushButton(tab_3);
+        widget = new QWidget(tab_3);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(66, 13, 551, 321));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        serchzone = new QLineEdit(widget);
+        serchzone->setObjectName(QString::fromUtf8("serchzone"));
+        serchzone->setMaximumSize(QSize(16777215, 21));
+
+        verticalLayout->addWidget(serchzone);
+
+        searchbutton = new QPushButton(widget);
         searchbutton->setObjectName(QString::fromUtf8("searchbutton"));
-        searchbutton->setGeometry(QRect(20, 0, 81, 41));
         searchbutton->setMinimumSize(QSize(75, 0));
         searchbutton->setStyleSheet(QString::fromUtf8(""));
         QIcon icon6;
@@ -117,19 +131,10 @@ public:
         searchbutton->setIcon(icon6);
         searchbutton->setIconSize(QSize(16, 16));
         searchbutton->setFlat(false);
-        layoutWidget = new QWidget(tab_3);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(100, 10, 511, 402));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        serchzone = new QLineEdit(layoutWidget);
-        serchzone->setObjectName(QString::fromUtf8("serchzone"));
-        serchzone->setMaximumSize(QSize(16777215, 21));
 
-        verticalLayout->addWidget(serchzone);
+        verticalLayout->addWidget(searchbutton);
 
-        treeWidget = new QTreeWidget(layoutWidget);
+        treeWidget = new QTreeWidget(widget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         treeWidget->setHeaderItem(__qtreewidgetitem);
@@ -137,44 +142,50 @@ public:
 
         verticalLayout->addWidget(treeWidget);
 
-        addtolist = new QPushButton(layoutWidget);
-        addtolist->setObjectName(QString::fromUtf8("addtolist"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addtolist->setIcon(icon7);
-
-        verticalLayout->addWidget(addtolist);
-
-        details = new QPushButton(layoutWidget);
+        details = new QPushButton(widget);
         details->setObjectName(QString::fromUtf8("details"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8("img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
-        details->setIcon(icon8);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8("img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
+        details->setIcon(icon7);
 
         verticalLayout->addWidget(details);
 
-        delete_2 = new QPushButton(layoutWidget);
-        delete_2->setObjectName(QString::fromUtf8("delete_2"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        delete_2->setIcon(icon9);
+        widget1 = new QWidget(tab_3);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(70, 340, 551, 32));
+        horizontalLayout = new QHBoxLayout(widget1);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        addtolist = new QPushButton(widget1);
+        addtolist->setObjectName(QString::fromUtf8("addtolist"));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addtolist->setIcon(icon8);
 
-        verticalLayout->addWidget(delete_2);
+        horizontalLayout->addWidget(addtolist);
 
-        addtogroup = new QPushButton(layoutWidget);
+        addtogroup = new QPushButton(widget1);
         addtogroup->setObjectName(QString::fromUtf8("addtogroup"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8("img/add to groups 2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addtogroup->setIcon(icon10);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8("img/add to groups 2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addtogroup->setIcon(icon9);
         addtogroup->setIconSize(QSize(18, 16));
 
-        verticalLayout->addWidget(addtogroup);
+        horizontalLayout->addWidget(addtogroup);
 
-        edit = new QPushButton(layoutWidget);
+        delete_2 = new QPushButton(widget1);
+        delete_2->setObjectName(QString::fromUtf8("delete_2"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        delete_2->setIcon(icon10);
+
+        horizontalLayout->addWidget(delete_2);
+
+        edit = new QPushButton(widget1);
         edit->setObjectName(QString::fromUtf8("edit"));
         edit->setIcon(icon4);
 
-        verticalLayout->addWidget(edit);
+        horizontalLayout->addWidget(edit);
 
         tabWidget->addTab(tab_3, QString());
         tab_5 = new QWidget();
@@ -240,12 +251,12 @@ public:
         actionchange_user_pass->setText(QCoreApplication::translate("main_page", "change user &pass", nullptr));
         actionEdit_my_basket->setText(QCoreApplication::translate("main_page", "Edit my basket", nullptr));
         actionLog_out->setText(QCoreApplication::translate("main_page", "Log out", nullptr));
-        searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         serchzone->setText(QString());
+        searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
+        details->setText(QCoreApplication::translate("main_page", "show changes", nullptr));
         addtolist->setText(QCoreApplication::translate("main_page", "add to list", nullptr));
-        details->setText(QCoreApplication::translate("main_page", "details", nullptr));
-        delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));
+        delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("main_page", "search", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QCoreApplication::translate("main_page", "Page", nullptr));

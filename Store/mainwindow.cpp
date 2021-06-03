@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "products.h"
 #define user_pass "user_pass.txt"
 #include<QMessageBox>
 #include<iostream>
 #include <read_files.h>
 #include<main_page.h>
+#include<QList>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -92,6 +94,9 @@ void MainWindow::on_login_clicked()
                  }
                  else
                  {
+//                     QList<products> list;
+//                     QFile file("list,txt");
+
                      main_page *newmain= new main_page();
                      newmain->show();
                  }

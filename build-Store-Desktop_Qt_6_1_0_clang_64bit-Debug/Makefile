@@ -701,12 +701,17 @@ mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QStringList \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
 		ui_mainwindow.h \
+		../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../Store/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		../Store/main_page.h
+		../Store/main_page.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Store/mainwindow.cpp
 
 products.o: ../Store/products.cpp ../Store/products.h \

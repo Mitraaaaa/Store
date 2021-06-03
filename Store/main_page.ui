@@ -23,8 +23,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
+      <x>20</x>
+      <y>0</y>
       <width>661</width>
       <height>461</height>
      </rect>
@@ -57,51 +57,13 @@
      <attribute name="title">
       <string>search</string>
      </attribute>
-     <widget class="QPushButton" name="searchbutton">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>0</y>
-        <width>81</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>75</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>search</string>
-      </property>
-      <property name="icon">
-       <iconset resource="recources.qrc">
-        <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>16</width>
-        <height>16</height>
-       </size>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>10</y>
-        <width>511</width>
-        <height>402</height>
+        <x>66</x>
+        <y>13</y>
+        <width>551</width>
+        <height>321</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -119,6 +81,38 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="searchbutton">
+         <property name="minimumSize">
+          <size>
+           <width>75</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>search</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QTreeWidget" name="treeWidget">
          <column>
           <property name="text">
@@ -128,20 +122,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="addtolist">
-         <property name="text">
-          <string>add to list</string>
-         </property>
-         <property name="icon">
-          <iconset resource="recources.qrc">
-           <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="details">
          <property name="text">
-          <string>details</string>
+          <string>show changes</string>
          </property>
          <property name="icon">
           <iconset>
@@ -149,14 +132,26 @@
          </property>
         </widget>
        </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>340</y>
+        <width>551</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="delete_2">
+        <widget class="QPushButton" name="addtolist">
          <property name="text">
-          <string>delete</string>
+          <string>add to list</string>
          </property>
          <property name="icon">
           <iconset resource="recources.qrc">
-           <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
+           <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
          </property>
         </widget>
        </item>
@@ -174,6 +169,17 @@
            <width>18</width>
            <height>16</height>
           </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="delete_2">
+         <property name="text">
+          <string>delete</string>
+         </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
          </property>
         </widget>
        </item>
