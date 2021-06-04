@@ -7,6 +7,7 @@
 #include <read_files.h>
 #include<main_page.h>
 #include<QList>
+#include<QMap>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

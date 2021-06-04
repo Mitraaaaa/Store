@@ -250,7 +250,6 @@
      <addaction name="separator"/>
      <addaction name="actionReset_the_list"/>
     </widget>
-    <addaction name="actionuser_s_name"/>
     <addaction name="separator"/>
     <addaction name="actionGroups"/>
     <addaction name="separator"/>

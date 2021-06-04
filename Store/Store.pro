@@ -15,8 +15,7 @@ SOURCES += \
     main_page.cpp \
     mainwindow.cpp \
     products.cpp \
-    read_files.cpp \
-    savechanges.cpp
+    read_files.cpp
 
 HEADERS += \
     add_pro.h \
@@ -24,15 +23,13 @@ HEADERS += \
     main_page.h \
     mainwindow.h \
     products.h \
-    read_files.h \
-    savechanges.h
+    read_files.h
 
 FORMS += \
     add_pro.ui \
     main_page.ui \
     mainwindow.ui \
-    read_files.ui \
-    savechanges.ui
+    read_files.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

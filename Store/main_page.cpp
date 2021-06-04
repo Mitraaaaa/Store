@@ -9,7 +9,6 @@
 #include<QTextStream>
 #include "products.h"
 #include "add_pro.h"
-#include"savechanges.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -104,11 +103,41 @@ void main_page::on_showchanges_clicked()
 
 void main_page::on_actionLog_out_triggered()
 {
-    savechanges saveornot(list_pointer);
-    saveornot.setModal(true);
-    saveornot.exec();
-}
+    QMessageBox msgBox;
+    msgBox.setText("Do you want to save your changes?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard );
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+    switch (ret) {
+      case QMessageBox::Save:
+        {
+            QFile file ("list.txt");
+            if(!file.open(QFile::WriteOnly | QFile::Text ))
+            {
+                return;
+            }
+            else{
+                  QTextStream out(&file);
+                  for(int i=0;i<list_pointer->size();i++)
+                  {
+                      out<<(*list_pointer)[i].get_name()+"\n";
+                      out<<(*list_pointer)[i].get_consumer()+"\n";
+                      out<<(*list_pointer)[i].get_type()+"\n";
+                      out<<QString::number((*list_pointer)[i].get_number())+"\n";
+                  }
+                  file.close();
+            }
+        }
+          break;
+      case QMessageBox::Discard:
+          // Don't Save was clicked
+          break;
+      default:
+          // should never be reached
+          break;
+    }
 
+}
 
 void main_page::on_searchbutton_clicked()
 {
@@ -120,18 +149,24 @@ void main_page::on_searchbutton_clicked()
         {
             addroot((*list_pointer)[i].get_name(),list_pointer,i);
         }
-        else if((*list_pointer)[i].get_consumer().contains(search))
+         if((*list_pointer)[i].get_consumer().contains(search))
         {
             addroot((*list_pointer)[i].get_consumer(),list_pointer,i);
         }
-        else if((*list_pointer)[i].get_type().contains(search))
+         if((*list_pointer)[i].get_type().contains(search))
         {
             addroot((*list_pointer)[i].get_type(),list_pointer,i);
         }
-        else if(QString::number((*list_pointer)[i].get_number()).contains(search))
+         if(QString::number((*list_pointer)[i].get_number()).contains(search))
         {
             addroot(QString::number((*list_pointer)[i].get_number()),list_pointer,i);
         }
     }
+}
+
+
+void main_page::on_actionuser_s_name_triggered()
+{
+    //this->ui->menuuser_s_inf
 }
 

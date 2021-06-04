@@ -220,7 +220,6 @@ public:
         main_page->setStatusBar(statusbar);
 
         menubar->addAction(menuuser_s_info->menuAction());
-        menuuser_s_info->addAction(actionuser_s_name);
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionGroups);
         menuuser_s_info->addSeparator();

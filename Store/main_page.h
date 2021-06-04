@@ -32,6 +32,8 @@ private slots:
 
     void on_searchbutton_clicked();
 
+    void on_actionuser_s_name_triggered();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
