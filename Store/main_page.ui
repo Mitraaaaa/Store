@@ -236,7 +236,7 @@
     <property name="toolTipsVisible">
      <bool>true</bool>
     </property>
-    <widget class="QMenu" name="menuSettings">
+    <widget class="QMenu" name="changeuserpass">
      <property name="title">
       <string>settings</string>
      </property>
@@ -255,7 +255,7 @@
     <addaction name="separator"/>
     <addaction name="actionMy_products"/>
     <addaction name="separator"/>
-    <addaction name="menuSettings"/>
+    <addaction name="changeuserpass"/>
     <addaction name="separator"/>
     <addaction name="actionLog_out"/>
    </widget>

@@ -20,6 +20,11 @@ QString products::get_type()
     return type;
 }
 
+double products::get_price()
+{
+    return price;
+}
+
 int products::get_number()
 {
     return number;
@@ -43,4 +48,9 @@ void products::set_type(QString type)
 void products::set_number(int number)
 {
     this->number=number;
+}
+
+void products::set_price(double price)
+{
+    this->price=price;
 }

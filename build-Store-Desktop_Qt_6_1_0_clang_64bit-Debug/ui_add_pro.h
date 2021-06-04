@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -27,17 +28,19 @@ public:
     QGroupBox *groupBox;
     QPushButton *additem;
     QWidget *widget;
+    QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QWidget *widget1;
+    QLabel *name_2;
+    QLabel *consumer_2;
+    QLabel *type_2;
+    QLabel *number_2;
+    QLabel *price;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *name;
     QLineEdit *consumer;
     QLineEdit *type;
     QLineEdit *number;
+    QLineEdit *price_2;
 
     void setupUi(QDialog *add_pro)
     {
@@ -52,55 +55,69 @@ public:
         additem->setGeometry(QRect(120, 220, 151, 32));
         widget = new QWidget(groupBox);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 40, 70, 171));
-        verticalLayout = new QVBoxLayout(widget);
+        widget->setGeometry(QRect(10, 20, 311, 201));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName(QString::fromUtf8("label"));
+        name_2 = new QLabel(widget);
+        name_2->setObjectName(QString::fromUtf8("name_2"));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(name_2);
 
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        consumer_2 = new QLabel(widget);
+        consumer_2->setObjectName(QString::fromUtf8("consumer_2"));
 
-        verticalLayout->addWidget(label_2);
+        verticalLayout->addWidget(consumer_2);
 
-        label_3 = new QLabel(widget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        type_2 = new QLabel(widget);
+        type_2->setObjectName(QString::fromUtf8("type_2"));
 
-        verticalLayout->addWidget(label_3);
+        verticalLayout->addWidget(type_2);
 
-        label_4 = new QLabel(widget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        number_2 = new QLabel(widget);
+        number_2->setObjectName(QString::fromUtf8("number_2"));
 
-        verticalLayout->addWidget(label_4);
+        verticalLayout->addWidget(number_2);
 
-        widget1 = new QWidget(groupBox);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(92, 40, 221, 171));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        price = new QLabel(widget);
+        price->setObjectName(QString::fromUtf8("price"));
+
+        verticalLayout->addWidget(price);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        name = new QLineEdit(widget1);
+        name = new QLineEdit(widget);
         name->setObjectName(QString::fromUtf8("name"));
 
         verticalLayout_2->addWidget(name);
 
-        consumer = new QLineEdit(widget1);
+        consumer = new QLineEdit(widget);
         consumer->setObjectName(QString::fromUtf8("consumer"));
 
         verticalLayout_2->addWidget(consumer);
 
-        type = new QLineEdit(widget1);
+        type = new QLineEdit(widget);
         type->setObjectName(QString::fromUtf8("type"));
 
         verticalLayout_2->addWidget(type);
 
-        number = new QLineEdit(widget1);
+        number = new QLineEdit(widget);
         number->setObjectName(QString::fromUtf8("number"));
 
         verticalLayout_2->addWidget(number);
+
+        price_2 = new QLineEdit(widget);
+        price_2->setObjectName(QString::fromUtf8("price_2"));
+
+        verticalLayout_2->addWidget(price_2);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
 
 
         retranslateUi(add_pro);
@@ -113,10 +130,11 @@ public:
         add_pro->setWindowTitle(QCoreApplication::translate("add_pro", "Dialog", nullptr));
         groupBox->setTitle(QCoreApplication::translate("add_pro", "ADD ITEM", nullptr));
         additem->setText(QCoreApplication::translate("add_pro", "Add", nullptr));
-        label->setText(QCoreApplication::translate("add_pro", "name :", nullptr));
-        label_2->setText(QCoreApplication::translate("add_pro", "consumer :", nullptr));
-        label_3->setText(QCoreApplication::translate("add_pro", "type :", nullptr));
-        label_4->setText(QCoreApplication::translate("add_pro", "number :", nullptr));
+        name_2->setText(QCoreApplication::translate("add_pro", "name :", nullptr));
+        consumer_2->setText(QCoreApplication::translate("add_pro", "consumer :", nullptr));
+        type_2->setText(QCoreApplication::translate("add_pro", "type :", nullptr));
+        number_2->setText(QCoreApplication::translate("add_pro", "number :", nullptr));
+        price->setText(QCoreApplication::translate("add_pro", "price", nullptr));
     } // retranslateUi
 
 };

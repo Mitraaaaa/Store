@@ -45,12 +45,17 @@ main_page::main_page(QWidget *parent) :
                   break;
               case 4:
                   pro_list.set_number(line.toInt());
+                  i++;
+                  break;
+              case 5:
+                  pro_list.set_price(line.toDouble());
                   list_pointer->append(pro_list);
                   i=1;
                   break;
               }
            }
-           ui->tree->setColumnCount(3);
+           ui->tree->setColumnCount(4);
+           ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i);
            file.close();
@@ -61,17 +66,19 @@ main_page::main_page(QWidget *parent) :
 void main_page::addroot(QString name,QList<products> * list_pointer,int index)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(ui->tree);
-    itm->setText(0,"Name : " +name);
-    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number());
+    itm->setText(0, name);
+    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price());
 
 }
 
-void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int count)
+void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int count,double price)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem();
-    itm->setText(0,"Consumer : " +consumer);
-    itm->setText(1,"Type : "+type);
-    itm->setText(2,"Number : "+ QString::number(count));
+    itm->setText(0,consumer);
+    itm->setText(1,type);
+    itm->setText(2, QString::number(count));
+    itm->setText(3,QString::number(price));
+
     parent->addChild(itm);
 }
 
@@ -92,7 +99,8 @@ void main_page::on_addtolist_clicked()
 void main_page::on_showchanges_clicked()
 {
      ui->tree->clear();
-       ui->tree->setColumnCount(3);
+       ui->tree->setColumnCount(4);
+       ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
        this->ui->tree->clear();
     for(int i=0;i<list_pointer->size();i++)
     {
@@ -127,6 +135,7 @@ void main_page::on_actionLog_out_triggered()
                   }
                   file.close();
             }
+            this->close();
         }
           break;
       case QMessageBox::Discard:
@@ -161,12 +170,12 @@ void main_page::on_searchbutton_clicked()
         {
             addroot(QString::number((*list_pointer)[i].get_number()),list_pointer,i);
         }
+         if(QString::number((*list_pointer)[i].get_price()).contains(search))
+        {
+            addroot(QString::number((*list_pointer)[i].get_price()),list_pointer,i);
+        }
     }
 }
 
 
-void main_page::on_actionuser_s_name_triggered()
-{
-    //this->ui->menuuser_s_inf
-}
 

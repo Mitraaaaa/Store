@@ -14,7 +14,7 @@ class main_page : public QMainWindow
 {
     Q_OBJECT
     void addroot(QString name,QList<products> * list,int index);
-    void addchid(QTreeWidgetItem * parent ,QString consumer,QString description ,int number);
+    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price);
 
 public:
     explicit main_page(QWidget *parent = nullptr);
@@ -32,7 +32,6 @@ private slots:
 
     void on_searchbutton_clicked();
 
-    void on_actionuser_s_name_triggered();
 
 private:
     Ui::main_page *ui;

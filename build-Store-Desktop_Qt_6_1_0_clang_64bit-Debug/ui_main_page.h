@@ -58,7 +58,7 @@ public:
     QWidget *tab_6;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
-    QMenu *menuSettings;
+    QMenu *changeuserpass;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *main_page)
@@ -209,11 +209,11 @@ public:
         menuuser_s_info->setObjectName(QString::fromUtf8("menuuser_s_info"));
         menuuser_s_info->setTearOffEnabled(false);
         menuuser_s_info->setToolTipsVisible(true);
-        menuSettings = new QMenu(menuuser_s_info);
-        menuSettings->setObjectName(QString::fromUtf8("menuSettings"));
+        changeuserpass = new QMenu(menuuser_s_info);
+        changeuserpass->setObjectName(QString::fromUtf8("changeuserpass"));
         QIcon icon11;
         icon11.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        menuSettings->setIcon(icon11);
+        changeuserpass->setIcon(icon11);
         main_page->setMenuBar(menubar);
         statusbar = new QStatusBar(main_page);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -225,14 +225,14 @@ public:
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionMy_products);
         menuuser_s_info->addSeparator();
-        menuuser_s_info->addAction(menuSettings->menuAction());
+        menuuser_s_info->addAction(changeuserpass->menuAction());
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionLog_out);
-        menuSettings->addAction(actionchange_user_pass);
-        menuSettings->addSeparator();
-        menuSettings->addAction(actionEdit_my_basket);
-        menuSettings->addSeparator();
-        menuSettings->addAction(actionReset_the_list);
+        changeuserpass->addAction(actionchange_user_pass);
+        changeuserpass->addSeparator();
+        changeuserpass->addAction(actionEdit_my_basket);
+        changeuserpass->addSeparator();
+        changeuserpass->addAction(actionReset_the_list);
 
         retranslateUi(main_page);
 
@@ -268,7 +268,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
-        menuSettings->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
+        changeuserpass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
     } // retranslateUi
 
 };

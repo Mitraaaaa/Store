@@ -42,63 +42,69 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
-      <width>70</width>
-      <height>171</height>
+      <y>20</y>
+      <width>311</width>
+      <height>201</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>name :</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="name_2">
+         <property name="text">
+          <string>name :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="consumer_2">
+         <property name="text">
+          <string>consumer :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="type_2">
+         <property name="text">
+          <string>type :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="number_2">
+         <property name="text">
+          <string>number :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="price">
+         <property name="text">
+          <string>price</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>consumer :</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>type :</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>number :</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>92</x>
-      <y>40</y>
-      <width>221</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QLineEdit" name="name"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="consumer"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="type"/>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="number"/>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="name"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="consumer"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="type"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="number"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="price_2"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>

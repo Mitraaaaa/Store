@@ -14,8 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    ui->comboBox->addItem("settings");
-//    ui->comboBox->addItem("password");
 }
 
 MainWindow::~MainWindow()
