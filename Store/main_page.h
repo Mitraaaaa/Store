@@ -33,6 +33,8 @@ private slots:
     void on_searchbutton_clicked();
 
 
+    void on_delete_2_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

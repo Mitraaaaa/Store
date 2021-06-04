@@ -7,6 +7,7 @@
 #include<QMessageBox>
 #include<QString>
 #include<QTextStream>
+#include<QTreeWidgetItem>
 #include "products.h"
 #include "add_pro.h"
 main_page::main_page(QWidget *parent) :
@@ -77,7 +78,7 @@ void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type 
     itm->setText(0,consumer);
     itm->setText(1,type);
     itm->setText(2, QString::number(count));
-    itm->setText(3,QString::number(price));
+    itm->setText(3,QString::number(price)+" $");
 
     parent->addChild(itm);
 }
@@ -132,6 +133,7 @@ void main_page::on_actionLog_out_triggered()
                       out<<(*list_pointer)[i].get_consumer()+"\n";
                       out<<(*list_pointer)[i].get_type()+"\n";
                       out<<QString::number((*list_pointer)[i].get_number())+"\n";
+                      out<<QString::number((*list_pointer)[i].get_price())+"\n";
                   }
                   file.close();
             }
@@ -178,4 +180,22 @@ void main_page::on_searchbutton_clicked()
 }
 
 
+
+
+void main_page::on_delete_2_clicked()
+{
+    for(int i=0;i<list_pointer->size();i++)
+    {
+        QList<QTreeWidgetItem*> items = ui->tree->findItems((*list_pointer)[i].get_name(), Qt::MatchExactly, 0);
+        if (items.count() == 0)
+        {
+            //not found
+        }
+        else{
+            (*list_pointer).erase(list_pointer->begin()+i);
+            delete ui->tree->takeTopLevelItem(i);
+            break;
+        }
+    }
+}
 
