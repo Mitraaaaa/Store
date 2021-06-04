@@ -58,11 +58,13 @@ SOURCES       = ../Store/add_pro.cpp \
 		../Store/main_page.cpp \
 		../Store/mainwindow.cpp \
 		../Store/products.cpp \
-		../Store/read_files.cpp qrc_recources.cpp \
+		../Store/read_files.cpp \
+		../Store/savechanges.cpp qrc_recources.cpp \
 		moc_add_pro.cpp \
 		moc_main_page.cpp \
 		moc_mainwindow.cpp \
-		moc_read_files.cpp
+		moc_read_files.cpp \
+		moc_savechanges.cpp
 OBJECTS       = add_pro.o \
 		customer.o \
 		main.o \
@@ -70,11 +72,13 @@ OBJECTS       = add_pro.o \
 		mainwindow.o \
 		products.o \
 		read_files.o \
+		savechanges.o \
 		qrc_recources.o \
 		moc_add_pro.o \
 		moc_main_page.o \
 		moc_mainwindow.o \
-		moc_read_files.o
+		moc_read_files.o \
+		moc_savechanges.o
 DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/device_config.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/common/unix.conf \
@@ -208,13 +212,15 @@ DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../Store/main_page.h \
 		../Store/mainwindow.h \
 		../Store/products.h \
-		../Store/read_files.h ../Store/add_pro.cpp \
+		../Store/read_files.h \
+		../Store/savechanges.h ../Store/add_pro.cpp \
 		../Store/customer.cpp \
 		../Store/main.cpp \
 		../Store/main_page.cpp \
 		../Store/mainwindow.cpp \
 		../Store/products.cpp \
-		../Store/read_files.cpp
+		../Store/read_files.cpp \
+		../Store/savechanges.cpp
 QMAKE_TARGET  = Store
 DESTDIR       = 
 TARGET        = Store.app/Contents/MacOS/Store
@@ -234,7 +240,7 @@ include /Users/omrani/Qt/6.1.0/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-Store.app/Contents/MacOS/Store: ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h $(OBJECTS)  
+Store.app/Contents/MacOS/Store: ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h ui_savechanges.h $(OBJECTS)  
 	@test -d Store.app/Contents/MacOS/ || mkdir -p Store.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -536,9 +542,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Store/recources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_pro.h ../Store/customer.h ../Store/main_page.h ../Store/mainwindow.h ../Store/products.h ../Store/read_files.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_pro.cpp ../Store/customer.cpp ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/products.cpp ../Store/read_files.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_pro.ui ../Store/main_page.ui ../Store/mainwindow.ui ../Store/read_files.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_pro.h ../Store/customer.h ../Store/main_page.h ../Store/mainwindow.h ../Store/products.h ../Store/read_files.h ../Store/savechanges.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_pro.cpp ../Store/customer.cpp ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/products.cpp ../Store/read_files.cpp ../Store/savechanges.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_pro.ui ../Store/main_page.ui ../Store/mainwindow.ui ../Store/read_files.ui ../Store/savechanges.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -599,9 +605,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -mmacosx-version-min=10.14 -Wall -Wextra -dM -E -o moc_predefs.h ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_add_pro.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
+compiler_moc_header_make_all: moc_add_pro.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp moc_savechanges.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_add_pro.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
+	-$(DEL_FILE) moc_add_pro.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp moc_savechanges.cpp
 moc_add_pro.cpp: ../Store/add_pro.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -648,13 +654,25 @@ moc_read_files.cpp: ../Store/read_files.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/read_files.h -o moc_read_files.cpp
 
+moc_savechanges.cpp: ../Store/savechanges.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		moc_predefs.h \
+		../../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/savechanges.h -o moc_savechanges.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h
+compiler_uic_make_all: ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h ui_savechanges.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h
+	-$(DEL_FILE) ui_add_pro.h ui_main_page.h ui_mainwindow.h ui_read_files.h ui_savechanges.h
 ui_add_pro.h: ../Store/add_pro.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/add_pro.ui -o ui_add_pro.h
@@ -670,6 +688,10 @@ ui_mainwindow.h: ../Store/mainwindow.ui \
 ui_read_files.h: ../Store/read_files.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/read_files.ui -o ui_read_files.h
+
+ui_savechanges.h: ../Store/savechanges.ui \
+		../../../../Qt/6.1.0/clang_64/libexec/uic
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/savechanges.ui -o ui_savechanges.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -736,9 +758,12 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QFile \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
 		../Store/add_pro.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Store/savechanges.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Store/main_page.cpp
 
 mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
@@ -781,6 +806,21 @@ read_files.o: ../Store/read_files.cpp ../Store/read_files.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o read_files.o ../Store/read_files.cpp
 
+savechanges.o: ../Store/savechanges.cpp ../Store/savechanges.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		ui_savechanges.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QTextStream \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qtextstream.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o savechanges.o ../Store/savechanges.cpp
+
 qrc_recources.o: qrc_recources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_recources.o qrc_recources.cpp
 
@@ -795,6 +835,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_read_files.o: moc_read_files.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_read_files.o moc_read_files.cpp
+
+moc_savechanges.o: moc_savechanges.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_savechanges.o moc_savechanges.cpp
 
 ####### Install
 

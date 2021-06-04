@@ -41,6 +41,7 @@ void MainWindow::on_signup_clicked()
         QTextStream out(&file);
         out << "username :"+this->ui->username->text()+'\n';
         out << "password :"+this->ui->password->text()+"\n\n";
+        QMessageBox::information(this,"title","Done!");
     }
     else {
         file.close();
@@ -64,6 +65,7 @@ void MainWindow::on_signup_clicked()
             QTextStream out(&file);
             out << "username :"+this->ui->username->text()+'\n';
             out << "password :"+this->ui->password->text()+"\n\n";
+             QMessageBox::information(this,"title","Done!");
         }
     }
 

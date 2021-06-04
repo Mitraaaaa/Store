@@ -21,7 +21,7 @@ void add_pro::on_additem_clicked()
     item.set_name(ui->name->text());
     item.set_consumer(ui->consumer->text());
     item.set_type(ui->type->text());
-    item.set_number((ui->consumer->text()).toInt());
+    item.set_number((ui->number->text()).toInt());
     list_add_pro->append(item);
 }
 

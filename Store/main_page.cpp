@@ -5,8 +5,11 @@
 #include<QList>
 #include<QString>
 #include<QMessageBox>
+#include<QString>
+#include<QTextStream>
 #include "products.h"
 #include "add_pro.h"
+#include"savechanges.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -17,7 +20,7 @@ main_page::main_page(QWidget *parent) :
     QFile file("list.txt");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::warning(this,"title","File not opened!");
+       // QMessageBox::warning(this,"title","File not opened!");
     }
     //set the list if it's not empty
     else if(file.size()!=0)
@@ -32,24 +35,26 @@ main_page::main_page(QWidget *parent) :
               case 1:
                   pro_list.set_name(line);
                   i++;
+                  break;
               case 2:
                   pro_list.set_consumer(line);
                   i++;
+                  break;
               case 3:
                   pro_list.set_type(line);
                   i++;
+                  break;
               case 4:
                   pro_list.set_number(line.toInt());
                   list_pointer->append(pro_list);
                   i=1;
+                  break;
               }
-
            }
-           file.close();
-
            ui->tree->setColumnCount(3);
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i);
+           file.close();
     }
 
 }
@@ -76,8 +81,6 @@ main_page::~main_page()
 }
 
 
-
-
 void main_page::on_addtolist_clicked()
 {
     add_pro new_page(list_pointer);
@@ -90,9 +93,18 @@ void main_page::on_showchanges_clicked()
 {
      ui->tree->clear();
        ui->tree->setColumnCount(3);
+       this->ui->tree->clear();
     for(int i=0;i<list_pointer->size();i++)
     {
         addroot((*list_pointer)[i].get_name(),list_pointer,i);
     }
+}
+
+
+void main_page::on_actionLog_out_triggered()
+{
+    savechanges saveornot(list_pointer);
+    saveornot.setModal(true);
+    saveornot.exec();
 }
 

@@ -28,6 +28,8 @@ private slots:
 
     void on_showchanges_clicked();
 
+    void on_actionLog_out_triggered();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
