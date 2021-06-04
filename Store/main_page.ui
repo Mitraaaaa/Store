@@ -57,7 +57,7 @@
      <attribute name="title">
       <string>search</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>66</x>
@@ -113,7 +113,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTreeWidget" name="treeWidget">
+        <widget class="QTreeWidget" name="tree">
          <column>
           <property name="text">
            <string notr="true">1</string>
@@ -122,7 +122,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="details">
+        <widget class="QPushButton" name="showchanges">
          <property name="text">
           <string>show changes</string>
          </property>
@@ -134,7 +134,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>70</x>

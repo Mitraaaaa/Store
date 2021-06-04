@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    add_pro.cpp \
     customer.cpp \
     main.cpp \
     main_page.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     read_files.cpp
 
 HEADERS += \
+    add_pro.h \
     customer.h \
     main_page.h \
     mainwindow.h \
@@ -24,6 +26,7 @@ HEADERS += \
     read_files.h
 
 FORMS += \
+    add_pro.ui \
     main_page.ui \
     mainwindow.ui \
     read_files.ui

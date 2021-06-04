@@ -92,11 +92,9 @@ void MainWindow::on_login_clicked()
                  {
                       QMessageBox::warning(this,"title","Invalid password!");
                  }
+                 //openning new window (main_page)
                  else
                  {
-//                     QList<products> list;
-//                     QFile file("list,txt");
-
                      main_page *newmain= new main_page();
                      newmain->show();
                  }
