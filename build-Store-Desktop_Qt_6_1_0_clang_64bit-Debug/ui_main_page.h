@@ -37,6 +37,7 @@ public:
     QAction *actionchange_user_pass;
     QAction *actionEdit_my_basket;
     QAction *actionLog_out;
+    QAction *actionReset_the_list;
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *tab_3;
@@ -97,6 +98,8 @@ public:
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/rec/img/logout.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
         actionLog_out->setIcon(icon5);
+        actionReset_the_list = new QAction(main_page);
+        actionReset_the_list->setObjectName(QString::fromUtf8("actionReset_the_list"));
         centralwidget = new QWidget(main_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
@@ -229,6 +232,8 @@ public:
         menuSettings->addAction(actionchange_user_pass);
         menuSettings->addSeparator();
         menuSettings->addAction(actionEdit_my_basket);
+        menuSettings->addSeparator();
+        menuSettings->addAction(actionReset_the_list);
 
         retranslateUi(main_page);
 
@@ -251,6 +256,7 @@ public:
         actionchange_user_pass->setText(QCoreApplication::translate("main_page", "change user &pass", nullptr));
         actionEdit_my_basket->setText(QCoreApplication::translate("main_page", "Edit my basket", nullptr));
         actionLog_out->setText(QCoreApplication::translate("main_page", "Log out", nullptr));
+        actionReset_the_list->setText(QCoreApplication::translate("main_page", "Reset the list", nullptr));
         serchzone->setText(QString());
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         showchanges->setText(QCoreApplication::translate("main_page", "show changes", nullptr));

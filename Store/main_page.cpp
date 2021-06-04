@@ -58,6 +58,7 @@ main_page::main_page(QWidget *parent) :
     }
 
 }
+
 void main_page::addroot(QString name,QList<products> * list_pointer,int index)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(ui->tree);
@@ -106,5 +107,31 @@ void main_page::on_actionLog_out_triggered()
     savechanges saveornot(list_pointer);
     saveornot.setModal(true);
     saveornot.exec();
+}
+
+
+void main_page::on_searchbutton_clicked()
+{
+    ui->tree->clear();
+    QString search=this->ui->serchzone->text();
+    for(int i=0;i<list_pointer->size();i++)
+    {
+        if((*list_pointer)[i].get_name().contains(search))
+        {
+            addroot((*list_pointer)[i].get_name(),list_pointer,i);
+        }
+        else if((*list_pointer)[i].get_consumer().contains(search))
+        {
+            addroot((*list_pointer)[i].get_consumer(),list_pointer,i);
+        }
+        else if((*list_pointer)[i].get_type().contains(search))
+        {
+            addroot((*list_pointer)[i].get_type(),list_pointer,i);
+        }
+        else if(QString::number((*list_pointer)[i].get_number()).contains(search))
+        {
+            addroot(QString::number((*list_pointer)[i].get_number()),list_pointer,i);
+        }
+    }
 }
 

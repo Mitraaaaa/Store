@@ -247,6 +247,8 @@
      <addaction name="actionchange_user_pass"/>
      <addaction name="separator"/>
      <addaction name="actionEdit_my_basket"/>
+     <addaction name="separator"/>
+     <addaction name="actionReset_the_list"/>
     </widget>
     <addaction name="actionuser_s_name"/>
     <addaction name="separator"/>
@@ -316,6 +318,11 @@
    </property>
    <property name="text">
     <string>Log out</string>
+   </property>
+  </action>
+  <action name="actionReset_the_list">
+   <property name="text">
+    <string extracomment="This will delete the whole existing list">Reset the list</string>
    </property>
   </action>
  </widget>

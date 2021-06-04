@@ -30,6 +30,8 @@ private slots:
 
     void on_actionLog_out_triggered();
 
+    void on_searchbutton_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
