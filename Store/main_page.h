@@ -18,13 +18,13 @@ class main_page : public QMainWindow
 
 public:
     explicit main_page(QWidget *parent = nullptr);
+    void showchanges();
     ~main_page();
 
 private slots:
 
 
     void on_addtolist_clicked();
-
 
     void on_showchanges_clicked();
 
@@ -34,6 +34,8 @@ private slots:
 
 
     void on_delete_2_clicked();
+
+    void on_edit_clicked();
 
 private:
     Ui::main_page *ui;

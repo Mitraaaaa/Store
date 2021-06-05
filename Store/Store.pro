@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     add_pro.cpp \
     customer.cpp \
+    editpage.cpp \
     main.cpp \
     main_page.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     add_pro.h \
     customer.h \
+    editpage.h \
     main_page.h \
     mainwindow.h \
     products.h \
@@ -27,6 +29,7 @@ HEADERS += \
 
 FORMS += \
     add_pro.ui \
+    editpage.ui \
     main_page.ui \
     mainwindow.ui \
     read_files.ui

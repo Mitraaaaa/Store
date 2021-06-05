@@ -10,6 +10,7 @@
 #include<QTreeWidgetItem>
 #include "products.h"
 #include "add_pro.h"
+#include "editpage.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -64,6 +65,18 @@ main_page::main_page(QWidget *parent) :
 
 }
 
+void main_page::showchanges()
+{
+    ui->tree->clear();
+      ui->tree->setColumnCount(4);
+      ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
+      this->ui->tree->clear();
+   for(int i=0;i<list_pointer->size();i++)
+   {
+       addroot((*list_pointer)[i].get_name(),list_pointer,i);
+   }
+}
+
 void main_page::addroot(QString name,QList<products> * list_pointer,int index)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(ui->tree);
@@ -88,7 +101,6 @@ main_page::~main_page()
     delete ui;
 }
 
-
 void main_page::on_addtolist_clicked()
 {
     add_pro new_page(list_pointer);
@@ -96,19 +108,10 @@ void main_page::on_addtolist_clicked()
     new_page.exec();
 }
 
-
 void main_page::on_showchanges_clicked()
 {
-     ui->tree->clear();
-       ui->tree->setColumnCount(4);
-       ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
-       this->ui->tree->clear();
-    for(int i=0;i<list_pointer->size();i++)
-    {
-        addroot((*list_pointer)[i].get_name(),list_pointer,i);
-    }
+    showchanges();
 }
-
 
 void main_page::on_actionLog_out_triggered()
 {
@@ -179,23 +182,43 @@ void main_page::on_searchbutton_clicked()
     }
 }
 
-
-
-
 void main_page::on_delete_2_clicked()
 {
-    for(int i=0;i<list_pointer->size();i++)
-    {
-        QList<QTreeWidgetItem*> items = ui->tree->findItems((*list_pointer)[i].get_name(), Qt::MatchExactly, 0);
-        if (items.count() == 0)
-        {
-            //not found
-        }
-        else{
-            (*list_pointer).erase(list_pointer->begin()+i);
-            delete ui->tree->takeTopLevelItem(i);
-            break;
-        }
-    }
+     int i=ui->tree->currentIndex().row();
+     if(ui->tree->currentIndex().column()==0 && i!=0)
+     {
+         (*list_pointer).erase(list_pointer->begin()+i);
+      ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+      showchanges();
+
+     }
+     else if(ui->tree->currentIndex().column()==0 && i==0 && ui->tree->currentItem()->childCount()!=0)
+     {
+        delete ui->tree->takeTopLevelItem(i);
+     }
+    else{
+       //  QMessageBox::information(this,"title","In order to DELETE an item click on it's name no details");
+         ui->tree->currentItem()->parent()->removeChild((ui->tree->currentItem()));
+         i=ui->tree->currentIndex().row();
+         (*list_pointer).erase(list_pointer->begin()+i);
+         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+          showchanges();
+     }
+
+}
+
+void main_page::on_edit_clicked()
+{
+      int i=ui->tree->currentIndex().row();
+      if(ui->tree->currentIndex().column()==0)
+      {
+          editpage new_page(list_pointer,i);
+          new_page.setModal(true);
+          new_page.exec();
+      }
+      else
+      {
+            QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
+      }
 }
 

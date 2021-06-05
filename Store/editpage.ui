@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editpage</class>
+ <widget class="QDialog" name="editpage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>465</width>
+    <height>327</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="editbutton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>280</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>edit</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>40</y>
+     <width>341</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="editname">
+        <property name="text">
+         <string>name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="editconsumer">
+        <property name="text">
+         <string>consumer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="edittype">
+        <property name="text">
+         <string>type</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="editnumber">
+        <property name="text">
+         <string>number</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="editprice">
+        <property name="text">
+         <string>price</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="name"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditconsmer"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdittype"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditnumber"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditprice"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
