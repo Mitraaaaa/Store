@@ -106,6 +106,7 @@ void main_page::on_addtolist_clicked()
     add_pro new_page(list_pointer);
     new_page.setModal(true);
     new_page.exec();
+    showchanges();
 }
 
 void main_page::on_showchanges_clicked()
@@ -185,6 +186,7 @@ void main_page::on_searchbutton_clicked()
 void main_page::on_delete_2_clicked()
 {
      int i=ui->tree->currentIndex().row();
+     //when clicked on name of prducts not details so we have row's amount
      if(ui->tree->currentIndex().column()==0 && i!=0)
      {
          (*list_pointer).erase(list_pointer->begin()+i);
@@ -194,10 +196,11 @@ void main_page::on_delete_2_clicked()
      }
      else if(ui->tree->currentIndex().column()==0 && i==0 && ui->tree->currentItem()->childCount()!=0)
      {
+         //when clicked on the first item so the row and colume is zero
         delete ui->tree->takeTopLevelItem(i);
      }
     else{
-       //  QMessageBox::information(this,"title","In order to DELETE an item click on it's name no details");
+         //if clicked on child of colume 0 , so the row becomes 0 too since it's a child . it's an item and not nessecery top_level_item
          ui->tree->currentItem()->parent()->removeChild((ui->tree->currentItem()));
          i=ui->tree->currentIndex().row();
          (*list_pointer).erase(list_pointer->begin()+i);
@@ -209,16 +212,30 @@ void main_page::on_delete_2_clicked()
 
 void main_page::on_edit_clicked()
 {
-      int i=ui->tree->currentIndex().row();
-      if(ui->tree->currentIndex().column()==0)
-      {
-          editpage new_page(list_pointer,i);
+     int i=ui->tree->currentIndex().row();
+    //when clicked on the name of products
+    if(ui->tree->currentItem()->childCount()!=0)
+    {
+        editpage new_page(list_pointer,i);
           new_page.setModal(true);
           new_page.exec();
-      }
-      else
-      {
-            QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
-      }
+          showchanges();
+    }
+    else {
+        for(int j=0;j<4;j++)
+        ui->tree->currentItem()->setBackground(j,Qt::red);
+         QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
+    }
+
+//      if(ui->tree->currentIndex().column()==0)
+//      {
+//          editpage new_page(list_pointer,i);
+//          new_page.setModal(true);
+//          new_page.exec();
+//      }
+//      else
+//      {
+//            QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
+//      }
 }
 

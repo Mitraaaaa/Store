@@ -22,11 +22,12 @@ editpage::~editpage()
 void editpage::on_editbutton_clicked()
 {
     products item;
-    item.set_name(ui->editname->text());
-    item.set_consumer(ui->editconsumer->text());
-    item.set_type(ui->edittype->text());
-    item.set_number((ui->editnumber->text()).toInt());
-    item.set_price(ui->editprice->text().toDouble());
+    item.set_name(ui->name->text());
+    item.set_consumer(ui->lineEditconsmer->text());
+    item.set_type(ui->lineEdittype->text());
+    item.set_number((ui->lineEditnumber->text()).toInt());
+    item.set_price(ui->lineEditprice->text().toDouble());
     (*list_pointer)[index]=item;
+    this->close();
 }
 
