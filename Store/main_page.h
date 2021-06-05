@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include<QList>
 #include"products.h"
+#include"group.h"
 #include<QString>
 #include <QTreeWidget>
 namespace Ui {
@@ -19,6 +20,8 @@ class main_page : public QMainWindow
 public:
     explicit main_page(QWidget *parent = nullptr);
     void showchanges();
+    void default_view_tab1();
+    void default_view_tab2();
     ~main_page();
 
 private slots:
@@ -37,9 +40,12 @@ private slots:
 
     void on_edit_clicked();
 
+    void on_addtogroup_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
+    QList<group> * group_pointer;
 };
 
 #endif // MAIN_PAGE_H

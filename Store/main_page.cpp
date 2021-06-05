@@ -11,13 +11,23 @@
 #include "products.h"
 #include "add_pro.h"
 #include "editpage.h"
+#include"group.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
 {
     ui->setupUi(this);
+    group_pointer= new QList<group>;
     list_pointer=new QList<products>;
+    default_view_tab1();
+    default_view_tab2();
+
+}
+
+void main_page::default_view_tab1()
+{
     products pro_list;
+    //list file in tab 1(search)
     QFile file("list.txt");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -62,7 +72,64 @@ main_page::main_page(QWidget *parent) :
             addroot((*list_pointer)[i].get_name(),list_pointer,i);
            file.close();
     }
+}
 
+void main_page::default_view_tab2()
+{
+//    //group file in tab2
+    group group_list;
+    QList<products> pro_group_list ;
+    products pro_list;
+    QFile group_file ("group.txt");
+    if(group_file.open(QIODevice::ReadOnly | QIODevice::Text) && group_file.size()!=0)
+       {
+             QTextStream in(&group_file);
+             int i=1;
+             bool first_line=true;
+                while (!in.atEnd())
+                {
+                   QString line = in.readLine();
+                   if(line.contains("Group : ") && !first_line)
+                   {
+                       //add previous group to the main_group
+                        group_list.set_pro_group(pro_group_list);
+                        group_pointer->append(group_list);
+                         group_list.set_group_name(line);
+                   }
+                   else if(line.contains("Group : ") && first_line)
+                   {
+                          group_list.set_group_name(line);
+                          first_line=false;
+                   }
+                   else
+                   {
+                           switch(i)
+                           {
+                           case 1:
+                              pro_list.set_name(line);
+                               i++;
+                               break;
+                           case 2:
+                              pro_list.set_consumer(line);
+                               i++;
+                               break;
+                           case 3:
+                               pro_list.set_type(line);
+                               i++;
+                               break;
+                           case 4:
+                               pro_list.set_number(line.toInt());
+                               i++;
+                               break;
+                           case 5:
+                               pro_list.set_price(line.toDouble());
+                               pro_group_list.append(pro_list);
+                               i=1;
+                               break;
+                           }
+                   }
+                }
+       }
 }
 
 void main_page::showchanges()
@@ -226,16 +293,11 @@ void main_page::on_edit_clicked()
         ui->tree->currentItem()->setBackground(j,Qt::red);
          QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
     }
+}
 
-//      if(ui->tree->currentIndex().column()==0)
-//      {
-//          editpage new_page(list_pointer,i);
-//          new_page.setModal(true);
-//          new_page.exec();
-//      }
-//      else
-//      {
-//            QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
-//      }
+
+void main_page::on_addtogroup_clicked()
+{
+
 }
 

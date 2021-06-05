@@ -39,7 +39,7 @@ public:
     QAction *actionLog_out;
     QAction *actionReset_the_list;
     QWidget *centralwidget;
-    QTabWidget *tabWidget;
+    QTabWidget *groups;
     QWidget *tab_3;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -102,15 +102,15 @@ public:
         actionReset_the_list->setObjectName(QString::fromUtf8("actionReset_the_list"));
         centralwidget = new QWidget(main_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        tabWidget = new QTabWidget(centralwidget);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(20, 0, 661, 461));
-        tabWidget->setLayoutDirection(Qt::LeftToRight);
-        tabWidget->setTabPosition(QTabWidget::North);
-        tabWidget->setTabShape(QTabWidget::Rounded);
-        tabWidget->setIconSize(QSize(20, 20));
-        tabWidget->setTabsClosable(false);
-        tabWidget->setMovable(false);
+        groups = new QTabWidget(centralwidget);
+        groups->setObjectName(QString::fromUtf8("groups"));
+        groups->setGeometry(QRect(20, 0, 661, 461));
+        groups->setLayoutDirection(Qt::LeftToRight);
+        groups->setTabPosition(QTabWidget::North);
+        groups->setTabShape(QTabWidget::Rounded);
+        groups->setIconSize(QSize(20, 20));
+        groups->setTabsClosable(false);
+        groups->setMovable(false);
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         layoutWidget = new QWidget(tab_3);
@@ -190,16 +190,16 @@ public:
 
         horizontalLayout->addWidget(edit);
 
-        tabWidget->addTab(tab_3, QString());
+        groups->addTab(tab_3, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
-        tabWidget->addTab(tab_5, QString());
+        groups->addTab(tab_5, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
-        tabWidget->addTab(tab_4, QString());
+        groups->addTab(tab_4, QString());
         tab_6 = new QWidget();
         tab_6->setObjectName(QString::fromUtf8("tab_6"));
-        tabWidget->addTab(tab_6, QString());
+        groups->addTab(tab_6, QString());
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -236,7 +236,7 @@ public:
 
         retranslateUi(main_page);
 
-        tabWidget->setCurrentIndex(0);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 
@@ -263,10 +263,10 @@ public:
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));
         delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("main_page", "search", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_5), QCoreApplication::translate("main_page", "Page", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
+        groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "search", nullptr));
+        groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Page", nullptr));
+        groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
+        groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         changeuserpass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
     } // retranslateUi
