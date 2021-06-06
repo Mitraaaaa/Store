@@ -54,6 +54,7 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Store/add_group.cpp \
 		../Store/add_pro.cpp \
+		../Store/change_group_name.cpp \
 		../Store/creat_new_group.cpp \
 		../Store/customer.cpp \
 		../Store/editpage.cpp \
@@ -65,6 +66,7 @@ SOURCES       = ../Store/add_group.cpp \
 		../Store/read_files.cpp qrc_recources.cpp \
 		moc_add_group.cpp \
 		moc_add_pro.cpp \
+		moc_change_group_name.cpp \
 		moc_creat_new_group.cpp \
 		moc_editpage.cpp \
 		moc_main_page.cpp \
@@ -72,6 +74,7 @@ SOURCES       = ../Store/add_group.cpp \
 		moc_read_files.cpp
 OBJECTS       = add_group.o \
 		add_pro.o \
+		change_group_name.o \
 		creat_new_group.o \
 		customer.o \
 		editpage.o \
@@ -84,6 +87,7 @@ OBJECTS       = add_group.o \
 		qrc_recources.o \
 		moc_add_group.o \
 		moc_add_pro.o \
+		moc_change_group_name.o \
 		moc_creat_new_group.o \
 		moc_editpage.o \
 		moc_main_page.o \
@@ -219,6 +223,7 @@ DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.1.0/clang_64/mkspecs/features/lex.prf \
 		../Store/Store.pro ../Store/add_group.h \
 		../Store/add_pro.h \
+		../Store/change_group_name.h \
 		../Store/creat_new_group.h \
 		../Store/customer.h \
 		../Store/editpage.h \
@@ -228,6 +233,7 @@ DIST          = ../../../../Qt/6.1.0/clang_64/mkspecs/features/spec_pre.prf \
 		../Store/products.h \
 		../Store/read_files.h ../Store/add_group.cpp \
 		../Store/add_pro.cpp \
+		../Store/change_group_name.cpp \
 		../Store/creat_new_group.cpp \
 		../Store/customer.cpp \
 		../Store/editpage.cpp \
@@ -256,7 +262,7 @@ include /Users/omrani/Qt/6.1.0/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-Store.app/Contents/MacOS/Store: ui_add_group.h ui_add_pro.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h $(OBJECTS)  
+Store.app/Contents/MacOS/Store: ui_add_group.h ui_add_pro.h ui_change_group_name.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h $(OBJECTS)  
 	@test -d Store.app/Contents/MacOS/ || mkdir -p Store.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -558,9 +564,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Store/recources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_group.h ../Store/add_pro.h ../Store/creat_new_group.h ../Store/customer.h ../Store/editpage.h ../Store/group.h ../Store/main_page.h ../Store/mainwindow.h ../Store/products.h ../Store/read_files.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_group.cpp ../Store/add_pro.cpp ../Store/creat_new_group.cpp ../Store/customer.cpp ../Store/editpage.cpp ../Store/group.cpp ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/products.cpp ../Store/read_files.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Store/add_group.ui ../Store/add_pro.ui ../Store/creat_new_group.ui ../Store/editpage.ui ../Store/main_page.ui ../Store/mainwindow.ui ../Store/read_files.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_group.h ../Store/add_pro.h ../Store/change_group_name.h ../Store/creat_new_group.h ../Store/customer.h ../Store/editpage.h ../Store/group.h ../Store/main_page.h ../Store/mainwindow.h ../Store/products.h ../Store/read_files.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_group.cpp ../Store/add_pro.cpp ../Store/change_group_name.cpp ../Store/creat_new_group.cpp ../Store/customer.cpp ../Store/editpage.cpp ../Store/group.cpp ../Store/main.cpp ../Store/main_page.cpp ../Store/mainwindow.cpp ../Store/products.cpp ../Store/read_files.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Store/add_group.ui ../Store/add_pro.ui ../Store/change_group_name.ui ../Store/creat_new_group.ui ../Store/editpage.ui ../Store/main_page.ui ../Store/mainwindow.ui ../Store/read_files.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -621,9 +627,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -mmacosx-version-min=10.14 -Wall -Wextra -dM -E -o moc_predefs.h ../../../../Qt/6.1.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_add_group.cpp moc_add_pro.cpp moc_creat_new_group.cpp moc_editpage.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
+compiler_moc_header_make_all: moc_add_group.cpp moc_add_pro.cpp moc_change_group_name.cpp moc_creat_new_group.cpp moc_editpage.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_add_group.cpp moc_add_pro.cpp moc_creat_new_group.cpp moc_editpage.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
+	-$(DEL_FILE) moc_add_group.cpp moc_add_pro.cpp moc_change_group_name.cpp moc_creat_new_group.cpp moc_editpage.cpp moc_main_page.cpp moc_mainwindow.cpp moc_read_files.cpp
 moc_add_group.cpp: ../Store/add_group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
@@ -650,6 +656,13 @@ moc_add_pro.cpp: ../Store/add_pro.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/add_pro.h -o moc_add_pro.cpp
+
+moc_change_group_name.cpp: ../Store/change_group_name.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		moc_predefs.h \
+		../../../../Qt/6.1.0/clang_64/libexec/moc
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/change_group_name.h -o moc_change_group_name.cpp
 
 moc_creat_new_group.cpp: ../Store/creat_new_group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
@@ -715,9 +728,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_add_group.h ui_add_pro.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h
+compiler_uic_make_all: ui_add_group.h ui_add_pro.h ui_change_group_name.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_add_group.h ui_add_pro.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h
+	-$(DEL_FILE) ui_add_group.h ui_add_pro.h ui_change_group_name.h ui_creat_new_group.h ui_editpage.h ui_main_page.h ui_mainwindow.h ui_read_files.h
 ui_add_group.h: ../Store/add_group.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/add_group.ui -o ui_add_group.h
@@ -725,6 +738,10 @@ ui_add_group.h: ../Store/add_group.ui \
 ui_add_pro.h: ../Store/add_pro.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/add_pro.ui -o ui_add_pro.h
+
+ui_change_group_name.h: ../Store/change_group_name.ui \
+		../../../../Qt/6.1.0/clang_64/libexec/uic
+	/Users/omrani/Qt/6.1.0/clang_64/libexec/uic ../Store/change_group_name.ui -o ui_change_group_name.h
 
 ui_creat_new_group.h: ../Store/creat_new_group.ui \
 		../../../../Qt/6.1.0/clang_64/libexec/uic
@@ -783,6 +800,12 @@ add_pro.o: ../Store/add_pro.cpp ../Store/add_pro.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
 		ui_add_pro.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o add_pro.o ../Store/add_pro.cpp
+
+change_group_name.o: ../Store/change_group_name.cpp ../Store/change_group_name.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_change_group_name.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o change_group_name.o ../Store/change_group_name.cpp
 
 creat_new_group.o: ../Store/creat_new_group.cpp ../Store/creat_new_group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
@@ -865,7 +888,8 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../Store/editpage.h \
-		../Store/add_group.h
+		../Store/add_group.h \
+		../Store/change_group_name.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Store/main_page.cpp
 
 mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
@@ -919,6 +943,9 @@ moc_add_group.o: moc_add_group.cpp
 
 moc_add_pro.o: moc_add_pro.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_add_pro.o moc_add_pro.cpp
+
+moc_change_group_name.o: moc_change_group_name.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_change_group_name.o moc_change_group_name.cpp
 
 moc_creat_new_group.o: moc_creat_new_group.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_creat_new_group.o moc_creat_new_group.cpp

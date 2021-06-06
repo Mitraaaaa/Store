@@ -1,8 +1,24 @@
-Group : phone
+Group : phones
+redmi
+mitra
+phone
+12
+800
 phone
 apple
 phone
 13
 1200
+Group : sationery
+notebook
+mina
+stationery
+10
+5
 Group : food
 Group : junks
+pofak
+mitra
+junk
+13
+45

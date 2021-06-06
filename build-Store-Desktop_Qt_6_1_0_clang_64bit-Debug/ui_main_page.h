@@ -66,8 +66,10 @@ public:
     QLineEdit *lineEdit;
     QPushButton *pushButton;
     QTreeWidget *grouptree;
-    QPushButton *pushButton_2;
+    QHBoxLayout *horizontalLayout_4;
     QPushButton *deleteforgroups;
+    QPushButton *pushButton_2;
+    QPushButton *change_group_name;
     QWidget *tab_4;
     QWidget *tab_6;
     QMenuBar *menubar;
@@ -223,7 +225,7 @@ public:
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
         widget1 = new QWidget(tab_5);
         widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(37, 36, 571, 341));
+        widget1->setGeometry(QRect(37, 37, 551, 321));
         verticalLayout_2 = new QVBoxLayout(widget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -259,15 +261,25 @@ public:
 
         verticalLayout_2->addWidget(grouptree);
 
-        pushButton_2 = new QPushButton(widget1);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        verticalLayout_2->addWidget(pushButton_2);
-
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         deleteforgroups = new QPushButton(widget1);
         deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
 
-        verticalLayout_2->addWidget(deleteforgroups);
+        horizontalLayout_4->addWidget(deleteforgroups);
+
+        pushButton_2 = new QPushButton(widget1);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        horizontalLayout_4->addWidget(pushButton_2);
+
+        change_group_name = new QPushButton(widget1);
+        change_group_name->setObjectName(QString::fromUtf8("change_group_name"));
+
+        horizontalLayout_4->addWidget(change_group_name);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
         groups->addTab(tab_5, QString());
         tab_4 = new QWidget();
@@ -342,8 +354,9 @@ public:
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Search", nullptr));
         pushButton->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("main_page", "show", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("main_page", "show", nullptr));
+        change_group_name->setText(QCoreApplication::translate("main_page", "change Group's name", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
         groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));

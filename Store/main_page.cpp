@@ -13,6 +13,7 @@
 #include "editpage.h"
 #include"group.h"
 #include"add_group.h"
+#include"change_group_name.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -296,11 +297,11 @@ void main_page::on_actionLog_out_triggered()
                     {
                         for(int j=0;j<list.size();j++)
                         {
-                            out<<list[i].get_name()+"\n";
-                            out<<list[i].get_consumer()+"\n";
-                            out<<list[i].get_type()+"\n";
-                            out<<QString::number(list[i].get_number())+"\n";
-                            out<<QString::number(list[i].get_price())+"\n";
+                            out<<list[j].get_name()+"\n";
+                            out<<list[j].get_consumer()+"\n";
+                            out<<list[j].get_type()+"\n";
+                            out<<QString::number(list[j].get_number())+"\n";
+                            out<<QString::number(list[j].get_price())+"\n";
                         }
                     }
                 }
@@ -387,20 +388,16 @@ void main_page::on_delete_2_clicked()
 
 void main_page::on_edit_clicked()
 {
-     int i=ui->tree->currentIndex().row();
     //when clicked on the name of products
-    if(ui->tree->currentItem()->childCount()!=0)
+    if(ui->tree->currentItem()->childCount()==0)
     {
-        editpage new_page(list_pointer,i);
-          new_page.setModal(true);
-          new_page.exec();
-          showchanges();
+       ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
     }
-    else {
-        for(int j=0;j<4;j++)
-        ui->tree->currentItem()->setBackground(j,Qt::red);
-         QMessageBox::information(this,"title","In order to EDIT an item click on it's name not details");
-    }
+    int i=ui->tree->currentIndex().row();
+    editpage new_page(list_pointer,i);
+      new_page.setModal(true);
+      new_page.exec();
+      showchanges();
 }
 
 void main_page::on_addtogroup_clicked()
@@ -464,5 +461,19 @@ void main_page::on_deleteforgroups_clicked()
 
         }
     }
+}
+
+
+void main_page::on_change_group_name_clicked()
+{
+    while(ui->grouptree->currentItem()->parent()!=0)
+    {
+        ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
+    }
+    int i=ui->grouptree->currentIndex().row();
+    change_group_name new_page(group_pointer,i);
+    new_page.setModal(true);
+    new_page.exec();
+    showchanges_tab2();
 }
 
