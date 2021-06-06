@@ -23,7 +23,13 @@ main_page::main_page(QWidget *parent) :
     list_pointer=new QList<products>;
     default_view_tab1();
     default_view_tab2();
-
+    ui->comosearchtab1->addItem("Start with");
+    ui->comosearchtab1->addItem("Contains");
+    ui->combo_search_by_tab1->addItem("Products");
+    ui->combo_search_by_tab1->addItem("Consumer");
+    ui->combo_search_by_tab1->addItem("Type");
+    ui->combo_search_by_tab1->addItem("Number");
+    ui->combo_search_by_tab1->addItem("Price");
 }
 
 void main_page::default_view_tab1()
@@ -329,27 +335,55 @@ void main_page::on_searchbutton_clicked()
     QString search=this->ui->serchzone->text();
     if(!search.isEmpty())
     {
-        for(int i=0;i<list_pointer->size();i++)
+        if(ui->comosearchtab1->currentText()=="Contains")
         {
-            if((*list_pointer)[i].get_name().contains(search))
+            for(int i=0;i<list_pointer->size();i++)
             {
-                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                if((*list_pointer)[i].get_name().contains(search) && ui->combo_search_by_tab1->currentText()=="Products")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+               else if((*list_pointer)[i].get_consumer().contains(search) && ui->combo_search_by_tab1->currentText()=="Consumer")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+               else if((*list_pointer)[i].get_type().contains(search) && ui->combo_search_by_tab1->currentText()=="Type")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+               else if(QString::number((*list_pointer)[i].get_number()).contains(search) && ui->combo_search_by_tab1->currentText()=="Number")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+               else if(QString::number((*list_pointer)[i].get_price()).contains(search) && ui->combo_search_by_tab1->currentText()=="Price")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
             }
-            if((*list_pointer)[i].get_consumer().contains(search))
+        }
+        else {
+            for(int i=0;i<list_pointer->size();i++)
             {
-                addroot((*list_pointer)[i].get_name(),list_pointer,i);
-            }
-            if((*list_pointer)[i].get_type().contains(search))
-            {
-                addroot((*list_pointer)[i].get_name(),list_pointer,i);
-            }
-            if(QString::number((*list_pointer)[i].get_number()).contains(search))
-            {
-               addroot((*list_pointer)[i].get_name(),list_pointer,i);
-            }
-            if(QString::number((*list_pointer)[i].get_price()).contains(search))
-            {
-                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                if((*list_pointer)[i].get_name().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Products")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+                else if((*list_pointer)[i].get_consumer().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Consumer")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+                else if((*list_pointer)[i].get_type().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Type")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+                else if(QString::number((*list_pointer)[i].get_number()).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Number")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
+                else if(QString::number((*list_pointer)[i].get_price()).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Price")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                }
             }
         }
     }

@@ -39,7 +39,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -60,37 +60,24 @@
      <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>46</x>
-        <y>31</y>
+        <x>36</x>
+        <y>34</y>
         <width>571</width>
-        <height>341</height>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="combo_search_by_tab1"/>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comosearchtab1">
            <property name="currentText">
             <string extracomment="type of search"/>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>3</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <widget class="QLineEdit" name="serchzone">
@@ -236,7 +223,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QComboBox" name="comboBox_2"/>
+          <widget class="QComboBox" name="comosearchtab2"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_2">

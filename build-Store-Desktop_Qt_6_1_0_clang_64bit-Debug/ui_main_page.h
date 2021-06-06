@@ -46,8 +46,8 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
-    QComboBox *comboBox;
-    QSpacerItem *horizontalSpacer;
+    QComboBox *combo_search_by_tab1;
+    QComboBox *comosearchtab1;
     QLineEdit *serchzone;
     QPushButton *searchbutton;
     QTreeWidget *tree;
@@ -61,7 +61,7 @@ public:
     QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_3;
-    QComboBox *comboBox_2;
+    QComboBox *comosearchtab2;
     QSpacerItem *horizontalSpacer_2;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
@@ -131,20 +131,21 @@ public:
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         widget = new QWidget(tab_3);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(46, 31, 571, 341));
+        widget->setGeometry(QRect(36, 34, 571, 331));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        comboBox = new QComboBox(widget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        combo_search_by_tab1 = new QComboBox(widget);
+        combo_search_by_tab1->setObjectName(QString::fromUtf8("combo_search_by_tab1"));
 
-        horizontalLayout_2->addWidget(comboBox);
+        horizontalLayout_2->addWidget(combo_search_by_tab1);
 
-        horizontalSpacer = new QSpacerItem(3, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        comosearchtab1 = new QComboBox(widget);
+        comosearchtab1->setObjectName(QString::fromUtf8("comosearchtab1"));
 
-        horizontalLayout_2->addItem(horizontalSpacer);
+        horizontalLayout_2->addWidget(comosearchtab1);
 
         serchzone = new QLineEdit(widget);
         serchzone->setObjectName(QString::fromUtf8("serchzone"));
@@ -231,10 +232,10 @@ public:
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        comboBox_2 = new QComboBox(widget1);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comosearchtab2 = new QComboBox(widget1);
+        comosearchtab2->setObjectName(QString::fromUtf8("comosearchtab2"));
 
-        horizontalLayout_3->addWidget(comboBox_2);
+        horizontalLayout_3->addWidget(comosearchtab2);
 
         horizontalSpacer_2 = new QSpacerItem(3, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
@@ -324,7 +325,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(1);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 
@@ -344,7 +345,7 @@ public:
         actionEdit_my_basket->setText(QCoreApplication::translate("main_page", "Edit my basket", nullptr));
         actionLog_out->setText(QCoreApplication::translate("main_page", "Log out", nullptr));
         actionReset_the_list->setText(QCoreApplication::translate("main_page", "Reset the list", nullptr));
-        comboBox->setCurrentText(QString());
+        comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         showchanges->setText(QCoreApplication::translate("main_page", "show changes", nullptr));

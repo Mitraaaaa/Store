@@ -660,6 +660,12 @@ moc_add_pro.cpp: ../Store/add_pro.h \
 moc_change_group_name.cpp: ../Store/change_group_name.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../Store/group.h \
+		../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/change_group_name.h -o moc_change_group_name.cpp
@@ -804,6 +810,12 @@ add_pro.o: ../Store/add_pro.cpp ../Store/add_pro.h \
 change_group_name.o: ../Store/change_group_name.cpp ../Store/change_group_name.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../Store/group.h \
+		../Store/products.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		ui_change_group_name.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o change_group_name.o ../Store/change_group_name.cpp
 
