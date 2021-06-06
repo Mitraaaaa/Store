@@ -9,7 +9,7 @@ QString group::get_group_name()
 {
     return group_name;
 }
-QList<products> group::get_pro_group()
+QList<products> & group::get_pro_group()
 {
     return pro_group;
 }

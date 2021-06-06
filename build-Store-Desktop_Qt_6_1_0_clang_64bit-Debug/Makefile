@@ -769,7 +769,8 @@ add_group.o: ../Store/add_group.cpp ../Store/add_group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		ui_add_group.h
+		ui_add_group.h \
+		../Store/creat_new_group.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o add_group.o ../Store/add_group.cpp
 
 add_pro.o: ../Store/add_pro.cpp ../Store/add_pro.h \

@@ -1,17 +1,8 @@
-Group : note
-notebook
-mina
-stationery
-10
-5
 Group : phone
 phone
 apple
 phone
 13
 1200
-phone
-apple
-phone
-13
-1200
+Group : food
+Group : junks

@@ -13,6 +13,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
@@ -20,6 +21,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTreeWidget>
@@ -41,25 +43,31 @@ public:
     QWidget *centralwidget;
     QTabWidget *groups;
     QWidget *tab_3;
-    QWidget *layoutWidget;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QComboBox *comboBox;
+    QSpacerItem *horizontalSpacer;
     QLineEdit *serchzone;
     QPushButton *searchbutton;
     QTreeWidget *tree;
     QPushButton *showchanges;
-    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QPushButton *addtolist;
     QPushButton *addtogroup;
     QPushButton *delete_2;
     QPushButton *edit;
     QWidget *tab_5;
-    QWidget *layoutWidget2;
+    QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_3;
+    QComboBox *comboBox_2;
+    QSpacerItem *horizontalSpacer_2;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
     QTreeWidget *grouptree;
     QPushButton *pushButton_2;
+    QPushButton *deleteforgroups;
     QWidget *tab_4;
     QWidget *tab_6;
     QMenuBar *menubar;
@@ -110,7 +118,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
-        groups->setGeometry(QRect(30, 10, 661, 461));
+        groups->setGeometry(QRect(40, 10, 641, 421));
         groups->setLayoutDirection(Qt::LeftToRight);
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
@@ -119,19 +127,31 @@ public:
         groups->setMovable(false);
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        layoutWidget = new QWidget(tab_3);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(66, 13, 551, 321));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(tab_3);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(46, 31, 571, 341));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        serchzone = new QLineEdit(layoutWidget);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        comboBox = new QComboBox(widget);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+
+        horizontalLayout_2->addWidget(comboBox);
+
+        horizontalSpacer = new QSpacerItem(3, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        serchzone = new QLineEdit(widget);
         serchzone->setObjectName(QString::fromUtf8("serchzone"));
         serchzone->setMaximumSize(QSize(16777215, 21));
+        serchzone->setMaxLength(102767);
 
-        verticalLayout->addWidget(serchzone);
+        horizontalLayout_2->addWidget(serchzone);
 
-        searchbutton = new QPushButton(layoutWidget);
+        searchbutton = new QPushButton(widget);
         searchbutton->setObjectName(QString::fromUtf8("searchbutton"));
         searchbutton->setMinimumSize(QSize(75, 0));
         searchbutton->setStyleSheet(QString::fromUtf8(""));
@@ -141,9 +161,12 @@ public:
         searchbutton->setIconSize(QSize(16, 16));
         searchbutton->setFlat(false);
 
-        verticalLayout->addWidget(searchbutton);
+        horizontalLayout_2->addWidget(searchbutton);
 
-        tree = new QTreeWidget(layoutWidget);
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        tree = new QTreeWidget(widget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         tree->setHeaderItem(__qtreewidgetitem);
@@ -151,7 +174,7 @@ public:
 
         verticalLayout->addWidget(tree);
 
-        showchanges = new QPushButton(layoutWidget);
+        showchanges = new QPushButton(widget);
         showchanges->setObjectName(QString::fromUtf8("showchanges"));
         QIcon icon7;
         icon7.addFile(QString::fromUtf8("img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -159,13 +182,9 @@ public:
 
         verticalLayout->addWidget(showchanges);
 
-        layoutWidget1 = new QWidget(tab_3);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(70, 340, 551, 32));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        addtolist = new QPushButton(layoutWidget1);
+        addtolist = new QPushButton(widget);
         addtolist->setObjectName(QString::fromUtf8("addtolist"));
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -173,7 +192,7 @@ public:
 
         horizontalLayout->addWidget(addtolist);
 
-        addtogroup = new QPushButton(layoutWidget1);
+        addtogroup = new QPushButton(widget);
         addtogroup->setObjectName(QString::fromUtf8("addtogroup"));
         QIcon icon9;
         icon9.addFile(QString::fromUtf8("img/add to groups 2.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -182,7 +201,7 @@ public:
 
         horizontalLayout->addWidget(addtogroup);
 
-        delete_2 = new QPushButton(layoutWidget1);
+        delete_2 = new QPushButton(widget);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
@@ -190,32 +209,49 @@ public:
 
         horizontalLayout->addWidget(delete_2);
 
-        edit = new QPushButton(layoutWidget1);
+        edit = new QPushButton(widget);
         edit->setObjectName(QString::fromUtf8("edit"));
         edit->setIcon(icon4);
 
         horizontalLayout->addWidget(edit);
 
+
+        verticalLayout->addLayout(horizontalLayout);
+
         groups->addTab(tab_3, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
-        layoutWidget2 = new QWidget(tab_5);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(60, 20, 541, 311));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget2);
+        widget1 = new QWidget(tab_5);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(37, 36, 571, 341));
+        verticalLayout_2 = new QVBoxLayout(widget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        lineEdit = new QLineEdit(layoutWidget2);
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        comboBox_2 = new QComboBox(widget1);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+
+        horizontalLayout_3->addWidget(comboBox_2);
+
+        horizontalSpacer_2 = new QSpacerItem(3, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
+        lineEdit = new QLineEdit(widget1);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
-        verticalLayout_2->addWidget(lineEdit);
+        horizontalLayout_3->addWidget(lineEdit);
 
-        pushButton = new QPushButton(layoutWidget2);
+        pushButton = new QPushButton(widget1);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
-        verticalLayout_2->addWidget(pushButton);
+        horizontalLayout_3->addWidget(pushButton);
 
-        grouptree = new QTreeWidget(layoutWidget2);
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+        grouptree = new QTreeWidget(widget1);
         QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
         __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
         grouptree->setHeaderItem(__qtreewidgetitem1);
@@ -223,9 +259,16 @@ public:
 
         verticalLayout_2->addWidget(grouptree);
 
-        pushButton_2 = new QPushButton(tab_5);
+        pushButton_2 = new QPushButton(widget1);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(250, 340, 113, 32));
+
+        verticalLayout_2->addWidget(pushButton_2);
+
+        deleteforgroups = new QPushButton(widget1);
+        deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
+
+        verticalLayout_2->addWidget(deleteforgroups);
+
         groups->addTab(tab_5, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
@@ -289,6 +332,7 @@ public:
         actionEdit_my_basket->setText(QCoreApplication::translate("main_page", "Edit my basket", nullptr));
         actionLog_out->setText(QCoreApplication::translate("main_page", "Log out", nullptr));
         actionReset_the_list->setText(QCoreApplication::translate("main_page", "Reset the list", nullptr));
+        comboBox->setCurrentText(QString());
         serchzone->setText(QString());
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         showchanges->setText(QCoreApplication::translate("main_page", "show changes", nullptr));
@@ -296,10 +340,11 @@ public:
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));
         delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
-        groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "search", nullptr));
-        pushButton->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
-        groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "group", nullptr));
+        groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Search", nullptr));
+        pushButton->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("main_page", "show", nullptr));
+        deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
+        groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
         groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));

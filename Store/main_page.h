@@ -47,6 +47,9 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+
+    void on_deleteforgroups_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

@@ -92,20 +92,31 @@ void main_page::default_view_tab2()
                    QString line = in.readLine();
                    if(line.contains("Group : ") && !first_line)
                    {
-                       //add previous group to the main_group
-                        group_list.set_pro_group(pro_group_list);
-                        group_pointer->append(group_list);
-                        //clear list
-                        pro_group_list.clear();
-                        //set for next name group
-                        QString name=line;
-                        QStringList name_split = name.split(":");
-                        group_list.set_group_name(name_split[1]);
+                       //the group contains items puls group name
+                       if(pro_group_list.size()!=0)
+                       {
+                           //add previous group to the main_group
+                           group_list.set_pro_group(pro_group_list);
+                           group_pointer->append(group_list);
+                           //clear list
+                           pro_group_list.clear();
+                       }
+                       //the group does not contain products it's only the name of the group
+                       else
+                       {
+                           group group_contain_only_name;
+                           group_contain_only_name.set_group_name(group_list.get_group_name());
+                           group_pointer->append(group_contain_only_name);
+                       }
+                       //set for next name group
+                       QString name=line;
+                       QStringList name_split = name.split(": ");
+                       group_list.set_group_name(name_split[1]);
                    }
                    else if(line.contains("Group : ") && first_line)
                    {
                        QString name=line;
-                       QStringList name_split = name.split(":");
+                       QStringList name_split = name.split(": ");
                        group_list.set_group_name(name_split[1]);
                           first_line=false;
                    }
@@ -138,8 +149,17 @@ void main_page::default_view_tab2()
                    }
                    if(in.atEnd())
                    {
-                        group_list.set_pro_group(pro_group_list);
-                        group_pointer->append(group_list);
+                       if(pro_group_list.size()!=0)
+                       {
+                           group_list.set_pro_group(pro_group_list);
+                           group_pointer->append(group_list);
+                       }
+                       else
+                       {
+                           group group_contain_only_name;
+                           group_contain_only_name.set_group_name(group_list.get_group_name());
+                           group_pointer->append(group_contain_only_name);
+                       }
                    }
                 }
 
@@ -270,15 +290,18 @@ void main_page::on_actionLog_out_triggered()
                 QTextStream out(&group_file);
                 for(int i=0;i<group_pointer->size();i++)
                 {
-                    out<<(*group_pointer)[i].get_group_name()+"\n";
+                    out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
                     QList<products> list=(*group_pointer)[i].get_pro_group();
-                    for(int j=0;j<list.size();j++)
+                    if(!list.empty())
                     {
-                        out<<list[i].get_name()+"\n";
-                        out<<list[i].get_consumer()+"\n";
-                        out<<list[i].get_type()+"\n";
-                        out<<QString::number(list[i].get_number())+"\n";
-                        out<<QString::number(list[i].get_price())+"\n";
+                        for(int j=0;j<list.size();j++)
+                        {
+                            out<<list[i].get_name()+"\n";
+                            out<<list[i].get_consumer()+"\n";
+                            out<<list[i].get_type()+"\n";
+                            out<<QString::number(list[i].get_number())+"\n";
+                            out<<QString::number(list[i].get_price())+"\n";
+                        }
                     }
                 }
                 group_file.close();
@@ -300,30 +323,38 @@ void main_page::on_actionLog_out_triggered()
 
 void main_page::on_searchbutton_clicked()
 {
+    //search in first tab named search
     ui->tree->clear();
     QString search=this->ui->serchzone->text();
-    for(int i=0;i<list_pointer->size();i++)
+    if(!search.isEmpty())
     {
-        if((*list_pointer)[i].get_name().contains(search))
+        for(int i=0;i<list_pointer->size();i++)
         {
-            addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            if((*list_pointer)[i].get_name().contains(search))
+            {
+                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            }
+            if((*list_pointer)[i].get_consumer().contains(search))
+            {
+                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            }
+            if((*list_pointer)[i].get_type().contains(search))
+            {
+                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            }
+            if(QString::number((*list_pointer)[i].get_number()).contains(search))
+            {
+               addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            }
+            if(QString::number((*list_pointer)[i].get_price()).contains(search))
+            {
+                addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            }
         }
-         if((*list_pointer)[i].get_consumer().contains(search))
-        {
-            addroot((*list_pointer)[i].get_consumer(),list_pointer,i);
-        }
-         if((*list_pointer)[i].get_type().contains(search))
-        {
-            addroot((*list_pointer)[i].get_type(),list_pointer,i);
-        }
-         if(QString::number((*list_pointer)[i].get_number()).contains(search))
-        {
-            addroot(QString::number((*list_pointer)[i].get_number()),list_pointer,i);
-        }
-         if(QString::number((*list_pointer)[i].get_price()).contains(search))
-        {
-            addroot(QString::number((*list_pointer)[i].get_price()),list_pointer,i);
-        }
+    }
+    else
+    {
+        QMessageBox::information(this,"title","Enter something to search!");
     }
 }
 
@@ -372,7 +403,6 @@ void main_page::on_edit_clicked()
     }
 }
 
-
 void main_page::on_addtogroup_clicked()
 {
     int i=ui->tree->currentIndex().row();
@@ -391,9 +421,53 @@ void main_page::on_addtogroup_clicked()
     }
 }
 
-
 void main_page::on_pushButton_2_clicked()
 {
     showchanges_tab2();
+}
+
+void main_page::on_deleteforgroups_clicked()
+{
+    int i=ui->grouptree->currentIndex().row();
+    //check if you are clicking on the group name
+    if(ui->grouptree->currentItem()->parent()==nullptr)
+    {
+        (*group_pointer).erase(group_pointer->begin()+i);
+        ui->grouptree->removeItemWidget(ui->grouptree->currentItem(),0);
+        showchanges_tab2();
+    }
+    //in case you clicked on products
+   else
+    {
+        if(ui->grouptree->currentItem()->childCount()!=0)
+        {
+            //one of the itm's of group. it's a product so we already have the row of product in it's own group =>i
+            //all we need is it's group's row among all groups => j
+            ui->grouptree->currentItem()->parent()->removeChild((ui->grouptree->currentItem()));
+            if(ui->grouptree->currentItem()->childCount()!=0)
+            {
+                /*this will be done bc if you delete a product you will be on the next product after deletion
+                (your current item will be next if exist)
+                therefore i put the curser to the paretn to undrestand it's row */
+                ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
+            }
+            int j=ui->grouptree->currentIndex().row();
+            // i got an error here bc my get_pro_group was a copy not the refrence so i returned & and fix the problem :)))
+            (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
+             showchanges_tab2();
+        }
+        else
+        {
+            //clicked on the details of a product so we have to find the product's row in the group =>i
+            //and the group's row among the group =>j
+            ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
+            i=ui->grouptree->currentIndex().row();
+            ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
+            int j=ui->grouptree->currentIndex().row();
+            (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
+             showchanges_tab2();
+
+        }
+    }
 }
 
