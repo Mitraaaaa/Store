@@ -405,20 +405,15 @@ void main_page::on_edit_clicked()
 
 void main_page::on_addtogroup_clicked()
 {
+    if(ui->tree->currentItem()->childCount()==0)
+    {
+      ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+    }
     int i=ui->tree->currentIndex().row();
-    if(ui->tree->currentItem()->childCount()!=0)
-    {
-        Add_group  new_page(group_pointer,(*list_pointer)[i]);
-        new_page.setModal(true);
-        new_page.exec();
-        showchanges_tab2();
-    }
-    else
-    {
-        for(int j=0;j<4;j++)
-        ui->tree->currentItem()->setBackground(j,Qt::red);
-        QMessageBox::information(this,"title","In order to ADD an item click on it's name not details");
-    }
+    Add_group  new_page(group_pointer,(*list_pointer)[i]);
+    new_page.setModal(true);
+    new_page.exec();
+    showchanges_tab2();
 }
 
 void main_page::on_pushButton_2_clicked()
