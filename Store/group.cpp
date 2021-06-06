@@ -21,3 +21,7 @@ void  group::set_pro_group(QList<products> pro_list)
 {
    pro_group=pro_list;
 }
+ void group::add_to_group(products pro)
+ {
+     pro_group.append(pro);
+ }

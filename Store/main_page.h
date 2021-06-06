@@ -16,10 +16,13 @@ class main_page : public QMainWindow
     Q_OBJECT
     void addroot(QString name,QList<products> * list,int index);
     void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price);
+    void addroot_group(QString group_name,QList<group> * group_pointer,int index);
+    void addchid_group(QTreeWidgetItem * pre_parent ,group each_group);
 
 public:
     explicit main_page(QWidget *parent = nullptr);
     void showchanges();
+    void showchanges_tab2();
     void default_view_tab1();
     void default_view_tab2();
     ~main_page();
@@ -41,6 +44,8 @@ private slots:
     void on_edit_clicked();
 
     void on_addtogroup_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::main_page *ui;

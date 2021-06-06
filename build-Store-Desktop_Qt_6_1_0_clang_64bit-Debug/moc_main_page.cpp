@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_main_page_t {
-    const uint offsetsAndSize[18];
-    char stringdata0[164];
+    const uint offsetsAndSize[20];
+    char stringdata0[188];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_main_page_t, stringdata0) + ofs), len 
@@ -37,14 +37,16 @@ QT_MOC_LITERAL(55, 26), // "on_actionLog_out_triggered"
 QT_MOC_LITERAL(82, 23), // "on_searchbutton_clicked"
 QT_MOC_LITERAL(106, 19), // "on_delete_2_clicked"
 QT_MOC_LITERAL(126, 15), // "on_edit_clicked"
-QT_MOC_LITERAL(142, 21) // "on_addtogroup_clicked"
+QT_MOC_LITERAL(142, 21), // "on_addtogroup_clicked"
+QT_MOC_LITERAL(164, 23) // "on_pushButton_2_clicked"
 
     },
     "main_page\0on_addtolist_clicked\0\0"
     "on_showchanges_clicked\0"
     "on_actionLog_out_triggered\0"
     "on_searchbutton_clicked\0on_delete_2_clicked\0"
-    "on_edit_clicked\0on_addtogroup_clicked"
+    "on_edit_clicked\0on_addtogroup_clicked\0"
+    "on_pushButton_2_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +56,7 @@ static const uint qt_meta_data_main_page[] = {
        9,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,15 +64,17 @@ static const uint qt_meta_data_main_page[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   56,    2, 0x08,    0 /* Private */,
-       3,    0,   57,    2, 0x08,    1 /* Private */,
-       4,    0,   58,    2, 0x08,    2 /* Private */,
-       5,    0,   59,    2, 0x08,    3 /* Private */,
-       6,    0,   60,    2, 0x08,    4 /* Private */,
-       7,    0,   61,    2, 0x08,    5 /* Private */,
-       8,    0,   62,    2, 0x08,    6 /* Private */,
+       1,    0,   62,    2, 0x08,    0 /* Private */,
+       3,    0,   63,    2, 0x08,    1 /* Private */,
+       4,    0,   64,    2, 0x08,    2 /* Private */,
+       5,    0,   65,    2, 0x08,    3 /* Private */,
+       6,    0,   66,    2, 0x08,    4 /* Private */,
+       7,    0,   67,    2, 0x08,    5 /* Private */,
+       8,    0,   68,    2, 0x08,    6 /* Private */,
+       9,    0,   69,    2, 0x08,    7 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -95,6 +99,7 @@ void main_page::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->on_delete_2_clicked(); break;
         case 5: _t->on_edit_clicked(); break;
         case 6: _t->on_addtogroup_clicked(); break;
+        case 7: _t->on_pushButton_2_clicked(); break;
         default: ;
         }
     }
@@ -109,7 +114,7 @@ const QMetaObject main_page::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_main_page_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -136,13 +141,13 @@ int main_page::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

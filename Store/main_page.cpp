@@ -12,6 +12,7 @@
 #include "add_pro.h"
 #include "editpage.h"
 #include"group.h"
+#include"add_group.h"
 main_page::main_page(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page)
@@ -94,11 +95,18 @@ void main_page::default_view_tab2()
                        //add previous group to the main_group
                         group_list.set_pro_group(pro_group_list);
                         group_pointer->append(group_list);
-                         group_list.set_group_name(line);
+                        //clear list
+                        pro_group_list.clear();
+                        //set for next name group
+                        QString name=line;
+                        QStringList name_split = name.split(":");
+                        group_list.set_group_name(name_split[1]);
                    }
                    else if(line.contains("Group : ") && first_line)
                    {
-                          group_list.set_group_name(line);
+                       QString name=line;
+                       QStringList name_split = name.split(":");
+                       group_list.set_group_name(name_split[1]);
                           first_line=false;
                    }
                    else
@@ -128,15 +136,28 @@ void main_page::default_view_tab2()
                                break;
                            }
                    }
+                   if(in.atEnd())
+                   {
+                        group_list.set_pro_group(pro_group_list);
+                        group_pointer->append(group_list);
+                   }
+                }
+
+                ui->grouptree->setColumnCount(5);
+                ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+                for(int i=0;i<group_pointer->size();i++)
+                {
+                    addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
                 }
        }
+    group_file.close();
 }
 
 void main_page::showchanges()
 {
     ui->tree->clear();
       ui->tree->setColumnCount(4);
-      ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
+      ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
       this->ui->tree->clear();
    for(int i=0;i<list_pointer->size();i++)
    {
@@ -144,12 +165,22 @@ void main_page::showchanges()
    }
 }
 
+void main_page::showchanges_tab2()
+{
+    ui->grouptree->clear();
+    ui->grouptree->setColumnCount(4);
+    ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+    for(int i=0;i<group_pointer->size();i++)
+    {
+        addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+    }
+}
+
 void main_page::addroot(QString name,QList<products> * list_pointer,int index)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(ui->tree);
     itm->setText(0, name);
     addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price());
-
 }
 
 void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int count,double price)
@@ -161,6 +192,25 @@ void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type 
     itm->setText(3,QString::number(price)+" $");
 
     parent->addChild(itm);
+}
+
+void main_page::addroot_group(QString group_name,QList<group> * group_pointer,int index)
+{
+    QTreeWidgetItem * itm=new QTreeWidgetItem(ui->grouptree);
+    itm->setText(0, group_name);
+    addchid_group(itm,(*group_pointer)[index]);
+}
+
+void main_page::addchid_group(QTreeWidgetItem * pre_parent ,group each_group)
+{
+   for(int i=0;i<each_group.get_pro_group().size();i++)
+   {
+      QTreeWidgetItem * itm=new QTreeWidgetItem();
+      itm->setText(0,each_group.get_pro_group()[i].get_name());
+      products pro=each_group.get_pro_group()[i];
+      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price());
+      pre_parent->addChild(itm);
+   }
 }
 
 main_page::~main_page()
@@ -191,6 +241,7 @@ void main_page::on_actionLog_out_triggered()
     switch (ret) {
       case QMessageBox::Save:
         {
+            //save product list
             QFile file ("list.txt");
             if(!file.open(QFile::WriteOnly | QFile::Text ))
             {
@@ -208,10 +259,36 @@ void main_page::on_actionLog_out_triggered()
                   }
                   file.close();
             }
+            //save group list
+            QFile group_file("group.txt");
+            if(!group_file.open(QFile::WriteOnly | QFile::Text ))
+            {
+                return;
+            }
+            else
+            {
+                QTextStream out(&group_file);
+                for(int i=0;i<group_pointer->size();i++)
+                {
+                    out<<(*group_pointer)[i].get_group_name()+"\n";
+                    QList<products> list=(*group_pointer)[i].get_pro_group();
+                    for(int j=0;j<list.size();j++)
+                    {
+                        out<<list[i].get_name()+"\n";
+                        out<<list[i].get_consumer()+"\n";
+                        out<<list[i].get_type()+"\n";
+                        out<<QString::number(list[i].get_number())+"\n";
+                        out<<QString::number(list[i].get_price())+"\n";
+                    }
+                }
+                group_file.close();
+            }
+
             this->close();
         }
           break;
       case QMessageBox::Discard:
+         this->close();
           // Don't Save was clicked
           break;
       default:
@@ -291,13 +368,32 @@ void main_page::on_edit_clicked()
     else {
         for(int j=0;j<4;j++)
         ui->tree->currentItem()->setBackground(j,Qt::red);
-         QMessageBox::information(this,"title","In order to EDIT an item click on it's name no details");
+         QMessageBox::information(this,"title","In order to EDIT an item click on it's name not details");
     }
 }
 
 
 void main_page::on_addtogroup_clicked()
 {
+    int i=ui->tree->currentIndex().row();
+    if(ui->tree->currentItem()->childCount()!=0)
+    {
+        Add_group  new_page(group_pointer,(*list_pointer)[i]);
+        new_page.setModal(true);
+        new_page.exec();
+        showchanges_tab2();
+    }
+    else
+    {
+        for(int j=0;j<4;j++)
+        ui->tree->currentItem()->setBackground(j,Qt::red);
+        QMessageBox::information(this,"title","In order to ADD an item click on it's name not details");
+    }
+}
 
+
+void main_page::on_pushButton_2_clicked()
+{
+    showchanges_tab2();
 }
 

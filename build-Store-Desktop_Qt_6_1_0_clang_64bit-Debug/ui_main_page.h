@@ -54,6 +54,12 @@ public:
     QPushButton *delete_2;
     QPushButton *edit;
     QWidget *tab_5;
+    QWidget *layoutWidget2;
+    QVBoxLayout *verticalLayout_2;
+    QLineEdit *lineEdit;
+    QPushButton *pushButton;
+    QTreeWidget *grouptree;
+    QPushButton *pushButton_2;
     QWidget *tab_4;
     QWidget *tab_6;
     QMenuBar *menubar;
@@ -104,7 +110,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
-        groups->setGeometry(QRect(20, 0, 661, 461));
+        groups->setGeometry(QRect(30, 10, 661, 461));
         groups->setLayoutDirection(Qt::LeftToRight);
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
@@ -193,6 +199,33 @@ public:
         groups->addTab(tab_3, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
+        layoutWidget2 = new QWidget(tab_5);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(60, 20, 541, 311));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget2);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        lineEdit = new QLineEdit(layoutWidget2);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+
+        verticalLayout_2->addWidget(lineEdit);
+
+        pushButton = new QPushButton(layoutWidget2);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout_2->addWidget(pushButton);
+
+        grouptree = new QTreeWidget(layoutWidget2);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
+        __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
+        grouptree->setHeaderItem(__qtreewidgetitem1);
+        grouptree->setObjectName(QString::fromUtf8("grouptree"));
+
+        verticalLayout_2->addWidget(grouptree);
+
+        pushButton_2 = new QPushButton(tab_5);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(250, 340, 113, 32));
         groups->addTab(tab_5, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
@@ -236,7 +269,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(0);
+        groups->setCurrentIndex(1);
         searchbutton->setDefault(false);
 
 
@@ -264,7 +297,9 @@ public:
         delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "search", nullptr));
-        groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Page", nullptr));
+        pushButton->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
+        groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "group", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
         groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));

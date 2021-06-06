@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'add_group.h'
+** Meta object code from reading C++ file 'creat_new_group.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.0)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../Store/add_group.h"
+#include "../Store/creat_new_group.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'add_group.h' doesn't include <QObject>."
+#error "The header file 'creat_new_group.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.1.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,32 +21,31 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Add_group_t {
-    const uint offsetsAndSize[8];
-    char stringdata0[58];
+struct qt_meta_stringdata_creat_new_group_t {
+    const uint offsetsAndSize[6];
+    char stringdata0[46];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_Add_group_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_Add_group_t qt_meta_stringdata_Add_group = {
+    uint(offsetof(qt_meta_stringdata_creat_new_group_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_creat_new_group_t qt_meta_stringdata_creat_new_group = {
     {
-QT_MOC_LITERAL(0, 9), // "Add_group"
-QT_MOC_LITERAL(10, 21), // "on_addtogroup_clicked"
-QT_MOC_LITERAL(32, 0), // ""
-QT_MOC_LITERAL(33, 24) // "on_creatnewgroup_clicked"
+QT_MOC_LITERAL(0, 15), // "creat_new_group"
+QT_MOC_LITERAL(16, 28), // "on_addnewgroupbutton_clicked"
+QT_MOC_LITERAL(45, 0) // ""
 
     },
-    "Add_group\0on_addtogroup_clicked\0\0"
-    "on_creatnewgroup_clicked"
+    "creat_new_group\0on_addnewgroupbutton_clicked\0"
+    ""
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Add_group[] = {
+static const uint qt_meta_data_creat_new_group[] = {
 
  // content:
        9,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -54,39 +53,36 @@ static const uint qt_meta_data_Add_group[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x08,    0 /* Private */,
-       3,    0,   27,    2, 0x08,    1 /* Private */,
+       1,    0,   20,    2, 0x08,    0 /* Private */,
 
  // slots: parameters
-    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
 };
 
-void Add_group::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void creat_new_group::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<Add_group *>(_o);
+        auto *_t = static_cast<creat_new_group *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_addtogroup_clicked(); break;
-        case 1: _t->on_creatnewgroup_clicked(); break;
+        case 0: _t->on_addnewgroupbutton_clicked(); break;
         default: ;
         }
     }
     (void)_a;
 }
 
-const QMetaObject Add_group::staticMetaObject = { {
+const QMetaObject creat_new_group::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_Add_group.offsetsAndSize,
-    qt_meta_data_Add_group,
+    qt_meta_stringdata_creat_new_group.offsetsAndSize,
+    qt_meta_data_creat_new_group,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_Add_group_t
+qt_incomplete_metaTypeArray<qt_meta_stringdata_creat_new_group_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -94,32 +90,32 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_Add_group_t
 } };
 
 
-const QMetaObject *Add_group::metaObject() const
+const QMetaObject *creat_new_group::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Add_group::qt_metacast(const char *_clname)
+void *creat_new_group::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_Add_group.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_creat_new_group.stringdata0))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int Add_group::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int creat_new_group::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 1)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 1;
     }
     return _id;
 }

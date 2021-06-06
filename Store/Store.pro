@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     add_group.cpp \
     add_pro.cpp \
+    creat_new_group.cpp \
     customer.cpp \
     editpage.cpp \
     group.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     add_group.h \
     add_pro.h \
+    creat_new_group.h \
     customer.h \
     editpage.h \
     group.h \
@@ -34,6 +36,7 @@ HEADERS += \
 FORMS += \
     add_group.ui \
     add_pro.ui \
+    creat_new_group.ui \
     editpage.ui \
     main_page.ui \
     mainwindow.ui \
