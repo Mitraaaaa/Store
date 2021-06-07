@@ -1,15 +1,2 @@
-username :mitra
-password :omrani
-
-username :mina
-password :wewe
-
-username :minachi
-password :aji
-
-username :mirsa
-password :123
-
-username :miitr
-password :123
-
+Username :mitra
+Password :123

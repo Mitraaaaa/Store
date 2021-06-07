@@ -497,7 +497,6 @@ void main_page::on_deleteforgroups_clicked()
     }
 }
 
-
 void main_page::on_change_group_name_clicked()
 {
     while(ui->grouptree->currentItem()->parent()!=0)

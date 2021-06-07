@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void save_user_pass_file();
     ~MainWindow();
 
 private slots:
@@ -29,5 +30,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QMap<QString,QString> *user_pass;
 };
 #endif // MAINWINDOW_H
