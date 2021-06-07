@@ -42,7 +42,11 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::save_user_pass_file()
 {
     QFile file("user_pass.txt");
-    if(file.open(QIODevice::WriteOnly | QIODevice::Text))
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        return;
+    }
+    else
     {
          QTextStream out(&file);
         for(auto it=(*user_pass).begin();it!=(*user_pass).end();it++)
@@ -50,8 +54,8 @@ void MainWindow::save_user_pass_file()
             out<<"Username :"+ it.key()+"\n";
             out<<"Password :"+ it.value()+"\n";
         }
+        file.close();
     }
-    file.close();
 }
 
 MainWindow::~MainWindow()

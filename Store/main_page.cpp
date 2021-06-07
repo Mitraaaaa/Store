@@ -181,6 +181,76 @@ void main_page::default_view_tab2()
     group_file.close();
 }
 
+void main_page::save_groups_file()
+{
+    QFile group_file("group.txt");
+    if(!group_file.open(QFile::WriteOnly | QFile::Text ))
+    {
+        return;
+    }
+    else
+    {
+        QTextStream out(&group_file);
+        for(int i=0;i<group_pointer->size();i++)
+        {
+            out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
+            QList<products> list=(*group_pointer)[i].get_pro_group();
+            if(!list.empty())
+            {
+                for(int j=0;j<list.size();j++)
+                {
+                    out<<list[j].get_name()+"\n";
+                    out<<list[j].get_consumer()+"\n";
+                    out<<list[j].get_type()+"\n";
+                    out<<QString::number(list[j].get_number())+"\n";
+                    out<<QString::number(list[j].get_price())+"\n";
+                }
+            }
+        }
+        group_file.close();
+    }
+}
+
+void main_page::save_userpass_file()
+{
+    QFile user_pass_file("user_pass.txt");
+    if(!user_pass_file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        return;
+    }
+    else
+    {
+         QTextStream out(&user_pass_file);
+        for(auto it=(*user_pass_ptr).begin();it!=(*user_pass_ptr).end();it++)
+        {
+            out<<"Username :"+ it.key()+"\n";
+            out<<"Password :"+ it.value()+"\n";
+        }
+        user_pass_file.close();
+    }
+}
+
+void main_page::save_main_products_list_file()
+{
+    QFile file ("list.txt");
+    if(!file.open(QFile::WriteOnly | QFile::Text ))
+    {
+        return;
+    }
+    else{
+          QTextStream out(&file);
+          for(int i=0;i<list_pointer->size();i++)
+          {
+              out<<(*list_pointer)[i].get_name()+"\n";
+              out<<(*list_pointer)[i].get_consumer()+"\n";
+              out<<(*list_pointer)[i].get_type()+"\n";
+              out<<QString::number((*list_pointer)[i].get_number())+"\n";
+              out<<QString::number((*list_pointer)[i].get_price())+"\n";
+          }
+          file.close();
+    }
+}
+
 void main_page::showchanges()
 {
     ui->tree->clear();
@@ -270,51 +340,9 @@ void main_page::on_actionLog_out_triggered()
       case QMessageBox::Save:
         {
             //save product list
-            QFile file ("list.txt");
-            if(!file.open(QFile::WriteOnly | QFile::Text ))
-            {
-                return;
-            }
-            else{
-                  QTextStream out(&file);
-                  for(int i=0;i<list_pointer->size();i++)
-                  {
-                      out<<(*list_pointer)[i].get_name()+"\n";
-                      out<<(*list_pointer)[i].get_consumer()+"\n";
-                      out<<(*list_pointer)[i].get_type()+"\n";
-                      out<<QString::number((*list_pointer)[i].get_number())+"\n";
-                      out<<QString::number((*list_pointer)[i].get_price())+"\n";
-                  }
-                  file.close();
-            }
+            save_main_products_list_file();
             //save group list
-            QFile group_file("group.txt");
-            if(!group_file.open(QFile::WriteOnly | QFile::Text ))
-            {
-                return;
-            }
-            else
-            {
-                QTextStream out(&group_file);
-                for(int i=0;i<group_pointer->size();i++)
-                {
-                    out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
-                    QList<products> list=(*group_pointer)[i].get_pro_group();
-                    if(!list.empty())
-                    {
-                        for(int j=0;j<list.size();j++)
-                        {
-                            out<<list[j].get_name()+"\n";
-                            out<<list[j].get_consumer()+"\n";
-                            out<<list[j].get_type()+"\n";
-                            out<<QString::number(list[j].get_number())+"\n";
-                            out<<QString::number(list[j].get_price())+"\n";
-                        }
-                    }
-                }
-                group_file.close();
-            }
-
+            save_groups_file();
             this->close();
         }
           break;
@@ -562,5 +590,7 @@ void main_page::on_actionchange_user_pass_triggered()
     change_password new_page(user_pass_ptr);
     new_page.setModal(true);
     new_page.exec();
+    // save user_pass list
+     save_userpass_file();
 }
 

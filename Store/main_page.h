@@ -22,6 +22,9 @@ class main_page : public QMainWindow
 public:
     explicit main_page(QMap<QString,QString> *user_pass,QWidget *parent = nullptr);
     bool equal_products(products item1,products item2);
+    void save_groups_file();
+    void save_main_products_list_file();
+    void save_userpass_file();
     void showchanges();
     void showchanges_tab2();
     void default_view_tab1();
@@ -52,6 +55,7 @@ private slots:
     void on_deleteforgroups_clicked();
 
     void on_change_group_name_clicked();
+
 
 
     void on_actionchange_user_pass_triggered();
