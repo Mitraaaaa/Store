@@ -43,7 +43,7 @@ public:
     QWidget *centralwidget;
     QTabWidget *groups;
     QWidget *tab_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QComboBox *combo_search_by_tab1;
@@ -58,7 +58,7 @@ public:
     QPushButton *delete_2;
     QPushButton *edit;
     QWidget *tab_5;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *comosearchtab2;
@@ -74,7 +74,7 @@ public:
     QWidget *tab_6;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
-    QMenu *changeuserpass;
+    QMenu *chnagepass;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *main_page)
@@ -129,32 +129,32 @@ public:
         groups->setMovable(false);
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        widget = new QWidget(tab_3);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(36, 34, 571, 331));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(tab_3);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(36, 34, 571, 331));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        combo_search_by_tab1 = new QComboBox(widget);
+        combo_search_by_tab1 = new QComboBox(layoutWidget);
         combo_search_by_tab1->setObjectName(QString::fromUtf8("combo_search_by_tab1"));
 
         horizontalLayout_2->addWidget(combo_search_by_tab1);
 
-        comosearchtab1 = new QComboBox(widget);
+        comosearchtab1 = new QComboBox(layoutWidget);
         comosearchtab1->setObjectName(QString::fromUtf8("comosearchtab1"));
 
         horizontalLayout_2->addWidget(comosearchtab1);
 
-        serchzone = new QLineEdit(widget);
+        serchzone = new QLineEdit(layoutWidget);
         serchzone->setObjectName(QString::fromUtf8("serchzone"));
         serchzone->setMaximumSize(QSize(16777215, 21));
         serchzone->setMaxLength(102767);
 
         horizontalLayout_2->addWidget(serchzone);
 
-        searchbutton = new QPushButton(widget);
+        searchbutton = new QPushButton(layoutWidget);
         searchbutton->setObjectName(QString::fromUtf8("searchbutton"));
         searchbutton->setMinimumSize(QSize(75, 0));
         searchbutton->setStyleSheet(QString::fromUtf8(""));
@@ -169,7 +169,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        tree = new QTreeWidget(widget);
+        tree = new QTreeWidget(layoutWidget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         tree->setHeaderItem(__qtreewidgetitem);
@@ -177,7 +177,7 @@ public:
 
         verticalLayout->addWidget(tree);
 
-        showchanges = new QPushButton(widget);
+        showchanges = new QPushButton(layoutWidget);
         showchanges->setObjectName(QString::fromUtf8("showchanges"));
         QIcon icon7;
         icon7.addFile(QString::fromUtf8("img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -187,7 +187,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        addtolist = new QPushButton(widget);
+        addtolist = new QPushButton(layoutWidget);
         addtolist->setObjectName(QString::fromUtf8("addtolist"));
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -195,7 +195,7 @@ public:
 
         horizontalLayout->addWidget(addtolist);
 
-        addtogroup = new QPushButton(widget);
+        addtogroup = new QPushButton(layoutWidget);
         addtogroup->setObjectName(QString::fromUtf8("addtogroup"));
         QIcon icon9;
         icon9.addFile(QString::fromUtf8("img/add to groups 2.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -204,7 +204,7 @@ public:
 
         horizontalLayout->addWidget(addtogroup);
 
-        delete_2 = new QPushButton(widget);
+        delete_2 = new QPushButton(layoutWidget);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
@@ -212,7 +212,7 @@ public:
 
         horizontalLayout->addWidget(delete_2);
 
-        edit = new QPushButton(widget);
+        edit = new QPushButton(layoutWidget);
         edit->setObjectName(QString::fromUtf8("edit"));
         edit->setIcon(icon4);
 
@@ -224,15 +224,15 @@ public:
         groups->addTab(tab_3, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
-        widget1 = new QWidget(tab_5);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(37, 37, 551, 321));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(tab_5);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(37, 37, 551, 321));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        comosearchtab2 = new QComboBox(widget1);
+        comosearchtab2 = new QComboBox(layoutWidget1);
         comosearchtab2->setObjectName(QString::fromUtf8("comosearchtab2"));
 
         horizontalLayout_3->addWidget(comosearchtab2);
@@ -241,12 +241,12 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        lineEdit = new QLineEdit(widget1);
+        lineEdit = new QLineEdit(layoutWidget1);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
         horizontalLayout_3->addWidget(lineEdit);
 
-        pushButton = new QPushButton(widget1);
+        pushButton = new QPushButton(layoutWidget1);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         horizontalLayout_3->addWidget(pushButton);
@@ -254,7 +254,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_3);
 
-        grouptree = new QTreeWidget(widget1);
+        grouptree = new QTreeWidget(layoutWidget1);
         QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
         __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
         grouptree->setHeaderItem(__qtreewidgetitem1);
@@ -264,17 +264,17 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        deleteforgroups = new QPushButton(widget1);
+        deleteforgroups = new QPushButton(layoutWidget1);
         deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
 
         horizontalLayout_4->addWidget(deleteforgroups);
 
-        pushButton_2 = new QPushButton(widget1);
+        pushButton_2 = new QPushButton(layoutWidget1);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         horizontalLayout_4->addWidget(pushButton_2);
 
-        change_group_name = new QPushButton(widget1);
+        change_group_name = new QPushButton(layoutWidget1);
         change_group_name->setObjectName(QString::fromUtf8("change_group_name"));
 
         horizontalLayout_4->addWidget(change_group_name);
@@ -298,11 +298,11 @@ public:
         menuuser_s_info->setObjectName(QString::fromUtf8("menuuser_s_info"));
         menuuser_s_info->setTearOffEnabled(false);
         menuuser_s_info->setToolTipsVisible(true);
-        changeuserpass = new QMenu(menuuser_s_info);
-        changeuserpass->setObjectName(QString::fromUtf8("changeuserpass"));
+        chnagepass = new QMenu(menuuser_s_info);
+        chnagepass->setObjectName(QString::fromUtf8("chnagepass"));
         QIcon icon11;
         icon11.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        changeuserpass->setIcon(icon11);
+        chnagepass->setIcon(icon11);
         main_page->setMenuBar(menubar);
         statusbar = new QStatusBar(main_page);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -314,14 +314,14 @@ public:
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionMy_products);
         menuuser_s_info->addSeparator();
-        menuuser_s_info->addAction(changeuserpass->menuAction());
+        menuuser_s_info->addAction(chnagepass->menuAction());
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionLog_out);
-        changeuserpass->addAction(actionchange_user_pass);
-        changeuserpass->addSeparator();
-        changeuserpass->addAction(actionEdit_my_basket);
-        changeuserpass->addSeparator();
-        changeuserpass->addAction(actionReset_the_list);
+        chnagepass->addAction(actionchange_user_pass);
+        chnagepass->addSeparator();
+        chnagepass->addAction(actionEdit_my_basket);
+        chnagepass->addSeparator();
+        chnagepass->addAction(actionReset_the_list);
 
         retranslateUi(main_page);
 
@@ -341,7 +341,7 @@ public:
 #if QT_CONFIG(tooltip)
         actionMy_products->setToolTip(QCoreApplication::translate("main_page", "My basket", nullptr));
 #endif // QT_CONFIG(tooltip)
-        actionchange_user_pass->setText(QCoreApplication::translate("main_page", "change user &pass", nullptr));
+        actionchange_user_pass->setText(QCoreApplication::translate("main_page", "change password", nullptr));
         actionEdit_my_basket->setText(QCoreApplication::translate("main_page", "Edit my basket", nullptr));
         actionLog_out->setText(QCoreApplication::translate("main_page", "Log out", nullptr));
         actionReset_the_list->setText(QCoreApplication::translate("main_page", "Reset the list", nullptr));
@@ -362,7 +362,7 @@ public:
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Tab 2", nullptr));
         groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
-        changeuserpass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
+        chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
     } // retranslateUi
 
 };

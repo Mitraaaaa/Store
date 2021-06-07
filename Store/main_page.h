@@ -20,7 +20,7 @@ class main_page : public QMainWindow
     void addchid_group(QTreeWidgetItem * pre_parent ,group each_group);
 
 public:
-    explicit main_page(QWidget *parent = nullptr);
+    explicit main_page(QMap<QString,QString> *user_pass,QWidget *parent = nullptr);
     void showchanges();
     void showchanges_tab2();
     void default_view_tab1();
@@ -52,10 +52,14 @@ private slots:
 
     void on_change_group_name_clicked();
 
+
+    void on_actionchange_user_pass_triggered();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
     QList<group> * group_pointer;
+    QMap<QString,QString> *user_pass_ptr;
 };
 
 #endif // MAIN_PAGE_H

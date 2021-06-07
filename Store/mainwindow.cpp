@@ -102,7 +102,7 @@ void MainWindow::on_login_clicked()
            {
                if((user_pass->find(ui->username->text())).value()==ui->password->text())
                {
-                       main_page *newmain= new main_page();
+                       main_page *newmain= new main_page(user_pass);
                        newmain->show();
                 }
                    else  QMessageBox::warning(this,"title","Wrong Password");

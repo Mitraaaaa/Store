@@ -14,9 +14,10 @@
 #include"group.h"
 #include"add_group.h"
 #include"change_group_name.h"
-main_page::main_page(QWidget *parent) :
+#include"change_password.h"
+main_page::main_page(QMap<QString,QString> *user_pass,QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::main_page)
+    ui(new Ui::main_page),user_pass_ptr(user_pass)
 {
     ui->setupUi(this);
     group_pointer= new QList<group>;
@@ -428,10 +429,11 @@ void main_page::on_edit_clicked()
        ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
     }
     int i=ui->tree->currentIndex().row();
-    editpage new_page(list_pointer,i);
+    editpage new_page(list_pointer,i,group_pointer);
       new_page.setModal(true);
       new_page.exec();
       showchanges();
+      showchanges_tab2();
 }
 
 void main_page::on_addtogroup_clicked()
@@ -508,5 +510,13 @@ void main_page::on_change_group_name_clicked()
     new_page.setModal(true);
     new_page.exec();
     showchanges_tab2();
+}
+
+
+void main_page::on_actionchange_user_pass_triggered()
+{
+    change_password new_page(user_pass_ptr);
+    new_page.setModal(true);
+    new_page.exec();
 }
 

@@ -57,7 +57,7 @@
      <attribute name="title">
       <string>Search</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>36</x>
@@ -210,7 +210,7 @@
      <attribute name="title">
       <string>Groups</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>37</x>
@@ -324,7 +324,7 @@
     <property name="toolTipsVisible">
      <bool>true</bool>
     </property>
-    <widget class="QMenu" name="changeuserpass">
+    <widget class="QMenu" name="chnagepass">
      <property name="title">
       <string>settings</string>
      </property>
@@ -343,7 +343,7 @@
     <addaction name="separator"/>
     <addaction name="actionMy_products"/>
     <addaction name="separator"/>
-    <addaction name="changeuserpass"/>
+    <addaction name="chnagepass"/>
     <addaction name="separator"/>
     <addaction name="actionLog_out"/>
    </widget>
@@ -386,7 +386,7 @@
      <normaloff>:/rec/img/pass.png</normaloff>:/rec/img/pass.png</iconset>
    </property>
    <property name="text">
-    <string>change user &amp;pass</string>
+    <string>change password</string>
    </property>
   </action>
   <action name="actionEdit_my_basket">

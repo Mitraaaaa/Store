@@ -12,6 +12,7 @@ SOURCES += \
     add_group.cpp \
     add_pro.cpp \
     change_group_name.cpp \
+    change_password.cpp \
     creat_new_group.cpp \
     customer.cpp \
     editpage.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     add_group.h \
     add_pro.h \
     change_group_name.h \
+    change_password.h \
     creat_new_group.h \
     customer.h \
     editpage.h \
@@ -39,6 +41,7 @@ FORMS += \
     add_group.ui \
     add_pro.ui \
     change_group_name.ui \
+    change_password.ui \
     creat_new_group.ui \
     editpage.ui \
     main_page.ui \
