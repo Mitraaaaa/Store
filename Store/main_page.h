@@ -21,6 +21,7 @@ class main_page : public QMainWindow
 
 public:
     explicit main_page(QMap<QString,QString> *user_pass,QWidget *parent = nullptr);
+    bool equal_products(products item1,products item2);
     void showchanges();
     void showchanges_tab2();
     void default_view_tab1();

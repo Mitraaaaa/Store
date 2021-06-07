@@ -394,9 +394,53 @@ void main_page::on_searchbutton_clicked()
     }
 }
 
+bool main_page::equal_products(products item1,products item2)
+{
+    if(item1.get_name()!=item2.get_name())
+        return false;
+    if(item1.get_consumer()!=item2.get_consumer())
+        return false;
+    if(item1.get_type()!=item2.get_type())
+        return false;
+    if(item1.get_number()!=item2.get_number())
+        return false;
+    if(item1.get_price()!=item2.get_price())
+        return false;
+    return true;
+}
+
 void main_page::on_delete_2_clicked()
 {
-     int i=ui->tree->currentIndex().row();
+    int i=ui->tree->currentIndex().row();
+    if(ui->tree->currentItem()->childCount()!=0)
+    {
+        // we will also remove that item from the group
+        for(int k=0;k<group_pointer->size();k++)
+        {
+            QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+            for(int j=0;j<groups_includes.size();j++)
+            {
+                if(equal_products(groups_includes[j],(*list_pointer)[i]))
+                {
+                   (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+                }
+            }
+        }
+        //delete from product's list
+        (*list_pointer).erase(list_pointer->begin()+i);
+         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+         showchanges();
+         showchanges_tab2();
+    }
+    else
+    {
+        ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+        i=ui->tree->currentIndex().row();
+        (*list_pointer).erase(list_pointer->begin()+i);
+         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+         showchanges();
+    }
+     /*int i=ui->tree->currentIndex().row();
      //when clicked on name of prducts not details so we have row's amount
      if(ui->tree->currentIndex().column()==0 && i!=0)
      {
@@ -417,7 +461,7 @@ void main_page::on_delete_2_clicked()
          (*list_pointer).erase(list_pointer->begin()+i);
          ui->tree->removeItemWidget(ui->tree->currentItem(),0);
           showchanges();
-     }
+     }*/
 
 }
 
@@ -457,14 +501,14 @@ void main_page::on_pushButton_2_clicked()
 void main_page::on_deleteforgroups_clicked()
 {
     int i=ui->grouptree->currentIndex().row();
-    //check if you are clicking on the group name
+    //check if you are clicking on the group name we will remove group
     if(ui->grouptree->currentItem()->parent()==nullptr)
     {
         (*group_pointer).erase(group_pointer->begin()+i);
         ui->grouptree->removeItemWidget(ui->grouptree->currentItem(),0);
         showchanges_tab2();
     }
-    //in case you clicked on products
+    //in case you clicked on products we will remove product
    else
     {
         if(ui->grouptree->currentItem()->childCount()!=0)

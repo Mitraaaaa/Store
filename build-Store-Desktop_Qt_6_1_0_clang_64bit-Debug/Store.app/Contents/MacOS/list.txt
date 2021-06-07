@@ -13,13 +13,3 @@ apple
 phone
 13
 1200
-notebook
-mina
-stationery
-10
-5
-redmi
-mitra
-phone
-12
-800

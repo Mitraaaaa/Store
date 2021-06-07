@@ -1,9 +1,4 @@
 Group : phones
-redmi
-mitra
-phone
-12
-800
 phone
 apple
 phone
