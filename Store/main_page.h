@@ -7,6 +7,7 @@
 #include"group.h"
 #include<QString>
 #include <QTreeWidget>
+#include<QMapIterator>
 namespace Ui {
 class main_page;
 }
@@ -14,21 +15,24 @@ class main_page;
 class main_page : public QMainWindow
 {
     Q_OBJECT
-    void addroot(QString name,QList<products> * list,int index);
-    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price);
+    void addroot(QString name,QList<products> * list,int index,QString mark,QTreeWidget * tab);
+    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark);
     void addroot_group(QString group_name,QList<group> * group_pointer,int index);
     void addchid_group(QTreeWidgetItem * pre_parent ,group each_group);
 
 public:
-    explicit main_page(QMap<QString,QString> *user_pass,QWidget *parent = nullptr);
+    explicit main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::iterator current_user,QWidget *parent = nullptr);
     bool equal_products(products item1,products item2);
+    void save_my_basket_file();
     void save_groups_file();
     void save_main_products_list_file();
     void save_userpass_file();
     void showchanges();
     void showchanges_tab2();
+    void showchanges_tab3();
     void default_view_tab1();
     void default_view_tab2();
+    void default_view_tab3();
     ~main_page();
 
 private slots:
@@ -60,11 +64,15 @@ private slots:
 
     void on_actionchange_user_pass_triggered();
 
+    void on_add_mybasket_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;
     QList<group> * group_pointer;
     QMap<QString,QString> *user_pass_ptr;
+    QMap<QString, QString>::iterator user_iterator;
+    QList<products> * my_basket;
 };
 
 #endif // MAIN_PAGE_H

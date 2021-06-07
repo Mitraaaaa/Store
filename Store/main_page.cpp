@@ -15,15 +15,17 @@
 #include"add_group.h"
 #include"change_group_name.h"
 #include"change_password.h"
-main_page::main_page(QMap<QString,QString> *user_pass,QWidget *parent) :
+main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::iterator current_user,QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::main_page),user_pass_ptr(user_pass)
+    ui(new Ui::main_page),user_pass_ptr(user_pass),user_iterator(current_user)
 {
     ui->setupUi(this);
     group_pointer= new QList<group>;
     list_pointer=new QList<products>;
+    my_basket=new QList<products>;
     default_view_tab1();
     default_view_tab2();
+    default_view_tab3();
     ui->comosearchtab1->addItem("Start with");
     ui->comosearchtab1->addItem("Contains");
     ui->combo_search_by_tab1->addItem("Products");
@@ -78,7 +80,7 @@ void main_page::default_view_tab1()
            ui->tree->setColumnCount(4);
            ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
            for(int i=0;i<list_pointer->size();i++)
-            addroot((*list_pointer)[i].get_name(),list_pointer,i);
+            addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
            file.close();
     }
 }
@@ -181,6 +183,79 @@ void main_page::default_view_tab2()
     group_file.close();
 }
 
+void main_page::default_view_tab3(){
+    // get username of current user to make it's uniqe  basket file
+    QString current_username=user_iterator.key()+".txt";
+    QFile file(current_username);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+       // QMessageBox::warning(this,"title","File not opened!");
+    }
+    else if(file.size()!=0)
+    {
+        products my_basket_list;
+
+        QTextStream in(&file);
+        int i=1;
+           while (!in.atEnd())
+           {
+              QString line = in.readLine();
+              switch(i)
+              {
+              case 1:
+                  my_basket_list.set_name(line);
+                  i++;
+                  break;
+              case 2:
+                  my_basket_list.set_consumer(line);
+                  i++;
+                  break;
+              case 3:
+                  my_basket_list.set_type(line);
+                  i++;
+                  break;
+              case 4:
+                  my_basket_list.set_number(line.toInt());
+                  i++;
+                  break;
+              case 5:
+                  my_basket_list.set_price(line.toDouble());
+                  my_basket->append(my_basket_list);
+                  i=1;
+                  break;
+              }
+           }
+           ui->basket_tree->setColumnCount(4);
+           ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price");
+           for(int i=0;i<my_basket->size();i++)
+            addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+           file.close();
+    }
+}
+
+void main_page::save_my_basket_file()
+{
+    QString current_username=user_iterator.key()+".txt";
+    QFile file(current_username);
+    if(!file.open(QIODevice::WriteOnly |QIODevice::Text))
+    {
+        QMessageBox::warning(this,"title","File not opened");
+    }
+    else
+    {
+        QTextStream out(&file);
+        for(int i=0;i<my_basket->size();i++)
+        {
+            out<<(*my_basket)[i].get_name()+"\n";
+            out<<(*my_basket)[i].get_consumer()+"\n";
+            out<<(*my_basket)[i].get_type()+"\n";
+            out<<QString::number((*my_basket)[i].get_number())+"\n";
+            out<<QString::number((*my_basket)[i].get_price())+"\n";
+        }
+        file.close();
+    }
+}
+
 void main_page::save_groups_file()
 {
     QFile group_file("group.txt");
@@ -251,15 +326,25 @@ void main_page::save_main_products_list_file()
     }
 }
 
+void main_page::showchanges_tab3()
+{
+    ui->basket_tree->clear();
+    ui->basket_tree->setColumnCount(4);
+    ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price");
+    for(int i=0;i<my_basket->size();i++)
+    {
+        addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+    }
+}
+
 void main_page::showchanges()
 {
     ui->tree->clear();
-      ui->tree->setColumnCount(4);
-      ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
-      this->ui->tree->clear();
+    ui->tree->setColumnCount(4);
+    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
    for(int i=0;i<list_pointer->size();i++)
    {
-       addroot((*list_pointer)[i].get_name(),list_pointer,i);
+       addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
    }
 }
 
@@ -274,21 +359,27 @@ void main_page::showchanges_tab2()
     }
 }
 
-void main_page::addroot(QString name,QList<products> * list_pointer,int index)
+void main_page::addroot(QString name,QList<products> * list_pointer,int index,QString mark,QTreeWidget * tab)
 {
-    QTreeWidgetItem * itm=new QTreeWidgetItem(ui->tree);
+    QTreeWidgetItem * itm=new QTreeWidgetItem(tab);
     itm->setText(0, name);
-    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price());
+    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price(),mark);
 }
 
-void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int count,double price)
+void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem();
     itm->setText(0,consumer);
     itm->setText(1,type);
-    itm->setText(2, QString::number(count));
-    itm->setText(3,QString::number(price)+" $");
-
+    if(mark=="X")
+    {
+        itm->setText(2,mark+QString::number(number));
+    }
+    else
+    {
+        itm->setText(2, QString::number(number));
+    }
+    itm->setText(3,QString::number(price)+"$");
     parent->addChild(itm);
 }
 
@@ -306,7 +397,7 @@ void main_page::addchid_group(QTreeWidgetItem * pre_parent ,group each_group)
       QTreeWidgetItem * itm=new QTreeWidgetItem();
       itm->setText(0,each_group.get_pro_group()[i].get_name());
       products pro=each_group.get_pro_group()[i];
-      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price());
+      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price(),"$");
       pre_parent->addChild(itm);
    }
 }
@@ -343,6 +434,8 @@ void main_page::on_actionLog_out_triggered()
             save_main_products_list_file();
             //save group list
             save_groups_file();
+            //save my basket
+            save_my_basket_file();
             this->close();
         }
           break;
@@ -370,23 +463,23 @@ void main_page::on_searchbutton_clicked()
             {
                 if((*list_pointer)[i].get_name().contains(search) && ui->combo_search_by_tab1->currentText()=="Products")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                else if((*list_pointer)[i].get_consumer().contains(search) && ui->combo_search_by_tab1->currentText()=="Consumer")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                else if((*list_pointer)[i].get_type().contains(search) && ui->combo_search_by_tab1->currentText()=="Type")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                else if(QString::number((*list_pointer)[i].get_number()).contains(search) && ui->combo_search_by_tab1->currentText()=="Number")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                else if(QString::number((*list_pointer)[i].get_price()).contains(search) && ui->combo_search_by_tab1->currentText()=="Price")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
             }
         }
@@ -395,23 +488,23 @@ void main_page::on_searchbutton_clicked()
             {
                 if((*list_pointer)[i].get_name().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Products")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                 else if((*list_pointer)[i].get_consumer().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Consumer")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                 else if((*list_pointer)[i].get_type().left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Type")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                 else if(QString::number((*list_pointer)[i].get_number()).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Number")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                 else if(QString::number((*list_pointer)[i].get_price()).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Price")
                 {
-                    addroot((*list_pointer)[i].get_name(),list_pointer,i);
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
             }
         }
@@ -584,7 +677,6 @@ void main_page::on_change_group_name_clicked()
     showchanges_tab2();
 }
 
-
 void main_page::on_actionchange_user_pass_triggered()
 {
     change_password new_page(user_pass_ptr);
@@ -592,5 +684,31 @@ void main_page::on_actionchange_user_pass_triggered()
     new_page.exec();
     // save user_pass list
      save_userpass_file();
+}
+
+void main_page::on_add_mybasket_clicked()
+{
+    if(ui->tree->currentItem()->childCount()==0)
+    {
+        ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+    }
+    int i=ui->tree->currentIndex().row();
+    products added_to_my_basket =(*list_pointer)[i];
+    bool found=false;
+    for(int j=0;j<my_basket->size();j++)
+    {
+        if(equal_products(added_to_my_basket,(*my_basket)[j]))
+        {
+                (*my_basket)[j].set_number((added_to_my_basket.get_number())+1);
+                found=true;
+                break;
+        }
+    }
+    if(!found)
+    {
+         added_to_my_basket.set_number(1);
+         my_basket->append(added_to_my_basket);
+    }
+    showchanges_tab3();
 }
 

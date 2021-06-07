@@ -76,6 +76,9 @@ void MainWindow::on_signup_clicked()
     if(user_pass->size()==0)
     {
         user_pass->insert(ui->username->text(),ui->password->text());
+        save_user_pass_file();
+        main_page *newmain= new main_page(user_pass,user_pass->begin());
+        newmain->show();
     }
     else
     {
@@ -93,10 +96,12 @@ void MainWindow::on_signup_clicked()
         if(!alredy_exist)
         {
             user_pass->insert(ui->username->text(),ui->password->text());
+             save_user_pass_file();
+            main_page *newmain= new main_page(user_pass,user_pass->find(ui->username->text()));
+            newmain->show();
         }
 
     }
-    save_user_pass_file();
 }
 void MainWindow::on_login_clicked()
 {
@@ -106,7 +111,7 @@ void MainWindow::on_login_clicked()
            {
                if((user_pass->find(ui->username->text())).value()==ui->password->text())
                {
-                       main_page *newmain= new main_page(user_pass);
+                       main_page *newmain= new main_page(user_pass,user_pass->find(ui->username->text()));
                        newmain->show();
                 }
                    else  QMessageBox::warning(this,"title","Wrong Password");
