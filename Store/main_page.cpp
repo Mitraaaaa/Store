@@ -379,7 +379,7 @@ void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type 
     {
         itm->setText(2, QString::number(number));
     }
-    itm->setText(3,QString::number(price)+"$");
+    itm->setText(3,QString::number(price)+" $");
     parent->addChild(itm);
 }
 
@@ -515,7 +515,7 @@ void main_page::on_searchbutton_clicked()
     }
 }
 
-bool main_page::equal_products(products item1,products item2)
+bool main_page::equal_products(products item1,products item2, bool compare_numbers,bool compare_price)
 {
     if(item1.get_name()!=item2.get_name())
         return false;
@@ -523,66 +523,55 @@ bool main_page::equal_products(products item1,products item2)
         return false;
     if(item1.get_type()!=item2.get_type())
         return false;
-    if(item1.get_number()!=item2.get_number())
-        return false;
-    if(item1.get_price()!=item2.get_price())
-        return false;
+    if(compare_numbers)
+    {
+        if(item1.get_number()!=item2.get_number())
+            return false;
+    }
+    if(compare_price)
+    {
+        if(item1.get_price()!=item2.get_price())
+            return false;
+    }
     return true;
 }
 
 void main_page::on_delete_2_clicked()
 {
     int i=ui->tree->currentIndex().row();
-    if(ui->tree->currentItem()->childCount()!=0)
-    {
-        // we will also remove that item from the group
-        for(int k=0;k<group_pointer->size();k++)
-        {
-            QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
-            for(int j=0;j<groups_includes.size();j++)
-            {
-                if(equal_products(groups_includes[j],(*list_pointer)[i]))
-                {
-                   (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
-                }
-            }
-        }
-        //delete from product's list
-        (*list_pointer).erase(list_pointer->begin()+i);
-         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
-         showchanges();
-         showchanges_tab2();
-    }
-    else
+    if(ui->tree->currentItem()->childCount()==0)
     {
         ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
         i=ui->tree->currentIndex().row();
-        (*list_pointer).erase(list_pointer->begin()+i);
-         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
-         showchanges();
-    }
-     /*int i=ui->tree->currentIndex().row();
-     //when clicked on name of prducts not details so we have row's amount
-     if(ui->tree->currentIndex().column()==0 && i!=0)
-     {
-         (*list_pointer).erase(list_pointer->begin()+i);
-      ui->tree->removeItemWidget(ui->tree->currentItem(),0);
-      showchanges();
 
-     }
-     else if(ui->tree->currentIndex().column()==0 && i==0 && ui->tree->currentItem()->childCount()!=0)
-     {
-         //when clicked on the first item so the row and colume is zero
-        delete ui->tree->takeTopLevelItem(i);
-     }
-    else{
-         //if clicked on child of colume 0 , so the row becomes 0 too since it's a child . it's an item and not nessecery top_level_item
-         ui->tree->currentItem()->parent()->removeChild((ui->tree->currentItem()));
-         i=ui->tree->currentIndex().row();
-         (*list_pointer).erase(list_pointer->begin()+i);
-         ui->tree->removeItemWidget(ui->tree->currentItem(),0);
-          showchanges();
-     }*/
+    }
+    // we will also remove that item from the group
+    for(int k=0;k<group_pointer->size();k++)
+    {
+        QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+        for(int j=0;j<groups_includes.size();j++)
+        {
+            if(equal_products(groups_includes[j],(*list_pointer)[i],true,true))
+            {
+               (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+            }
+        }
+    }
+    //we should also delete that item from my_basket list if exists
+    for(int k=0;k<my_basket->size();k++)
+    {
+        if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
+        {
+            (*my_basket).erase(my_basket->begin()+k);
+            showchanges_tab3();
+            break;
+        }
+    }
+    //delete from product's list
+    (*list_pointer).erase(list_pointer->begin()+i);
+     ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+     showchanges();
+     showchanges_tab2();
 
 }
 
@@ -697,9 +686,10 @@ void main_page::on_add_mybasket_clicked()
     bool found=false;
     for(int j=0;j<my_basket->size();j++)
     {
-        if(equal_products(added_to_my_basket,(*my_basket)[j]))
+        if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
         {
-                (*my_basket)[j].set_number((added_to_my_basket.get_number())+1);
+                (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
+                (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
                 found=true;
                 break;
         }

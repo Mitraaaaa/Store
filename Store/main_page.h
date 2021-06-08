@@ -22,7 +22,7 @@ class main_page : public QMainWindow
 
 public:
     explicit main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::iterator current_user,QWidget *parent = nullptr);
-    bool equal_products(products item1,products item2);
+    bool equal_products(products item1,products item2,bool compare_numbers,bool compare_price);
     void save_my_basket_file();
     void save_groups_file();
     void save_main_products_list_file();
