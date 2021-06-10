@@ -26,6 +26,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab1();
     default_view_tab2();
     default_view_tab3();
+    //tab1
     ui->comosearchtab1->addItem("Start with");
     ui->comosearchtab1->addItem("Contains");
     ui->combo_search_by_tab1->addItem("Products");
@@ -33,6 +34,23 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_search_by_tab1->addItem("Type");
     ui->combo_search_by_tab1->addItem("Number");
     ui->combo_search_by_tab1->addItem("Price");
+    //tab2
+    ui->combobox_searchtab2_startwith->addItem("Start with");
+    ui->combobox_searchtab2_startwith->addItem("Contains");
+    ui->comosearchtab2->addItem("Group's name");
+    ui->comosearchtab2->addItem("Products");
+    ui->comosearchtab2->addItem("Consumer");
+    ui->comosearchtab2->addItem("Type");
+    ui->comosearchtab2->addItem("Number");
+    ui->comosearchtab2->addItem("Price");
+    //tab3
+    ui->comboBox_2_my_basket->addItem("Start with");
+    ui->comboBox_2_my_basket->addItem("Contains");
+    ui->comboBox_mybasket->addItem("Products");
+    ui->comboBox_mybasket->addItem("Consumer");
+    ui->comboBox_mybasket->addItem("Type");
+    ui->comboBox_mybasket->addItem("Number of purchase");
+    ui->comboBox_mybasket->addItem("Price");
 }
 
 void main_page::default_view_tab1()
@@ -754,7 +772,6 @@ void main_page::on_update_spinbox_clicked()
     }
 }
 
-
 void main_page::on_unreserved_clicked()
 {
     if( ui->basket_tree->currentItem()->childCount()==0)
@@ -773,5 +790,81 @@ void main_page::on_unreserved_clicked()
      }
      (*my_basket).erase(my_basket->begin()+i);
      showchanges_tab3();
+}
+
+void main_page::on_search_button_group_clicked()
+{
+}
+
+void main_page::on_search_mybasket_tab3_clicked()
+{
+    ui->basket_tree->clear();
+     QString search=this->ui->searchzone_mybasket->text();
+    if(!search.isEmpty())
+    {
+        if(ui->comboBox_2_my_basket->currentText()=="Contains")
+        {
+            for(int i=0;i<my_basket->size();i++)
+            {
+                if((*my_basket)[i].get_name().contains(search) && ui->comboBox_mybasket->currentText()=="Products")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+               else if((*my_basket)[i].get_consumer().contains(search) && ui->comboBox_mybasket->currentText()=="Consumer")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+               else if((*my_basket)[i].get_type().contains(search) && ui->comboBox_mybasket->currentText()=="Type")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+               else if(QString::number((*my_basket)[i].get_number()).contains(search) && ui->comboBox_mybasket->currentText()=="Number of purchase")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+               else if(QString::number((*my_basket)[i].get_price()).contains(search) && ui->comboBox_mybasket->currentText()=="Price")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+            }
+
+        }
+        else
+        {
+            for(int i=0;i<my_basket->size();i++)
+            {
+                if((*my_basket)[i].get_name().left(search.size())==search && ui->comboBox_mybasket->currentText()=="Products")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if((*my_basket)[i].get_consumer().left(search.size())==search && ui->comboBox_mybasket->currentText()=="Consumer")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if((*my_basket)[i].get_type().left(search.size())==search && ui->comboBox_mybasket->currentText()=="Type")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if(QString::number((*my_basket)[i].get_number()).left(search.size())==search && ui->comboBox_mybasket->currentText()=="Number of purchase")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if(QString::number((*my_basket)[i].get_price()).left(search.size())==search && ui->comboBox_mybasket->currentText()=="Price")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+            }
+        }
+    }
+    else
+    {
+        QMessageBox::information(this,"title","Enter something to search!");
+    }
+}
+
+
+void main_page::on_current_basket_clicked()
+{
+    showchanges_tab3();
 }
 

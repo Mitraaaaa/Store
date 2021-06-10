@@ -73,6 +73,13 @@ private slots:
 
     void on_unreserved_clicked();
 
+
+    void on_search_button_group_clicked();
+
+    void on_search_mybasket_tab3_clicked();
+
+    void on_current_basket_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

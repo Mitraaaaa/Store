@@ -65,9 +65,10 @@ public:
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *comosearchtab2;
+    QComboBox *combobox_searchtab2_startwith;
     QSpacerItem *horizontalSpacer_2;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QLineEdit *searchzone_tab2;
+    QPushButton *search_button_group;
     QTreeWidget *grouptree;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *deleteforgroups;
@@ -77,11 +78,12 @@ public:
     QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_5;
-    QComboBox *comboBox;
-    QComboBox *comboBox_2;
-    QLineEdit *lineEdit_2;
-    QPushButton *pushButton_3;
+    QComboBox *comboBox_mybasket;
+    QComboBox *comboBox_2_my_basket;
+    QLineEdit *searchzone_mybasket;
+    QPushButton *search_mybasket_tab3;
     QTreeWidget *basket_tree;
+    QPushButton *current_basket;
     QHBoxLayout *horizontalLayout_6;
     QLabel *totalprice;
     QLabel *label;
@@ -91,7 +93,7 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QPushButton *unreserved;
     QPushButton *delete_from_list;
-    QWidget *tab_6;
+    QWidget *widget;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
     QMenu *chnagepass;
@@ -262,19 +264,25 @@ public:
 
         horizontalLayout_3->addWidget(comosearchtab2);
 
+        combobox_searchtab2_startwith = new QComboBox(layoutWidget1);
+        combobox_searchtab2_startwith->setObjectName(QString::fromUtf8("combobox_searchtab2_startwith"));
+
+        horizontalLayout_3->addWidget(combobox_searchtab2_startwith);
+
         horizontalSpacer_2 = new QSpacerItem(3, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        lineEdit = new QLineEdit(layoutWidget1);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        searchzone_tab2 = new QLineEdit(layoutWidget1);
+        searchzone_tab2->setObjectName(QString::fromUtf8("searchzone_tab2"));
 
-        horizontalLayout_3->addWidget(lineEdit);
+        horizontalLayout_3->addWidget(searchzone_tab2);
 
-        pushButton = new QPushButton(layoutWidget1);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        search_button_group = new QPushButton(layoutWidget1);
+        search_button_group->setObjectName(QString::fromUtf8("search_button_group"));
+        search_button_group->setIcon(icon6);
 
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout_3->addWidget(search_button_group);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -312,31 +320,31 @@ public:
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
         layoutWidget2 = new QWidget(tab_4);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(20, 20, 631, 331));
+        layoutWidget2->setGeometry(QRect(20, 20, 631, 351));
         verticalLayout_3 = new QVBoxLayout(layoutWidget2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        comboBox = new QComboBox(layoutWidget2);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox_mybasket = new QComboBox(layoutWidget2);
+        comboBox_mybasket->setObjectName(QString::fromUtf8("comboBox_mybasket"));
 
-        horizontalLayout_5->addWidget(comboBox);
+        horizontalLayout_5->addWidget(comboBox_mybasket);
 
-        comboBox_2 = new QComboBox(layoutWidget2);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBox_2_my_basket = new QComboBox(layoutWidget2);
+        comboBox_2_my_basket->setObjectName(QString::fromUtf8("comboBox_2_my_basket"));
 
-        horizontalLayout_5->addWidget(comboBox_2);
+        horizontalLayout_5->addWidget(comboBox_2_my_basket);
 
-        lineEdit_2 = new QLineEdit(layoutWidget2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        searchzone_mybasket = new QLineEdit(layoutWidget2);
+        searchzone_mybasket->setObjectName(QString::fromUtf8("searchzone_mybasket"));
 
-        horizontalLayout_5->addWidget(lineEdit_2);
+        horizontalLayout_5->addWidget(searchzone_mybasket);
 
-        pushButton_3 = new QPushButton(layoutWidget2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        search_mybasket_tab3 = new QPushButton(layoutWidget2);
+        search_mybasket_tab3->setObjectName(QString::fromUtf8("search_mybasket_tab3"));
 
-        horizontalLayout_5->addWidget(pushButton_3);
+        horizontalLayout_5->addWidget(search_mybasket_tab3);
 
 
         verticalLayout_3->addLayout(horizontalLayout_5);
@@ -348,6 +356,11 @@ public:
         basket_tree->setObjectName(QString::fromUtf8("basket_tree"));
 
         verticalLayout_3->addWidget(basket_tree);
+
+        current_basket = new QPushButton(layoutWidget2);
+        current_basket->setObjectName(QString::fromUtf8("current_basket"));
+
+        verticalLayout_3->addWidget(current_basket);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
@@ -394,9 +407,9 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_6);
 
         groups->addTab(tab_4, QString());
-        tab_6 = new QWidget();
-        tab_6->setObjectName(QString::fromUtf8("tab_6"));
-        groups->addTab(tab_6, QString());
+        widget = new QWidget();
+        widget->setObjectName(QString::fromUtf8("widget"));
+        groups->addTab(widget, QString());
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -462,13 +475,14 @@ public:
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));
         delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
-        groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Search", nullptr));
-        pushButton->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
+        groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Main List", nullptr));
+        search_button_group->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         pushButton_2->setText(QCoreApplication::translate("main_page", "show", nullptr));
         change_group_name->setText(QCoreApplication::translate("main_page", "change Group's name", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
+        search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
+        current_basket->setText(QCoreApplication::translate("main_page", "current basket", nullptr));
         totalprice->setText(QString());
         label->setText(QString());
         update_spinbox->setText(QCoreApplication::translate("main_page", "update", nullptr));
@@ -476,7 +490,7 @@ public:
         unreserved->setText(QCoreApplication::translate("main_page", "unreserved", nullptr));
         delete_from_list->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
-        groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));
+        groups->setTabText(groups->indexOf(widget), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
     } // retranslateUi

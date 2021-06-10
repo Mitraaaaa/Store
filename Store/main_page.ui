@@ -55,7 +55,7 @@
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Search</string>
+      <string>Main List</string>
      </attribute>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
@@ -233,6 +233,9 @@
           <widget class="QComboBox" name="comosearchtab2"/>
          </item>
          <item>
+          <widget class="QComboBox" name="combobox_searchtab2_startwith"/>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -249,12 +252,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="searchzone_tab2"/>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="search_button_group">
            <property name="text">
             <string>saerch</string>
+           </property>
+           <property name="icon">
+            <iconset resource="recources.qrc">
+             <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
            </property>
           </widget>
          </item>
@@ -307,25 +314,25 @@
         <x>20</x>
         <y>20</y>
         <width>631</width>
-        <height>331</height>
+        <height>351</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QComboBox" name="comboBox"/>
+          <widget class="QComboBox" name="comboBox_mybasket"/>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_2"/>
+          <widget class="QComboBox" name="comboBox_2_my_basket"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="searchzone_mybasket"/>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="search_mybasket_tab3">
            <property name="text">
-            <string>PushButton</string>
+            <string>search</string>
            </property>
           </widget>
          </item>
@@ -338,6 +345,13 @@
            <string notr="true">1</string>
           </property>
          </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="current_basket">
+         <property name="text">
+          <string>current basket</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -418,7 +432,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_6">
+    <widget class="QWidget" name="widget">
      <attribute name="title">
       <string>Page</string>
      </attribute>
