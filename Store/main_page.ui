@@ -400,9 +400,16 @@
           </spacer>
          </item>
          <item>
+          <widget class="QPushButton" name="unreserved">
+           <property name="text">
+            <string extracomment="Will delete items from ypur basket and turn back them to main_list in first tab">unreserved</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="delete_from_list">
            <property name="text">
-            <string>delete</string>
+            <string extracomment="You have recived the item and want to delete it from your_basket">delete</string>
            </property>
           </widget>
          </item>

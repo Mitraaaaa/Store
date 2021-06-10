@@ -71,6 +71,8 @@ private slots:
 
     void on_update_spinbox_clicked();
 
+    void on_unreserved_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

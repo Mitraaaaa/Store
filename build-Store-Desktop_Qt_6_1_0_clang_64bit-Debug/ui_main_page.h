@@ -89,6 +89,7 @@ public:
     QPushButton *update_spinbox;
     QSpinBox *spinBox;
     QSpacerItem *horizontalSpacer_3;
+    QPushButton *unreserved;
     QPushButton *delete_from_list;
     QWidget *tab_6;
     QMenuBar *menubar;
@@ -379,6 +380,11 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_3);
 
+        unreserved = new QPushButton(layoutWidget2);
+        unreserved->setObjectName(QString::fromUtf8("unreserved"));
+
+        horizontalLayout_6->addWidget(unreserved);
+
         delete_from_list = new QPushButton(layoutWidget2);
         delete_from_list->setObjectName(QString::fromUtf8("delete_from_list"));
 
@@ -467,6 +473,7 @@ public:
         label->setText(QString());
         update_spinbox->setText(QCoreApplication::translate("main_page", "update", nullptr));
         spinBox->setPrefix(QString());
+        unreserved->setText(QCoreApplication::translate("main_page", "unreserved", nullptr));
         delete_from_list->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
         groups->setTabText(groups->indexOf(tab_6), QCoreApplication::translate("main_page", "Page", nullptr));

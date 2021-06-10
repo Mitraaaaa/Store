@@ -715,6 +715,7 @@ void main_page::on_add_mybasket_clicked()
 
 void main_page::on_delete_from_list_clicked()
 {
+    //delete from my basket
    if( ui->basket_tree->currentItem()->childCount()==0)
    {
        ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
@@ -756,6 +757,21 @@ void main_page::on_update_spinbox_clicked()
 
 void main_page::on_unreserved_clicked()
 {
-
+    if( ui->basket_tree->currentItem()->childCount()==0)
+    {
+        ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
+    }
+     int i=ui->basket_tree->currentIndex().row();
+     for(int j=0;j<list_pointer->size();j++)
+     {
+         if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+         {
+             (*list_pointer)[j].set_number((*list_pointer)[j].get_number()+(*my_basket)[i].get_number());
+             showchanges();
+             break;
+         }
+     }
+     (*my_basket).erase(my_basket->begin()+i);
+     showchanges_tab3();
 }
 

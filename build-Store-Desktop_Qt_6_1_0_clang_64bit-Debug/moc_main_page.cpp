@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_main_page_t {
-    const uint offsetsAndSize[32];
-    char stringdata0[358];
+    const uint offsetsAndSize[34];
+    char stringdata0[380];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_main_page_t, stringdata0) + ofs), len 
@@ -44,7 +44,8 @@ QT_MOC_LITERAL(215, 28), // "on_change_group_name_clicked"
 QT_MOC_LITERAL(244, 35), // "on_actionchange_user_pass_tri..."
 QT_MOC_LITERAL(280, 23), // "on_add_mybasket_clicked"
 QT_MOC_LITERAL(304, 27), // "on_delete_from_list_clicked"
-QT_MOC_LITERAL(332, 25) // "on_update_spinbox_clicked"
+QT_MOC_LITERAL(332, 25), // "on_update_spinbox_clicked"
+QT_MOC_LITERAL(358, 21) // "on_unreserved_clicked"
 
     },
     "main_page\0on_addtolist_clicked\0\0"
@@ -58,7 +59,8 @@ QT_MOC_LITERAL(332, 25) // "on_update_spinbox_clicked"
     "on_actionchange_user_pass_triggered\0"
     "on_add_mybasket_clicked\0"
     "on_delete_from_list_clicked\0"
-    "on_update_spinbox_clicked"
+    "on_update_spinbox_clicked\0"
+    "on_unreserved_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +70,7 @@ static const uint qt_meta_data_main_page[] = {
        9,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -76,22 +78,24 @@ static const uint qt_meta_data_main_page[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   98,    2, 0x08,    0 /* Private */,
-       3,    0,   99,    2, 0x08,    1 /* Private */,
-       4,    0,  100,    2, 0x08,    2 /* Private */,
-       5,    0,  101,    2, 0x08,    3 /* Private */,
-       6,    0,  102,    2, 0x08,    4 /* Private */,
-       7,    0,  103,    2, 0x08,    5 /* Private */,
-       8,    0,  104,    2, 0x08,    6 /* Private */,
-       9,    0,  105,    2, 0x08,    7 /* Private */,
-      10,    0,  106,    2, 0x08,    8 /* Private */,
-      11,    0,  107,    2, 0x08,    9 /* Private */,
-      12,    0,  108,    2, 0x08,   10 /* Private */,
-      13,    0,  109,    2, 0x08,   11 /* Private */,
-      14,    0,  110,    2, 0x08,   12 /* Private */,
-      15,    0,  111,    2, 0x08,   13 /* Private */,
+       1,    0,  104,    2, 0x08,    0 /* Private */,
+       3,    0,  105,    2, 0x08,    1 /* Private */,
+       4,    0,  106,    2, 0x08,    2 /* Private */,
+       5,    0,  107,    2, 0x08,    3 /* Private */,
+       6,    0,  108,    2, 0x08,    4 /* Private */,
+       7,    0,  109,    2, 0x08,    5 /* Private */,
+       8,    0,  110,    2, 0x08,    6 /* Private */,
+       9,    0,  111,    2, 0x08,    7 /* Private */,
+      10,    0,  112,    2, 0x08,    8 /* Private */,
+      11,    0,  113,    2, 0x08,    9 /* Private */,
+      12,    0,  114,    2, 0x08,   10 /* Private */,
+      13,    0,  115,    2, 0x08,   11 /* Private */,
+      14,    0,  116,    2, 0x08,   12 /* Private */,
+      15,    0,  117,    2, 0x08,   13 /* Private */,
+      16,    0,  118,    2, 0x08,   14 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -130,6 +134,7 @@ void main_page::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 11: _t->on_add_mybasket_clicked(); break;
         case 12: _t->on_delete_from_list_clicked(); break;
         case 13: _t->on_update_spinbox_clicked(); break;
+        case 14: _t->on_unreserved_clicked(); break;
         default: ;
         }
     }
@@ -144,7 +149,7 @@ const QMetaObject main_page::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_main_page_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -171,13 +176,13 @@ int main_page::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }
