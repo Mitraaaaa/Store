@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>30</y>
       <width>661</width>
       <height>421</height>
      </rect>
@@ -301,12 +301,12 @@
      <attribute name="title">
       <string>Your Basket</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>20</x>
         <y>20</y>
-        <width>541</width>
+        <width>631</width>
         <height>331</height>
        </rect>
       </property>
@@ -343,9 +343,16 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QLineEdit" name="total_price">
-           <property name="placeholderText">
-            <string extracomment="total price"/>
+          <widget class="QLabel" name="totalprice">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>

@@ -66,6 +66,11 @@ private slots:
 
     void on_add_mybasket_clicked();
 
+    void on_delete_from_list_clicked();
+
+
+    void on_update_spinbox_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

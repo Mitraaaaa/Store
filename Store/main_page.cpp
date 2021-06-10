@@ -688,17 +688,74 @@ void main_page::on_add_mybasket_clicked()
     {
         if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
         {
+               found=true;
+            if((*list_pointer)[i].get_number()!=0)
+            {
                 (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
                 (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
-                found=true;
+                (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+                showchanges();
                 break;
+            }
+            else
+            {
+                QMessageBox::warning(this,"title","This item has been finished!");
+                break;
+            }
         }
     }
     if(!found)
     {
          added_to_my_basket.set_number(1);
+         (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
          my_basket->append(added_to_my_basket);
     }
     showchanges_tab3();
+}
+
+void main_page::on_delete_from_list_clicked()
+{
+   if( ui->basket_tree->currentItem()->childCount()==0)
+   {
+       ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
+   }
+    int i=ui->basket_tree->currentIndex().row();
+    (*my_basket).erase(my_basket->begin()+i);
+    showchanges_tab3();
+}
+
+void main_page::on_update_spinbox_clicked()
+{
+    if(ui->basket_tree->currentItem()->childCount()==0)
+    {
+        ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
+    }
+    int i=ui->basket_tree->currentIndex().row();
+    for(int j=0;j<list_pointer->size();j++)
+    {
+        if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+        {
+            if(ui->spinBox->cleanText().toInt()<=(*list_pointer)[j].get_number())
+            {
+                (*my_basket)[i].set_number(ui->spinBox->cleanText().toInt());
+                (*my_basket)[i].set_price( ui->spinBox->cleanText().toInt()*(*list_pointer)[j].get_price());
+                (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-ui->spinBox->cleanText().toInt());
+                showchanges_tab3();
+                showchanges_tab2();
+                ui->spinBox->clear();
+            }
+            else
+            {
+                QMessageBox::warning(this,"title","The purchase_number is out of range of existed items!");
+            }
+            break;
+        }
+    }
+}
+
+
+void main_page::on_unreserved_clicked()
+{
+
 }
 
