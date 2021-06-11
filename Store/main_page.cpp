@@ -247,8 +247,13 @@ void main_page::default_view_tab3() {
            ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price");
            for(int i=0;i<my_basket->size();i++)
             addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
-           file.close();
     }
+    int total=0;
+    for(int i=0;i<my_basket->size();i++)
+    {
+      total+=(*my_basket)[i].get_price();
+    }
+    ui->totalprice->setText(QString::number(total));
 }
 
 void main_page::save_my_basket_file()
@@ -353,6 +358,12 @@ void main_page::showchanges_tab3()
     {
         addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
+    int total=0;
+    for(int i=0;i<my_basket->size();i++)
+    {
+      total+=(*my_basket)[i].get_price();
+    }
+    ui->totalprice->setText(QString::number(total));
 }
 
 void main_page::showchanges()
@@ -975,9 +986,4 @@ void main_page::on_current_basket_clicked()
     showchanges_tab3();
 }
 
-
-void main_page::on_total_price_clicked()
-{
-
-}
 

@@ -80,6 +80,7 @@ private slots:
 
     void on_current_basket_clicked();
 
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

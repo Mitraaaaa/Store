@@ -39,7 +39,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -364,9 +364,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="label_2">
            <property name="text">
-            <string/>
+            <string extracomment="total price">$</string>
            </property>
           </widget>
          </item>
@@ -432,11 +432,6 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget">
-     <attribute name="title">
-      <string>Page</string>
-     </attribute>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -471,14 +466,7 @@
      </property>
      <addaction name="actionchange_user_pass"/>
      <addaction name="separator"/>
-     <addaction name="actionEdit_my_basket"/>
-     <addaction name="separator"/>
-     <addaction name="actionReset_the_list"/>
     </widget>
-    <addaction name="separator"/>
-    <addaction name="actionGroups"/>
-    <addaction name="separator"/>
-    <addaction name="actionMy_products"/>
     <addaction name="separator"/>
     <addaction name="chnagepass"/>
     <addaction name="separator"/>

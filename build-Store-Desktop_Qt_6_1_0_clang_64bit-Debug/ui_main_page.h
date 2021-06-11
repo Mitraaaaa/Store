@@ -86,14 +86,13 @@ public:
     QPushButton *current_basket;
     QHBoxLayout *horizontalLayout_6;
     QLabel *totalprice;
-    QLabel *label;
+    QLabel *label_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *update_spinbox;
     QSpinBox *spinBox;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *unreserved;
     QPushButton *delete_from_list;
-    QWidget *widget;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
     QMenu *chnagepass;
@@ -369,10 +368,10 @@ public:
 
         horizontalLayout_6->addWidget(totalprice);
 
-        label = new QLabel(layoutWidget2);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_2 = new QLabel(layoutWidget2);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        horizontalLayout_6->addWidget(label);
+        horizontalLayout_6->addWidget(label_2);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -407,9 +406,6 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_6);
 
         groups->addTab(tab_4, QString());
-        widget = new QWidget();
-        widget->setObjectName(QString::fromUtf8("widget"));
-        groups->addTab(widget, QString());
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -431,22 +427,15 @@ public:
 
         menubar->addAction(menuuser_s_info->menuAction());
         menuuser_s_info->addSeparator();
-        menuuser_s_info->addAction(actionGroups);
-        menuuser_s_info->addSeparator();
-        menuuser_s_info->addAction(actionMy_products);
-        menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(chnagepass->menuAction());
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionLog_out);
         chnagepass->addAction(actionchange_user_pass);
         chnagepass->addSeparator();
-        chnagepass->addAction(actionEdit_my_basket);
-        chnagepass->addSeparator();
-        chnagepass->addAction(actionReset_the_list);
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(1);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 
@@ -484,13 +473,12 @@ public:
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_basket->setText(QCoreApplication::translate("main_page", "current basket", nullptr));
         totalprice->setText(QString());
-        label->setText(QString());
+        label_2->setText(QCoreApplication::translate("main_page", "$", nullptr));
         update_spinbox->setText(QCoreApplication::translate("main_page", "update", nullptr));
         spinBox->setPrefix(QString());
         unreserved->setText(QCoreApplication::translate("main_page", "unreserved", nullptr));
         delete_from_list->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
-        groups->setTabText(groups->indexOf(widget), QCoreApplication::translate("main_page", "Page", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
     } // retranslateUi
