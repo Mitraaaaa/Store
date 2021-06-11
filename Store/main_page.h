@@ -81,6 +81,12 @@ private slots:
     void on_current_basket_clicked();
 
 
+    void on_actionMain_list_triggered();
+
+    void on_actionMy_Basket_triggered();
+
+    void on_actionGroups_2_triggered();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

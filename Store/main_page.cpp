@@ -737,6 +737,7 @@ void main_page::on_add_mybasket_clicked()
     {
          added_to_my_basket.set_number(1);
          (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+         showchanges();
          my_basket->append(added_to_my_basket);
     }
     showchanges_tab3();
@@ -765,13 +766,14 @@ void main_page::on_update_spinbox_clicked()
     {
         if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
         {
-            if(ui->spinBox->cleanText().toInt()<=(*list_pointer)[j].get_number())
+            if(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()<=(*list_pointer)[j].get_number())
             {
+                (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()));
                 (*my_basket)[i].set_number(ui->spinBox->cleanText().toInt());
                 (*my_basket)[i].set_price( ui->spinBox->cleanText().toInt()*(*list_pointer)[j].get_price());
-                (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-ui->spinBox->cleanText().toInt());
                 showchanges_tab3();
                 showchanges_tab2();
+                showchanges();
                 ui->spinBox->clear();
             }
             else
@@ -986,4 +988,104 @@ void main_page::on_current_basket_clicked()
     showchanges_tab3();
 }
 
+void main_page::on_actionMain_list_triggered()
+{
+    QMessageBox msgBox;
+    msgBox.setText("Deleting your main list will also delete YOUR BASKET & GROUOPS(reset all), once you done this there is no comming back,ARE YOU SURE TO TAKE THIS ACTION?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No );
+    msgBox.setDefaultButton(QMessageBox::No);
+    int ret = msgBox.exec();
+    switch (ret) {
+      case QMessageBox::Yes:
+        {
+        //delete main_list file
+        (*list_pointer).clear();
+        QFile file("list.txt");
+        if(file.size()!=0)
+        {
+            file.resize(0);
+        }
+          showchanges();
+        //delete my_basket file
+        (*my_basket).clear();
+        QString current_username=user_iterator.key()+".txt";
+        QFile basket_file(current_username);
+        if(basket_file.size()!=0)
+        {
+            basket_file.resize(0);
+        }
+        showchanges_tab3();
+        //delete groups file
+        (*group_pointer).clear();
+        QFile group_file("group.txt");
+        if(group_file.size()!=0)
+        {
+            group_file.resize(0);
+        }
+        showchanges_tab2();
+        }
+          break;
+      case QMessageBox::No:
+         this->close();
+          break;
+      default:
+          break;
+    }
+}
+
+void main_page::on_actionMy_Basket_triggered()
+{
+    QMessageBox msg;
+    msg.setText("Once you done this, there is no comming back,ARE YOU SURE TO TAKE THIS ACTION?");
+    msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No );
+    msg.setDefaultButton(QMessageBox::No);
+    int ret=msg.exec();
+    switch (ret) {
+      case QMessageBox::Yes:
+        {
+        (*my_basket).clear();
+        QString current_username=user_iterator.key()+".txt";
+        QFile file(current_username);
+        if(file.size()!=0)
+        {
+            file.resize(0);
+        }
+          showchanges_tab3();
+        }
+
+          break;
+      case QMessageBox::No:
+          break;
+      default:
+          break;
+    }
+}
+
+void main_page::on_actionGroups_2_triggered()
+{
+    QMessageBox msg;
+    msg.setText("Once you done this, there is no comming back,ARE YOU SURE TO TAKE THIS ACTION?");
+    msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No );
+    msg.setDefaultButton(QMessageBox::No);
+    int ret=msg.exec();
+    switch (ret) {
+      case QMessageBox::Yes:
+        {
+        (*group_pointer).clear();
+        QFile file("group.txt");
+        if(file.size()!=0)
+        {
+            file.resize(0);
+        }
+        showchanges_tab2();
+        }
+
+          break;
+      case QMessageBox::No:
+          break;
+      default:
+          break;
+    }
+
+}
 

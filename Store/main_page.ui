@@ -416,7 +416,7 @@
          <item>
           <widget class="QPushButton" name="unreserved">
            <property name="text">
-            <string extracomment="Will delete items from ypur basket and turn back them to main_list in first tab">unreserved</string>
+            <string extracomment="Will delete items from ypur basket and turn back them to main_list in first tab">unreserve</string>
            </property>
           </widget>
          </item>
@@ -467,8 +467,21 @@
      <addaction name="actionchange_user_pass"/>
      <addaction name="separator"/>
     </widget>
+    <widget class="QMenu" name="menuReset">
+     <property name="title">
+      <string>Reset</string>
+     </property>
+     <addaction name="actionMain_list"/>
+     <addaction name="separator"/>
+     <addaction name="actionGroups_2"/>
+     <addaction name="separator"/>
+     <addaction name="actionMy_Basket"/>
+     <addaction name="separator"/>
+    </widget>
     <addaction name="separator"/>
     <addaction name="chnagepass"/>
+    <addaction name="separator"/>
+    <addaction name="menuReset"/>
     <addaction name="separator"/>
     <addaction name="actionLog_out"/>
    </widget>
@@ -535,6 +548,33 @@
   <action name="actionReset_the_list">
    <property name="text">
     <string extracomment="This will delete the whole existing list">Reset the list</string>
+   </property>
+  </action>
+  <action name="actionMain_list">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/mainlist2.png</normaloff>img/mainlist2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Main List</string>
+   </property>
+  </action>
+  <action name="actionGroups_2">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/groups.png</normaloff>:/rec/img/groups.png</iconset>
+   </property>
+   <property name="text">
+    <string>Groups</string>
+   </property>
+  </action>
+  <action name="actionMy_Basket">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/basket.png</normaloff>:/rec/img/basket.png</iconset>
+   </property>
+   <property name="text">
+    <string>My Basket</string>
    </property>
   </action>
  </widget>
