@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>20</y>
       <width>661</width>
       <height>421</height>
      </rect>
@@ -39,7 +39,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -141,7 +141,7 @@
        <item>
         <widget class="QPushButton" name="showchanges">
          <property name="text">
-          <string>show changes</string>
+          <string>current list</string>
          </property>
          <property name="icon">
           <iconset>
@@ -220,10 +220,10 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>57</x>
+        <x>27</x>
         <y>17</y>
-        <width>541</width>
-        <height>331</height>
+        <width>611</width>
+        <height>341</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -277,18 +277,18 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>current group_list</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QPushButton" name="deleteforgroups">
            <property name="text">
             <string>delete</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>show</string>
            </property>
           </widget>
          </item>

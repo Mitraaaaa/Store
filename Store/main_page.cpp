@@ -201,7 +201,7 @@ void main_page::default_view_tab2()
     group_file.close();
 }
 
-void main_page::default_view_tab3(){
+void main_page::default_view_tab3() {
     // get username of current user to make it's uniqe  basket file
     QString current_username=user_iterator.key()+".txt";
     QFile file(current_username);
@@ -794,6 +794,114 @@ void main_page::on_unreserved_clicked()
 
 void main_page::on_search_button_group_clicked()
 {
+    ui->grouptree->clear();
+     QString search=this->ui->searchzone_tab2->text();
+     if(!search.isEmpty())
+     {
+         if(ui->combobox_searchtab2_startwith->currentText()=="Contains")
+         {
+             if( ui->comosearchtab2->currentText()=="Group's name")
+             {
+                 for(int i=0;i<group_pointer->size();i++)
+                 {
+                     if((*group_pointer)[i].get_group_name().contains(search))
+                     {
+                         addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                     }
+                 }
+             }
+             else
+             {
+                 for(int i=0;i<group_pointer->size();i++)
+                 {
+                     QList<products> list_in_group=(*group_pointer)[i].get_pro_group();
+                         for(int j=0;j<list_in_group.size();j++)
+                         {
+                             if(list_in_group[j].get_name().contains(search) && ui->comosearchtab2->currentText()=="Products")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
+                             else if(list_in_group[j].get_consumer().contains(search) && ui->comosearchtab2->currentText()=="Consumer")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
+                             else if(list_in_group[j].get_type().contains(search) && ui->comosearchtab2->currentText()=="Type")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
+                             else if(QString::number(list_in_group[j].get_number()).contains(search) && ui->comosearchtab2->currentText()=="Number")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
+                             else if(QString::number(list_in_group[j].get_price()).contains(search) && ui->comosearchtab2->currentText()=="Price")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
+                         }
+                  }
+
+              }
+         }
+         else
+         {
+             if( ui->comosearchtab2->currentText()=="Group's name")
+             {
+                 for(int i=0;i<group_pointer->size();i++)
+                 {
+                     if((*group_pointer)[i].get_group_name().left(search.size())==search)
+                     {
+                         addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                     }
+                 }
+             }
+             else
+             {
+                 for(int i=0;i<group_pointer->size();i++)
+                 {
+                     QList<products> list_in_group=(*group_pointer)[i].get_pro_group();
+                     for(int j=0;j<list_in_group.size();j++)
+                     {
+                         if(list_in_group[j].get_name().left(search.size())==search && ui->comosearchtab2->currentText()=="Products")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                             break;
+                         }
+                         else if(list_in_group[j].get_consumer().left(search.size())==search && ui->comosearchtab2->currentText()=="Consumer")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
+                         else if(list_in_group[j].get_type().left(search.size())==search && ui->comosearchtab2->currentText()=="Type")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
+                         else if(QString::number(list_in_group[j].get_number()).left(search.size())==search && ui->comosearchtab2->currentText()=="Number")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
+                         else if(QString::number(list_in_group[j].get_price()).left(search.size())==search && ui->comosearchtab2->currentText()=="Price")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
+                     }
+                 }
+             }
+
+         }
+     }
+     else
+     {
+         QMessageBox::information(this,"title","Enter something to search!");
+
+     }
 }
 
 void main_page::on_search_mybasket_tab3_clicked()
@@ -862,9 +970,14 @@ void main_page::on_search_mybasket_tab3_clicked()
     }
 }
 
-
 void main_page::on_current_basket_clicked()
 {
     showchanges_tab3();
+}
+
+
+void main_page::on_total_price_clicked()
+{
+
 }
 

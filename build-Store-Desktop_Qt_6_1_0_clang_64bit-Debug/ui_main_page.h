@@ -70,9 +70,9 @@ public:
     QLineEdit *searchzone_tab2;
     QPushButton *search_button_group;
     QTreeWidget *grouptree;
+    QPushButton *pushButton_2;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *deleteforgroups;
-    QPushButton *pushButton_2;
     QPushButton *change_group_name;
     QWidget *tab_4;
     QWidget *layoutWidget2;
@@ -142,7 +142,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
-        groups->setGeometry(QRect(30, 30, 661, 421));
+        groups->setGeometry(QRect(30, 20, 661, 421));
         groups->setLayoutDirection(Qt::LeftToRight);
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
@@ -253,7 +253,7 @@ public:
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
         layoutWidget1 = new QWidget(tab_5);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(57, 17, 541, 331));
+        layoutWidget1->setGeometry(QRect(27, 17, 611, 341));
         verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -295,17 +295,17 @@ public:
 
         verticalLayout_2->addWidget(grouptree);
 
+        pushButton_2 = new QPushButton(layoutWidget1);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        verticalLayout_2->addWidget(pushButton_2);
+
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         deleteforgroups = new QPushButton(layoutWidget1);
         deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
 
         horizontalLayout_4->addWidget(deleteforgroups);
-
-        pushButton_2 = new QPushButton(layoutWidget1);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        horizontalLayout_4->addWidget(pushButton_2);
 
         change_group_name = new QPushButton(layoutWidget1);
         change_group_name->setObjectName(QString::fromUtf8("change_group_name"));
@@ -446,7 +446,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(2);
+        groups->setCurrentIndex(1);
         searchbutton->setDefault(false);
 
 
@@ -469,7 +469,7 @@ public:
         comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
-        showchanges->setText(QCoreApplication::translate("main_page", "show changes", nullptr));
+        showchanges->setText(QCoreApplication::translate("main_page", "current list", nullptr));
         addtolist->setText(QCoreApplication::translate("main_page", "add to list", nullptr));
         add_mybasket->setText(QCoreApplication::translate("main_page", "add to mybasket", nullptr));
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));
@@ -477,8 +477,8 @@ public:
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Main List", nullptr));
         search_button_group->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("main_page", "current group_list", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("main_page", "show", nullptr));
         change_group_name->setText(QCoreApplication::translate("main_page", "change Group's name", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
