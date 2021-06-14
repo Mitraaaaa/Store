@@ -26,8 +26,6 @@ private slots:
 
     void on_login_clicked();
 
-    void on_reload_clicked();
-
 private:
     Ui::MainWindow *ui;
     QMap<QString,QString> *user_pass;

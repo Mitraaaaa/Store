@@ -125,11 +125,3 @@ void MainWindow::on_login_clicked()
 
 }
 
-
-void MainWindow::on_reload_clicked()
-{
-    read_files new_page;
-    new_page.setModal(true);
-    new_page.exec();
-}
-

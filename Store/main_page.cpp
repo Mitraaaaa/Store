@@ -1026,7 +1026,6 @@ void main_page::on_actionMain_list_triggered()
         }
           break;
       case QMessageBox::No:
-         this->close();
           break;
       default:
           break;
