@@ -107,6 +107,7 @@ public:
         if (main_page->objectName().isEmpty())
             main_page->setObjectName(QString::fromUtf8("main_page"));
         main_page->resize(717, 555);
+        main_page->setStyleSheet(QString::fromUtf8(""));
         main_page->setToolButtonStyle(Qt::ToolButtonIconOnly);
         main_page->setTabShape(QTabWidget::Rounded);
         actionuser_s_name = new QAction(main_page);
@@ -154,9 +155,39 @@ public:
         actionMy_Basket->setIcon(icon2);
         centralwidget = new QWidget(main_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8("QComboBox QAbstractItemView {\n"
+"    selection-background-color: rgb(255, 138, 125);\n"
+"}\n"
+"QComboBox{\n"
+"	font: 13pt \"Comic Sans MS\";\n"
+"}\n"
+"#centralwidget\n"
+"{\n"
+"background: qconicalgradient(cx:0.5, cy:0.5, angle:30,\n"
+"                stop:0 white stop:1 rgb(255, 132, 129))\n"
+"}\n"
+"QTreeWidget\n"
+"{\n"
+"   background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
+"                stop:0 white, stop: 0.4 white, stop:1 rgb(255, 157, 149))\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"	font: 75 14pt \"Comic Sans MS\";\n"
+"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
+"                stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));\n"
+"  	 border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-radius: 4px;\n"
+"}"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
         groups->setGeometry(QRect(30, 20, 661, 421));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Comic Sans MS")});
+        font.setPointSize(14);
+        font.setBold(true);
+        groups->setFont(font);
         groups->setLayoutDirection(Qt::LeftToRight);
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
@@ -216,7 +247,7 @@ public:
         showchanges = new QPushButton(layoutWidget);
         showchanges->setObjectName(QString::fromUtf8("showchanges"));
         QIcon icon8;
-        icon8.addFile(QString::fromUtf8("img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon8.addFile(QString::fromUtf8(":/rec/img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
         showchanges->setIcon(icon8);
 
         verticalLayout->addWidget(showchanges);
@@ -233,13 +264,14 @@ public:
 
         add_mybasket = new QPushButton(layoutWidget);
         add_mybasket->setObjectName(QString::fromUtf8("add_mybasket"));
+        add_mybasket->setIcon(icon2);
 
         horizontalLayout->addWidget(add_mybasket);
 
         addtogroup = new QPushButton(layoutWidget);
         addtogroup->setObjectName(QString::fromUtf8("addtogroup"));
         QIcon icon10;
-        icon10.addFile(QString::fromUtf8("img/add to groups 2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon10.addFile(QString::fromUtf8(":/rec/img/download (1).png"), QSize(), QIcon::Normal, QIcon::Off);
         addtogroup->setIcon(icon10);
         addtogroup->setIconSize(QSize(18, 16));
 
@@ -311,6 +343,7 @@ public:
 
         pushButton_2 = new QPushButton(layoutWidget1);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setIcon(icon1);
 
         verticalLayout_2->addWidget(pushButton_2);
 
@@ -318,11 +351,13 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         deleteforgroups = new QPushButton(layoutWidget1);
         deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
+        deleteforgroups->setIcon(icon11);
 
         horizontalLayout_4->addWidget(deleteforgroups);
 
         change_group_name = new QPushButton(layoutWidget1);
         change_group_name->setObjectName(QString::fromUtf8("change_group_name"));
+        change_group_name->setIcon(icon4);
 
         horizontalLayout_4->addWidget(change_group_name);
 
@@ -394,6 +429,9 @@ public:
 
         update_spinbox = new QPushButton(layoutWidget2);
         update_spinbox->setObjectName(QString::fromUtf8("update_spinbox"));
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/rec/img/update3.png"), QSize(), QIcon::Normal, QIcon::Off);
+        update_spinbox->setIcon(icon12);
 
         horizontalLayout_6->addWidget(update_spinbox);
 
@@ -414,6 +452,7 @@ public:
 
         delete_from_list = new QPushButton(layoutWidget2);
         delete_from_list->setObjectName(QString::fromUtf8("delete_from_list"));
+        delete_from_list->setIcon(icon11);
 
         horizontalLayout_6->addWidget(delete_from_list);
 
@@ -432,9 +471,9 @@ public:
         menuuser_s_info->setToolTipsVisible(true);
         chnagepass = new QMenu(menuuser_s_info);
         chnagepass->setObjectName(QString::fromUtf8("chnagepass"));
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        chnagepass->setIcon(icon12);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        chnagepass->setIcon(icon13);
         menuReset = new QMenu(menuuser_s_info);
         menuReset->setObjectName(QString::fromUtf8("menuReset"));
         main_page->setMenuBar(menubar);
@@ -460,7 +499,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(0);
+        groups->setCurrentIndex(2);
         searchbutton->setDefault(false);
 
 
@@ -501,7 +540,7 @@ public:
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_basket->setText(QCoreApplication::translate("main_page", "current basket", nullptr));
         totalprice->setText(QString());
-        label_2->setText(QCoreApplication::translate("main_page", "$", nullptr));
+        label_2->setText(QCoreApplication::translate("main_page", "<html><head/><body><p><span style=\" color:#ff0a00;\">$</span></p></body></html>", nullptr));
         update_spinbox->setText(QCoreApplication::translate("main_page", "update", nullptr));
         spinBox->setPrefix(QString());
         unreserved->setText(QCoreApplication::translate("main_page", "unreserve", nullptr));

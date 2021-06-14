@@ -52,29 +52,35 @@ public:
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        centralwidget->setStyleSheet(QString::fromUtf8("\n"
-"#login\n"
+        centralwidget->setStyleSheet(QString::fromUtf8("#login\n"
 "{\n"
 " background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
 "                stop:0 white, stop: 0.4 rgb(155, 154, 156) stop:0.8 rgb(255, 163, 168));\n"
-"	font: 75 14pt \"Comic Sans MS\";\n"
+"	font: 75 16pt \"Comic Sans MS\";\n"
 "}\n"
 "#signup\n"
 "{\n"
 "background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
 "                stop:0 white, stop: 0.2 rgb(255, 163, 168) , stop:0.7 rgb(155, 154, 156));\n"
 "	\n"
-"	font: 75 14pt \"Comic Sans MS\";\n"
+"	font: 75 16pt \"Comic Sans MS\";\n"
 "}\n"
 "QLineEdit\n"
 "{\n"
-"	\n"
+"	 border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-radius: 4px;\n"
 "	font: 15pt \"Papyrus\";\n"
 "}\n"
+"\n"
 "#centralwidget\n"
 "{\n"
 "background: qconicalgradient(cx:0.5, cy:0.5, angle:30,\n"
 "                stop:0 white stop:1 rgb(255, 132, 129))\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color:white;\n"
 "}"));
         welcomepage = new QGroupBox(centralwidget);
         welcomepage->setObjectName(QString::fromUtf8("welcomepage"));
@@ -82,7 +88,7 @@ public:
         welcomepage->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(welcomepage);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 270, 291, 66));
+        layoutWidget->setGeometry(QRect(30, 270, 291, 81));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);

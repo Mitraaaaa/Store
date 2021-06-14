@@ -607,19 +607,28 @@ qrc_recources.cpp: ../Store/recources.qrc \
 		../Store/img/download.jpeg \
 		../Store/img/download.png \
 		../Store/img/pass_user.png \
+		../Store/img/details.png \
 		../Store/img/add.png \
+		../Store/img/main_list.png \
 		../Store/img/download\ (1).jpeg \
 		../Store/img/delete.jpeg \
 		../Store/img/erase_delete_remove_wipe_out-128.png \
+		../Store/img/update.png \
 		../Store/img/login.png \
 		../Store/img/groups.png \
+		../Store/img/add\ to\ groups\ 2.png \
 		../Store/img/serchh.png \
+		../Store/img/mainlist2.png \
 		../Store/img/edit.png \
 		../Store/img/search.jpeg \
+		../Store/img/update3.png \
 		../Store/img/pass.jpeg \
 		../Store/img/basket.png \
 		../Store/img/pass.png \
 		../Store/img/logout.jpeg \
+		../Store/img/add\ to\ groups.png \
+		../Store/img/update2.png \
+		../Store/img/download\ (1).png \
 		../Store/img/340.png \
 		../Store/img/close.png \
 		../Store/img/images.png \
@@ -708,6 +717,7 @@ moc_editpage.cpp: ../Store/editpage.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../Store/group.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/editpage.h -o moc_editpage.cpp
@@ -723,6 +733,8 @@ moc_main_page.cpp: ../Store/main_page.h \
 		../Store/group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QTreeWidget \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMapIterator \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qmap.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/main_page.h -o moc_main_page.cpp
@@ -884,6 +896,7 @@ editpage.o: ../Store/editpage.cpp ../Store/editpage.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../Store/group.h \
 		ui_editpage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editpage.o ../Store/editpage.cpp
 
@@ -919,6 +932,8 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../Store/group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QTreeWidget \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMapIterator \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qmap.h \
 		ui_main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
@@ -932,7 +947,9 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../Store/editpage.h \
 		../Store/add_group.h \
-		../Store/change_group_name.h
+		../Store/change_group_name.h \
+		../Store/change_password.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Store/main_page.cpp
 
 mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
@@ -959,8 +976,9 @@ mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
 		../Store/group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QTreeWidget \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
-		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMap \
-		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qmap.h
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMapIterator \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Store/mainwindow.cpp
 
 products.o: ../Store/products.cpp ../Store/products.h \

@@ -18,29 +18,35 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">
-#login
+    <string notr="true">#login
 {
  background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                 stop:0 white, stop: 0.4 rgb(155, 154, 156) stop:0.8 rgb(255, 163, 168));
-	font: 75 14pt &quot;Comic Sans MS&quot;;
+	font: 75 16pt &quot;Comic Sans MS&quot;;
 }
 #signup
 {
 background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                 stop:0 white, stop: 0.2 rgb(255, 163, 168) , stop:0.7 rgb(155, 154, 156));
 	
-	font: 75 14pt &quot;Comic Sans MS&quot;;
+	font: 75 16pt &quot;Comic Sans MS&quot;;
 }
 QLineEdit
 {
-	
+	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
 	font: 15pt &quot;Papyrus&quot;;
 }
+
 #centralwidget
 {
 background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
                 stop:0 white stop:1 rgb(255, 132, 129))
+}
+
+QPushButton:hover {
+color:white;
 }</string>
    </property>
    <widget class="QGroupBox" name="welcomepage">
@@ -64,7 +70,7 @@ background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
        <x>30</x>
        <y>270</y>
        <width>291</width>
-       <height>66</height>
+       <height>81</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
