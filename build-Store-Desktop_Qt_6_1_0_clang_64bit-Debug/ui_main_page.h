@@ -121,6 +121,7 @@ public:
     QComboBox *combo_basket_sorttype;
     QSpacerItem *horizontalSpacer_10;
     QPushButton *sort_basket_button;
+    QLabel *welcome;
     QWidget *widget1;
     QVBoxLayout *verticalLayout_4;
     QMenuBar *menubar;
@@ -170,11 +171,14 @@ public:
         actionLog_out->setIcon(icon5);
         actionReset_the_list = new QAction(main_page);
         actionReset_the_list->setObjectName(QString::fromUtf8("actionReset_the_list"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/rec/img/update2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionReset_the_list->setIcon(icon6);
         actionMain_list = new QAction(main_page);
         actionMain_list->setObjectName(QString::fromUtf8("actionMain_list"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8("img/mainlist2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionMain_list->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/rec/img/mainlist2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionMain_list->setIcon(icon7);
         actionGroups_2 = new QAction(main_page);
         actionGroups_2->setObjectName(QString::fromUtf8("actionGroups_2"));
         actionGroups_2->setIcon(icon1);
@@ -228,7 +232,7 @@ public:
 "}"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
-        groups->setGeometry(QRect(30, 20, 671, 421));
+        groups->setGeometry(QRect(30, 40, 671, 421));
         groups->setMaximumSize(QSize(671, 421));
         QFont font;
         font.setFamilies({QString::fromUtf8("Comic Sans MS")});
@@ -275,9 +279,9 @@ public:
         searchbutton->setObjectName(QString::fromUtf8("searchbutton"));
         searchbutton->setMinimumSize(QSize(75, 0));
         searchbutton->setStyleSheet(QString::fromUtf8(""));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/rec/img/search.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        searchbutton->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/rec/img/search.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        searchbutton->setIcon(icon8);
         searchbutton->setIconSize(QSize(16, 16));
         searchbutton->setFlat(false);
 
@@ -296,9 +300,9 @@ public:
 
         showchanges = new QPushButton(widget);
         showchanges->setObjectName(QString::fromUtf8("showchanges"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/rec/img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
-        showchanges->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/rec/img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
+        showchanges->setIcon(icon9);
 
         verticalLayout->addWidget(showchanges);
 
@@ -306,9 +310,9 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         addtolist = new QPushButton(widget);
         addtolist->setObjectName(QString::fromUtf8("addtolist"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addtolist->setIcon(icon9);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/rec/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addtolist->setIcon(icon10);
 
         horizontalLayout->addWidget(addtolist);
 
@@ -320,18 +324,18 @@ public:
 
         addtogroup = new QPushButton(widget);
         addtogroup->setObjectName(QString::fromUtf8("addtogroup"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/rec/img/download (1).png"), QSize(), QIcon::Normal, QIcon::Off);
-        addtogroup->setIcon(icon10);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/rec/img/download (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        addtogroup->setIcon(icon11);
         addtogroup->setIconSize(QSize(18, 16));
 
         horizontalLayout->addWidget(addtogroup);
 
         delete_2 = new QPushButton(widget);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        delete_2->setIcon(icon11);
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/rec/img/delete.jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        delete_2->setIcon(icon12);
 
         horizontalLayout->addWidget(delete_2);
 
@@ -417,7 +421,7 @@ public:
 
         search_button_group = new QPushButton(layoutWidget);
         search_button_group->setObjectName(QString::fromUtf8("search_button_group"));
-        search_button_group->setIcon(icon7);
+        search_button_group->setIcon(icon8);
 
         horizontalLayout_3->addWidget(search_button_group);
 
@@ -442,7 +446,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         deleteforgroups = new QPushButton(layoutWidget);
         deleteforgroups->setObjectName(QString::fromUtf8("deleteforgroups"));
-        deleteforgroups->setIcon(icon11);
+        deleteforgroups->setIcon(icon12);
 
         horizontalLayout_4->addWidget(deleteforgroups);
 
@@ -558,9 +562,9 @@ public:
 
         update_spinbox = new QPushButton(layoutWidget1);
         update_spinbox->setObjectName(QString::fromUtf8("update_spinbox"));
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/rec/img/update3.png"), QSize(), QIcon::Normal, QIcon::Off);
-        update_spinbox->setIcon(icon12);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/rec/img/update3.png"), QSize(), QIcon::Normal, QIcon::Off);
+        update_spinbox->setIcon(icon13);
 
         horizontalLayout_6->addWidget(update_spinbox);
 
@@ -581,7 +585,7 @@ public:
 
         delete_from_list = new QPushButton(layoutWidget1);
         delete_from_list->setObjectName(QString::fromUtf8("delete_from_list"));
-        delete_from_list->setIcon(icon11);
+        delete_from_list->setIcon(icon12);
 
         horizontalLayout_6->addWidget(delete_from_list);
 
@@ -627,6 +631,9 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_10);
 
         groups->addTab(tab_4, QString());
+        welcome = new QLabel(centralwidget);
+        welcome->setObjectName(QString::fromUtf8("welcome"));
+        welcome->setGeometry(QRect(30, 20, 291, 16));
         widget1 = new QWidget(centralwidget);
         widget1->setObjectName(QString::fromUtf8("widget1"));
         widget1->setGeometry(QRect(0, 0, 2, 2));
@@ -644,9 +651,9 @@ public:
         menuuser_s_info->setToolTipsVisible(true);
         chnagepass = new QMenu(menuuser_s_info);
         chnagepass->setObjectName(QString::fromUtf8("chnagepass"));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
-        chnagepass->setIcon(icon13);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/rec/img/download (1).jpeg"), QSize(), QIcon::Normal, QIcon::Off);
+        chnagepass->setIcon(icon14);
         menuReset = new QMenu(menuuser_s_info);
         menuReset->setObjectName(QString::fromUtf8("menuReset"));
         main_page->setMenuBar(menubar);
@@ -729,6 +736,7 @@ public:
         label_8->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
         sort_basket_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
+        welcome->setText(QString());
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
         menuReset->setTitle(QCoreApplication::translate("main_page", "Reset", nullptr));

@@ -77,7 +77,7 @@ QLabel
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>20</y>
+      <y>40</y>
       <width>671</width>
       <height>421</height>
      </rect>
@@ -724,6 +724,19 @@ QLabel
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="welcome">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>291</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
@@ -848,14 +861,18 @@ QLabel
    </property>
   </action>
   <action name="actionReset_the_list">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/update2.png</normaloff>:/rec/img/update2.png</iconset>
+   </property>
    <property name="text">
     <string extracomment="This will delete the whole existing list">Reset the list</string>
    </property>
   </action>
   <action name="actionMain_list">
    <property name="icon">
-    <iconset>
-     <normaloff>img/mainlist2.png</normaloff>img/mainlist2.png</iconset>
+    <iconset resource="recources.qrc">
+     <normaloff>:/rec/img/mainlist2.png</normaloff>:/rec/img/mainlist2.png</iconset>
    </property>
    <property name="text">
     <string>Main List</string>

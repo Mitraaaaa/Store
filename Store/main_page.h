@@ -41,8 +41,6 @@ private slots:
 
     void on_addtolist_clicked();
 
-    void on_showchanges_clicked();
-
     void on_actionLog_out_triggered();
 
     void on_searchbutton_clicked();

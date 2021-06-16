@@ -17,6 +17,7 @@
 #include"change_password.h"
 #include<QtAlgorithms>
 #include<algorithm>
+#include"mainwindow.h"
 main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::iterator current_user,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page),user_pass_ptr(user_pass),user_iterator(current_user)
@@ -30,6 +31,8 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab1();
     default_view_tab2();
     default_view_tab3();
+    QString username="Welcome " +user_iterator.key();
+    ui->welcome->setText(username+ " !");
     //tab1 search
     ui->comosearchtab1->addItem("Start with");
     ui->comosearchtab1->addItem("Contains");
@@ -469,11 +472,6 @@ void main_page::on_addtolist_clicked()
     showchanges();
 }
 
-void main_page::on_showchanges_clicked()
-{
-    showchanges();
-}
-
 void main_page::on_actionLog_out_triggered()
 {
     QMessageBox msgBox;
@@ -490,11 +488,17 @@ void main_page::on_actionLog_out_triggered()
             save_groups_file();
             //save my basket
             save_my_basket_file();
+            MainWindow *mainWindow = new MainWindow();
+                mainWindow->show();
             this->close();
         }
           break;
       case QMessageBox::Discard:
-         this->close();
+    {
+        MainWindow *mainWindow = new MainWindow();
+        mainWindow->show();
+        this->close();
+    }
           // Don't Save was clicked
           break;
       default:
