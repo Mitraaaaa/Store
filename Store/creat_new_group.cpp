@@ -6,6 +6,7 @@ creat_new_group::creat_new_group(QList<group>* groups,products pro ,QWidget *par
     ui(new Ui::creat_new_group),group_pointer(groups),chosen_pro(pro)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
 }
 
 creat_new_group::~creat_new_group()

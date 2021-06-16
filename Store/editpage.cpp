@@ -7,6 +7,8 @@ editpage::editpage(QList<products>* list,int i,QList<group> * group ,QWidget *pa
     ui(new Ui::editpage),list_pointer(list),index(i),group_pointer(group)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
+
     ui->name->setText((*list_pointer)[index].get_name());
     ui->lineEditconsmer->setText((*list_pointer)[index].get_consumer());
     ui->lineEdittype->setText((*list_pointer)[index].get_type());

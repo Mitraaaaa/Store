@@ -9,6 +9,7 @@ Add_group::Add_group(QList<group> * group,products chosen,QWidget *parent) :
     ui(new Ui::Add_group),group_pointer(group),chosen_products(chosen)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
     for(int i=0;i<group_pointer->size();i++)
     {
         ui->comboBox->addItem((*group_pointer)[i].get_group_name());

@@ -6,6 +6,7 @@ change_password::change_password( QMap<QString,QString> *user_pass,QWidget *pare
     ui(new Ui::change_password),user_pass_ptr(user_pass)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
 }
 
 change_password::~change_password()

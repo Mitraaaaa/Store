@@ -3,18 +3,21 @@
 #include "products.h"
 #include<QMessageBox>
 #include<iostream>
-#include <read_files.h>
 #include<main_page.h>
 #include<QList>
 #include<QMap>
 #include<QList>
 using namespace std;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     user_pass=new QMap<QString,QString>;
     ui->setupUi(this);
+    //disable maximize
+    this->setFixedSize(this->width(),this->height());
+
     QFile file("user_pass.txt");
     if(file.open(QIODevice::ReadOnly |QIODevice::Text))
     {
@@ -73,34 +76,46 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_signup_clicked()
 {
-    if(user_pass->size()==0)
+    if(!ui->username->text().isEmpty() && !ui->password->text().isEmpty())
     {
-        user_pass->insert(ui->username->text(),ui->password->text());
-        save_user_pass_file();
-        main_page *newmain= new main_page(user_pass,user_pass->begin());
-        newmain->show();
+        if(user_pass->size()==0)
+        {
+            user_pass->insert(ui->username->text(),ui->password->text());
+            save_user_pass_file();
+            main_page *newmain= new main_page(user_pass,user_pass->begin());
+            newmain->show();
+        }
+        else
+        {
+            bool alredy_exist=false;
+            for(int i=0;i<user_pass->size();i++)
+            {
+                if (user_pass->find(ui->username->text())!=user_pass->end())
+                {
+                    QMessageBox::warning(this,"title","This Username is already used,try another one !");
+                    ui->username->clear();
+                    alredy_exist=true;
+                    break;
+                }
+            }
+            if(!alredy_exist)
+            {
+                user_pass->insert(ui->username->text(),ui->password->text());
+                save_user_pass_file();
+                main_page *newmain= new main_page(user_pass,user_pass->find(ui->username->text()));
+                newmain->show();
+            }
+
+        }
     }
     else
     {
-        bool alredy_exist=false;
-        for(int i=0;i<user_pass->size();i++)
-        {
-           if (user_pass->find(ui->username->text())!=user_pass->end())
-           {
-                 QMessageBox::warning(this,"title","This Username is already used,try another one !");
-                 ui->username->clear();
-                 alredy_exist=true;
-                 break;
-           }
-        }
-        if(!alredy_exist)
-        {
-            user_pass->insert(ui->username->text(),ui->password->text());
-             save_user_pass_file();
-            main_page *newmain= new main_page(user_pass,user_pass->find(ui->username->text()));
-            newmain->show();
-        }
+        QMessageBox::warning(this,"title","Blank is not allowed!");
+        if(ui->username->text().isEmpty())
+             (*(ui->username)).setStyleSheet(" background-color: #ffffcc");
 
+        if(ui->password->text().isEmpty())
+            (*(ui->password)).setStyleSheet(" background-color: #ffffcc");
     }
 }
 void MainWindow::on_login_clicked()

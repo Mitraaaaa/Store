@@ -8,6 +8,7 @@ add_pro::add_pro(QList<products> * list,QWidget *parent) :
 
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
 }
 
 add_pro::~add_pro()

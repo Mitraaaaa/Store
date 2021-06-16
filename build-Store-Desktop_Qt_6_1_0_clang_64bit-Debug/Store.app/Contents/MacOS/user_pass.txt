@@ -1,5 +1,3 @@
-Username :
-Password :
 Username :mina
 Password :123
 Username :mitra

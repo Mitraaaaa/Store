@@ -20,8 +20,7 @@ SOURCES += \
     main.cpp \
     main_page.cpp \
     mainwindow.cpp \
-    products.cpp \
-    read_files.cpp
+    products.cpp
 
 HEADERS += \
     add_group.h \
@@ -34,8 +33,7 @@ HEADERS += \
     group.h \
     main_page.h \
     mainwindow.h \
-    products.h \
-    read_files.h
+    products.h
 
 FORMS += \
     add_group.ui \
@@ -45,8 +43,7 @@ FORMS += \
     creat_new_group.ui \
     editpage.ui \
     main_page.ui \
-    mainwindow.ui \
-    read_files.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

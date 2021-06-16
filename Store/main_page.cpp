@@ -22,6 +22,8 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui(new Ui::main_page),user_pass_ptr(user_pass),user_iterator(current_user)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
+
     group_pointer= new QList<group>;
     list_pointer=new QList<products>;
     my_basket=new QList<products>;
@@ -1190,7 +1192,6 @@ void main_page::on_sort_groups_button_clicked()
      showchanges_tab2();
 
 }
-
 
 void main_page::on_sort_basket_button_clicked()
 {

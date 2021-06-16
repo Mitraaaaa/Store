@@ -134,6 +134,7 @@ public:
         if (main_page->objectName().isEmpty())
             main_page->setObjectName(QString::fromUtf8("main_page"));
         main_page->resize(733, 555);
+        main_page->setMinimumSize(QSize(0, 0));
         main_page->setStyleSheet(QString::fromUtf8(""));
         main_page->setToolButtonStyle(Qt::ToolButtonIconOnly);
         main_page->setTabShape(QTabWidget::Rounded);
@@ -228,12 +229,14 @@ public:
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
         groups->setGeometry(QRect(30, 20, 671, 421));
+        groups->setMaximumSize(QSize(671, 421));
         QFont font;
         font.setFamilies({QString::fromUtf8("Comic Sans MS")});
         font.setPointSize(14);
         font.setBold(true);
         groups->setFont(font);
         groups->setLayoutDirection(Qt::LeftToRight);
+        groups->setStyleSheet(QString::fromUtf8(""));
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
         groups->setIconSize(QSize(20, 20));
@@ -669,7 +672,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(2);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 

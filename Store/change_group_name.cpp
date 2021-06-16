@@ -6,6 +6,7 @@ change_group_name::change_group_name( QList<group> * group,int i,QWidget *parent
     ui(new Ui::change_group_name),group_pointer(group),index(i)
 {
     ui->setupUi(this);
+    this->setFixedSize(this->width(),this->height());
 }
 
 change_group_name::~change_group_name()
