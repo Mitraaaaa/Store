@@ -66,10 +66,12 @@ public:
     QPushButton *edit;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label;
-    QComboBox *comboBox;
-    QComboBox *comboBox_2;
-    QSpacerItem *horizontalSpacer_5;
-    QPushButton *pushButton;
+    QComboBox *combo_mainlist_sortby;
+    QSpacerItem *horizontalSpacer_8;
+    QLabel *label_6;
+    QComboBox *combo_mainlist_sorttype;
+    QSpacerItem *horizontalSpacer_4;
+    QPushButton *sort_mainlist_button;
     QWidget *tab_5;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
@@ -84,6 +86,14 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *deleteforgroups;
     QPushButton *change_group_name;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *label_4;
+    QComboBox *combo_groups_sortby;
+    QSpacerItem *horizontalSpacer_9;
+    QLabel *label_7;
+    QComboBox *combo_groups_sorttype;
+    QSpacerItem *horizontalSpacer_6;
+    QPushButton *sort_groups_button;
     QWidget *tab_4;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_3;
@@ -103,6 +113,14 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QPushButton *unreserved;
     QPushButton *delete_from_list;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *label_5;
+    QComboBox *combo_basket_sortby;
+    QSpacerItem *horizontalSpacer_7;
+    QLabel *label_8;
+    QComboBox *combo_basket_sorttype;
+    QSpacerItem *horizontalSpacer_10;
+    QPushButton *sort_basket_button;
     QWidget *widget1;
     QVBoxLayout *verticalLayout_4;
     QMenuBar *menubar;
@@ -201,6 +219,11 @@ public:
 "background-color:rgb(255, 255, 255);\n"
 "font: 13pt \"Comic Sans MS\";\n"
 "font: 15pt \"Papyrus\";\n"
+"}\n"
+"QL"
+                        "abel\n"
+"{\n"
+"	font: 15pt \"Comic Sans MS\";\n"
 "}"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
@@ -220,7 +243,7 @@ public:
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         widget = new QWidget(tab_3);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(18, 24, 641, 354));
+        widget->setGeometry(QRect(18, 24, 631, 354));
         verticalLayout_5 = new QVBoxLayout(widget);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -328,24 +351,33 @@ public:
 
         horizontalLayout_7->addWidget(label);
 
-        comboBox = new QComboBox(widget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        combo_mainlist_sortby = new QComboBox(widget);
+        combo_mainlist_sortby->setObjectName(QString::fromUtf8("combo_mainlist_sortby"));
 
-        horizontalLayout_7->addWidget(comboBox);
+        horizontalLayout_7->addWidget(combo_mainlist_sortby);
 
-        comboBox_2 = new QComboBox(widget);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        horizontalSpacer_8 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        horizontalLayout_7->addWidget(comboBox_2);
+        horizontalLayout_7->addItem(horizontalSpacer_8);
 
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        label_6 = new QLabel(widget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
 
-        horizontalLayout_7->addItem(horizontalSpacer_5);
+        horizontalLayout_7->addWidget(label_6);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        combo_mainlist_sorttype = new QComboBox(widget);
+        combo_mainlist_sorttype->setObjectName(QString::fromUtf8("combo_mainlist_sorttype"));
 
-        horizontalLayout_7->addWidget(pushButton);
+        horizontalLayout_7->addWidget(combo_mainlist_sorttype);
+
+        horizontalSpacer_4 = new QSpacerItem(100, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_4);
+
+        sort_mainlist_button = new QPushButton(widget);
+        sort_mainlist_button->setObjectName(QString::fromUtf8("sort_mainlist_button"));
+
+        horizontalLayout_7->addWidget(sort_mainlist_button);
 
 
         verticalLayout_5->addLayout(horizontalLayout_7);
@@ -355,7 +387,7 @@ public:
         tab_5->setObjectName(QString::fromUtf8("tab_5"));
         layoutWidget = new QWidget(tab_5);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(17, 17, 631, 341));
+        layoutWidget->setGeometry(QRect(17, 17, 641, 352));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -420,12 +452,50 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_4);
 
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        label_4 = new QLabel(layoutWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        horizontalLayout_9->addWidget(label_4);
+
+        combo_groups_sortby = new QComboBox(layoutWidget);
+        combo_groups_sortby->setObjectName(QString::fromUtf8("combo_groups_sortby"));
+
+        horizontalLayout_9->addWidget(combo_groups_sortby);
+
+        horizontalSpacer_9 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_9);
+
+        label_7 = new QLabel(layoutWidget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        horizontalLayout_9->addWidget(label_7);
+
+        combo_groups_sorttype = new QComboBox(layoutWidget);
+        combo_groups_sorttype->setObjectName(QString::fromUtf8("combo_groups_sorttype"));
+
+        horizontalLayout_9->addWidget(combo_groups_sorttype);
+
+        horizontalSpacer_6 = new QSpacerItem(100, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_6);
+
+        sort_groups_button = new QPushButton(layoutWidget);
+        sort_groups_button->setObjectName(QString::fromUtf8("sort_groups_button"));
+
+        horizontalLayout_9->addWidget(sort_groups_button);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_9);
+
         groups->addTab(tab_5, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
         layoutWidget1 = new QWidget(tab_4);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 20, 631, 351));
+        layoutWidget1->setGeometry(QRect(20, 20, 631, 352));
         verticalLayout_3 = new QVBoxLayout(layoutWidget1);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -515,6 +585,44 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_6);
 
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
+        label_5 = new QLabel(layoutWidget1);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        horizontalLayout_10->addWidget(label_5);
+
+        combo_basket_sortby = new QComboBox(layoutWidget1);
+        combo_basket_sortby->setObjectName(QString::fromUtf8("combo_basket_sortby"));
+
+        horizontalLayout_10->addWidget(combo_basket_sortby);
+
+        horizontalSpacer_7 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_7);
+
+        label_8 = new QLabel(layoutWidget1);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        horizontalLayout_10->addWidget(label_8);
+
+        combo_basket_sorttype = new QComboBox(layoutWidget1);
+        combo_basket_sorttype->setObjectName(QString::fromUtf8("combo_basket_sorttype"));
+
+        horizontalLayout_10->addWidget(combo_basket_sorttype);
+
+        horizontalSpacer_10 = new QSpacerItem(100, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_10);
+
+        sort_basket_button = new QPushButton(layoutWidget1);
+        sort_basket_button->setObjectName(QString::fromUtf8("sort_basket_button"));
+
+        horizontalLayout_10->addWidget(sort_basket_button);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_10);
+
         groups->addTab(tab_4, QString());
         widget1 = new QWidget(centralwidget);
         widget1->setObjectName(QString::fromUtf8("widget1"));
@@ -594,12 +702,16 @@ public:
         delete_2->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         edit->setText(QCoreApplication::translate("main_page", "edit", nullptr));
         label->setText(QCoreApplication::translate("main_page", "sort by :", nullptr));
-        pushButton->setText(QCoreApplication::translate("main_page", "PushButton", nullptr));
+        label_6->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
+        sort_mainlist_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Main List", nullptr));
         search_button_group->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
         pushButton_2->setText(QCoreApplication::translate("main_page", "current group_list", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
         change_group_name->setText(QCoreApplication::translate("main_page", "change Group's name", nullptr));
+        label_4->setText(QCoreApplication::translate("main_page", "sort by :", nullptr));
+        label_7->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
+        sort_groups_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         searchzone_mybasket->setText(QString());
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
@@ -610,6 +722,9 @@ public:
         spinBox->setPrefix(QString());
         unreserved->setText(QCoreApplication::translate("main_page", "unreserve", nullptr));
         delete_from_list->setText(QCoreApplication::translate("main_page", "delete", nullptr));
+        label_5->setText(QCoreApplication::translate("main_page", "sort by :", nullptr));
+        label_8->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
+        sort_basket_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));

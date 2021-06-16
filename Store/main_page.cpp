@@ -26,7 +26,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab1();
     default_view_tab2();
     default_view_tab3();
-    //tab1
+    //tab1 search
     ui->comosearchtab1->addItem("Start with");
     ui->comosearchtab1->addItem("Contains");
     ui->combo_search_by_tab1->addItem("Products");
@@ -34,7 +34,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_search_by_tab1->addItem("Type");
     ui->combo_search_by_tab1->addItem("Number");
     ui->combo_search_by_tab1->addItem("Price");
-    //tab2
+    //tab2 search
     ui->combobox_searchtab2_startwith->addItem("Start with");
     ui->combobox_searchtab2_startwith->addItem("Contains");
     ui->comosearchtab2->addItem("Group's name");
@@ -43,7 +43,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comosearchtab2->addItem("Type");
     ui->comosearchtab2->addItem("Number");
     ui->comosearchtab2->addItem("Price");
-    //tab3
+    //tab3 search
     ui->comboBox_2_my_basket->addItem("Start with");
     ui->comboBox_2_my_basket->addItem("Contains");
     ui->comboBox_mybasket->addItem("Products");
@@ -51,6 +51,27 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comboBox_mybasket->addItem("Type");
     ui->comboBox_mybasket->addItem("Number of purchase");
     ui->comboBox_mybasket->addItem("Price");
+
+    //tab1 sort
+    ui->combo_mainlist_sortby->addItem("Product's name");
+    ui->combo_mainlist_sortby->addItem("Consumer");
+    ui->combo_mainlist_sortby->addItem("Type");
+    ui->combo_mainlist_sortby->addItem("Number of existence");
+    ui->combo_mainlist_sortby->addItem("Price");
+    ui->combo_mainlist_sorttype->addItem("Ascending");
+    ui->combo_mainlist_sorttype->addItem("Descending");
+    //tab2 sort
+    ui->combo_groups_sortby->addItem("Group's name");
+    ui->combo_mainlist_sorttype->addItem("Ascending");
+    ui->combo_mainlist_sorttype->addItem("Descending");
+    //tab3 sort
+    ui->combo_basket_sortby->addItem("Product's name");
+    ui->combo_basket_sortby->addItem("Consumer");
+    ui->combo_basket_sortby->addItem("Type");
+    ui->combo_basket_sortby->addItem("Number of purcahse");
+    ui->combo_basket_sortby->addItem("Price");
+    ui->combo_basket_sorttype->addItem("Ascending");
+    ui->combo_basket_sorttype->addItem("Descending");
 }
 
 void main_page::default_view_tab1()

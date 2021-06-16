@@ -61,6 +61,10 @@ QLineEdit
 background-color:rgb(255, 255, 255);
 font: 13pt &quot;Comic Sans MS&quot;;
 font: 15pt &quot;Papyrus&quot;;
+}
+QLabel
+{
+	font: 15pt &quot;Comic Sans MS&quot;;
 }</string>
    </property>
    <widget class="QTabWidget" name="groups">
@@ -113,7 +117,7 @@ font: 15pt &quot;Papyrus&quot;;
        <rect>
         <x>18</x>
         <y>24</y>
-        <width>641</width>
+        <width>631</width>
         <height>354</height>
        </rect>
       </property>
@@ -279,28 +283,54 @@ font: 15pt &quot;Papyrus&quot;;
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox"/>
+          <widget class="QComboBox" name="combo_mainlist_sortby"/>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_2"/>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_5">
+          <spacer name="horizontalSpacer_8">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>30</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QLabel" name="label_6">
            <property name="text">
-            <string>PushButton</string>
+            <string>sort type :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_mainlist_sorttype"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>100</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sort_mainlist_button">
+           <property name="text">
+            <string>sort</string>
            </property>
           </widget>
          </item>
@@ -318,8 +348,8 @@ font: 15pt &quot;Papyrus&quot;;
        <rect>
         <x>17</x>
         <y>17</y>
-        <width>631</width>
-        <height>341</height>
+        <width>641</width>
+        <height>352</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -409,6 +439,69 @@ font: 15pt &quot;Papyrus&quot;;
          </item>
         </layout>
        </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>sort by :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_groups_sortby"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>sort type :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_groups_sorttype"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>100</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sort_groups_button">
+           <property name="text">
+            <string>sort</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -422,7 +515,7 @@ font: 15pt &quot;Papyrus&quot;;
         <x>20</x>
         <y>20</y>
         <width>631</width>
-        <height>351</height>
+        <height>352</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -544,6 +637,69 @@ font: 15pt &quot;Papyrus&quot;;
            <property name="icon">
             <iconset resource="recources.qrc">
              <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>sort by :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_basket_sortby"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>sort type :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_basket_sorttype"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>100</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sort_basket_button">
+           <property name="text">
+            <string>sort</string>
            </property>
           </widget>
          </item>
