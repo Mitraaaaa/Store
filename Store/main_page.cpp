@@ -15,6 +15,8 @@
 #include"add_group.h"
 #include"change_group_name.h"
 #include"change_password.h"
+#include<QtAlgorithms>
+#include<algorithm>
 main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::iterator current_user,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::main_page),user_pass_ptr(user_pass),user_iterator(current_user)
@@ -62,8 +64,8 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_mainlist_sorttype->addItem("Descending");
     //tab2 sort
     ui->combo_groups_sortby->addItem("Group's name");
-    ui->combo_mainlist_sorttype->addItem("Ascending");
-    ui->combo_mainlist_sorttype->addItem("Descending");
+    ui->combo_groups_sorttype->addItem("Ascending");
+    ui->combo_groups_sorttype->addItem("Descending");
     //tab3 sort
     ui->combo_basket_sortby->addItem("Product's name");
     ui->combo_basket_sortby->addItem("Consumer");
@@ -739,11 +741,15 @@ void main_page::on_add_mybasket_clicked()
         if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
         {
                found=true;
-            if((*list_pointer)[i].get_number()!=0)
+            if((*list_pointer)[i].get_number()>0)
             {
                 (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
                 (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
                 (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+                if((*list_pointer)[i].get_number()==0)
+                {
+                    list_pointer->erase(list_pointer->begin()+i);
+                }
                 showchanges();
                 break;
             }
@@ -756,10 +762,14 @@ void main_page::on_add_mybasket_clicked()
     }
     if(!found)
     {
-         added_to_my_basket.set_number(1);
-         (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
-         showchanges();
-         my_basket->append(added_to_my_basket);
+        if((*list_pointer)[i].get_number()>0)
+        {
+            added_to_my_basket.set_number(1);
+            (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+            showchanges();
+            my_basket->append(added_to_my_basket);
+        }
+        else  QMessageBox::warning(this,"title","This item has been finished!");
     }
     showchanges_tab3();
 }
@@ -1113,5 +1123,95 @@ void main_page::on_actionGroups_2_triggered()
           break;
     }
 
+}
+
+bool comparePro_name( products one, products  two)
+{
+   return one.get_name().toLower() < two.get_name().toLower();
+}
+
+bool comparePro_consumer( products one, products two)
+{
+    return one.get_consumer().toLower() <two.get_consumer().toLower();
+}
+
+bool comparePro_type( products one, products two)
+{
+    return one.get_type().toLower() <two.get_type().toLower();
+}
+
+bool comparePro_number( products one, products two)
+{
+    return one.get_number() <two.get_number();
+}
+
+bool comparePro_price( products one, products two)
+{
+    return one.get_price() < two.get_price();
+}
+
+bool compareGroup(group one , group two)
+{
+    return one.get_group_name().toLower() < two.get_group_name().toLower();
+}
+
+void main_page::on_sort_mainlist_button_clicked()
+{
+    QString type=ui->combo_mainlist_sortby->currentText();
+    if(type=="Product's name")
+        std::sort(list_pointer->begin(),list_pointer->end(),comparePro_name);
+
+    else if(type=="Consumer")
+         std::sort(list_pointer->begin(),list_pointer->end(),comparePro_consumer);
+
+    else if(type=="Type")
+        std::sort(list_pointer->begin(),list_pointer->end(),comparePro_type);
+
+    else if(type=="Number of existence")
+         std::sort(list_pointer->begin(),list_pointer->end(),comparePro_number);
+
+    else if(type=="Price")
+        std::sort(list_pointer->begin(),list_pointer->end(),comparePro_price);
+
+    if(ui->combo_mainlist_sorttype->currentText()=="Descending")
+        std::reverse(list_pointer->begin(),list_pointer->end());
+
+    showchanges();
+
+}
+
+void main_page::on_sort_groups_button_clicked()
+{
+     if(ui->combo_groups_sortby->currentText()=="Group's name")
+         std::sort(group_pointer->begin(),group_pointer->end(),compareGroup);
+
+     if(ui->combo_groups_sorttype->currentText()=="Descending")
+         std::reverse(group_pointer->begin(),group_pointer->end());
+     showchanges_tab2();
+
+}
+
+
+void main_page::on_sort_basket_button_clicked()
+{
+    QString type=ui->combo_basket_sortby->currentText();
+    if(type=="Product's name")
+        std::sort(my_basket->begin(),my_basket->end(),comparePro_name);
+
+    else if(type=="Consumer")
+         std::sort(my_basket->begin(),my_basket->end(),comparePro_consumer);
+
+    else if(type=="Type")
+        std::sort(my_basket->begin(),my_basket->end(),comparePro_type);
+
+    else if(type=="Number of purcahse")
+         std::sort(my_basket->begin(),my_basket->end(),comparePro_number);
+
+    else if(type=="Price")
+        std::sort(my_basket->begin(),my_basket->end(),comparePro_price);
+
+    if(ui->combo_basket_sorttype->currentText()=="Descending")
+        std::reverse(my_basket->begin(),my_basket->end());
+    showchanges_tab3();
 }
 

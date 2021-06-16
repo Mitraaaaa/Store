@@ -33,6 +33,7 @@ public:
     void default_view_tab1();
     void default_view_tab2();
     void default_view_tab3();
+
     ~main_page();
 
 private slots:
@@ -86,6 +87,12 @@ private slots:
     void on_actionMy_Basket_triggered();
 
     void on_actionGroups_2_triggered();
+
+    void on_sort_mainlist_button_clicked();
+
+    void on_sort_groups_button_clicked();
+
+    void on_sort_basket_button_clicked();
 
 private:
     Ui::main_page *ui;
