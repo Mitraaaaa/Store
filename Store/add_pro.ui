@@ -6,108 +6,130 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>436</width>
+    <height>306</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
+                stop:0 rgb(193, 192, 193), stop:1 rgb(255, 159, 159))
+
+}
+QLineEdit
+{
+ border-width: 1px;
+    border-style: solid;
+    border-color:rgb(162, 10, 23);
+    border-radius: 4px;
+background-color:white;
+color:rgb(166, 5, 0);
+	font: 13pt &quot;Comic Sans MS&quot;;
+}
+QLabel
+{
+	
+	font: 75 16pt &quot;Comic Sans MS&quot;;
+color:black;
+}
+QPushButton
+{
+	
+	font: 75 14pt &quot;Comic Sans MS&quot;;
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));
+color:black;
+  	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>60</x>
      <y>20</y>
-     <width>321</width>
-     <height>261</height>
+     <width>311</width>
+     <height>231</height>
     </rect>
    </property>
-   <property name="title">
-    <string>ADD ITEM</string>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="name_2">
+        <property name="text">
+         <string>name :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="consumer_2">
+        <property name="text">
+         <string>consumer :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="type_2">
+        <property name="text">
+         <string>type :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="number_2">
+        <property name="text">
+         <string>number :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="price_2">
+        <property name="text">
+         <string>price</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="name"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="consumer"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="type"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="number"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="price"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="additem">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>260</y>
+     <width>151</width>
+     <height>32</height>
+    </rect>
    </property>
-   <widget class="QPushButton" name="additem">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>220</y>
-      <width>151</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>311</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="name_2">
-         <property name="text">
-          <string>name :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="consumer_2">
-         <property name="text">
-          <string>consumer :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="type_2">
-         <property name="text">
-          <string>type :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="number_2">
-         <property name="text">
-          <string>number :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="price">
-         <property name="text">
-          <string>price</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLineEdit" name="name"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="consumer"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="type"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="number"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="price_2"/>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+   <property name="text">
+    <string>Add</string>
+   </property>
   </widget>
  </widget>
  <resources/>

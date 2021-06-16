@@ -13,20 +13,58 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
+                stop:0 rgb(193, 192, 193), stop:1 rgb(255, 159, 159))
+
+}
+QLineEdit
+{
+ border-width: 1px;
+    border-style: solid;
+    border-color:rgb(162, 10, 23);
+    border-radius: 4px;
+background-color:white;
+color:rgb(166, 5, 0);
+	font: 13pt &quot;Comic Sans MS&quot;;
+}
+QLabel
+{
+	
+	font: 75 18pt &quot;Comic Sans MS&quot;;
+color:black;
+}
+QPushButton
+{
+	
+	font: 75 14pt &quot;Comic Sans MS&quot;;
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));
+color:black;
+  	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}</string>
+  </property>
   <widget class="QLineEdit" name="lineEdit_change_name">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>90</y>
-     <width>191</width>
+     <width>251</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="change_name_button">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>140</x>
      <y>160</y>
      <width>113</width>
      <height>32</height>
@@ -39,7 +77,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>110</x>
      <y>50</y>
      <width>141</width>
      <height>20</height>

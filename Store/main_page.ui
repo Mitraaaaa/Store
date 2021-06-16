@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
+    <width>733</width>
     <height>555</height>
    </rect>
   </property>
@@ -26,8 +26,11 @@
    <property name="styleSheet">
     <string notr="true">QComboBox QAbstractItemView {
     selection-background-color: rgb(255, 138, 125);
+    color:black;
 }
 QComboBox{
+backgroud-color:white;
+	color:black;
 	font: 13pt &quot;Comic Sans MS&quot;;
 }
 #centralwidget
@@ -38,16 +41,26 @@ background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
 QTreeWidget
 {
    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                stop:0 white, stop: 0.4 white, stop:1 rgb(255, 157, 149))
+                stop:0 white, stop: 0.4 white, stop:1 rgb(255, 157, 149));
+color:black;
+	font: 13pt &quot;Comic Sans MS&quot;;
 }
 QPushButton
 {
+	
 	font: 75 14pt &quot;Comic Sans MS&quot;;
 background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                 stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));
+color:black;
   	 border-width: 1px;
     border-style: solid;
     border-radius: 4px;
+}
+QLineEdit
+{
+background-color:rgb(255, 255, 255);
+font: 13pt &quot;Comic Sans MS&quot;;
+font: 15pt &quot;Papyrus&quot;;
 }</string>
    </property>
    <widget class="QTabWidget" name="groups">
@@ -55,7 +68,7 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>661</width>
+      <width>671</width>
       <height>421</height>
      </rect>
     </property>
@@ -77,7 +90,7 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -95,158 +108,199 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
      <attribute name="title">
       <string>Main List</string>
      </attribute>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>18</x>
         <y>24</y>
-        <width>631</width>
-        <height>341</height>
+        <width>641</width>
+        <height>354</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QComboBox" name="combo_search_by_tab1"/>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QComboBox" name="combo_search_by_tab1"/>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comosearchtab1">
+             <property name="currentText">
+              <string extracomment="type of search"/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="serchzone">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="maxLength">
+              <number>102767</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="searchbutton">
+             <property name="minimumSize">
+              <size>
+               <width>75</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>search</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
-          <widget class="QComboBox" name="comosearchtab1">
-           <property name="currentText">
-            <string extracomment="type of search"/>
-           </property>
+          <widget class="QTreeWidget" name="tree">
+           <column>
+            <property name="text">
+             <string notr="true">1</string>
+            </property>
+           </column>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="serchzone">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>21</height>
-            </size>
-           </property>
+          <widget class="QPushButton" name="showchanges">
            <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>102767</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="searchbutton">
-           <property name="minimumSize">
-            <size>
-             <width>75</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>search</string>
+            <string>current list</string>
            </property>
            <property name="icon">
             <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/search.jpeg</normaloff>:/rec/img/search.jpeg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="default">
-            <bool>false</bool>
-           </property>
-           <property name="flat">
-            <bool>false</bool>
+             <normaloff>:/rec/img/details.png</normaloff>:/rec/img/details.png</iconset>
            </property>
           </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPushButton" name="addtolist">
+             <property name="text">
+              <string>add to list</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="add_mybasket">
+             <property name="text">
+              <string>add to mybasket</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/basket.png</normaloff>:/rec/img/basket.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="addtogroup">
+             <property name="text">
+              <string>add to group</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/download (1).png</normaloff>:/rec/img/download (1).png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>16</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="delete_2">
+             <property name="text">
+              <string>delete</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="edit">
+             <property name="text">
+              <string>edit</string>
+             </property>
+             <property name="icon">
+              <iconset resource="recources.qrc">
+               <normaloff>:/rec/img/edit.png</normaloff>:/rec/img/edit.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="QTreeWidget" name="tree">
-         <column>
-          <property name="text">
-           <string notr="true">1</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="showchanges">
-         <property name="text">
-          <string>current list</string>
-         </property>
-         <property name="icon">
-          <iconset resource="recources.qrc">
-           <normaloff>:/rec/img/details.png</normaloff>:/rec/img/details.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QPushButton" name="addtolist">
+          <widget class="QLabel" name="label">
            <property name="text">
-            <string>add to list</string>
-           </property>
-           <property name="icon">
-            <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/add.png</normaloff>:/rec/img/add.png</iconset>
+            <string>sort by :</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="add_mybasket">
-           <property name="text">
-            <string>add to mybasket</string>
-           </property>
-           <property name="icon">
-            <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/basket.png</normaloff>:/rec/img/basket.png</iconset>
-           </property>
-          </widget>
+          <widget class="QComboBox" name="comboBox"/>
          </item>
          <item>
-          <widget class="QPushButton" name="addtogroup">
-           <property name="text">
-            <string>add to group</string>
+          <widget class="QComboBox" name="comboBox_2"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-           <property name="icon">
-            <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/download (1).png</normaloff>:/rec/img/download (1).png</iconset>
-           </property>
-           <property name="iconSize">
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>18</width>
-             <height>16</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
-          </widget>
+          </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="delete_2">
+          <widget class="QPushButton" name="pushButton">
            <property name="text">
-            <string>delete</string>
-           </property>
-           <property name="icon">
-            <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/delete.jpeg</normaloff>:/rec/img/delete.jpeg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="edit">
-           <property name="text">
-            <string>edit</string>
-           </property>
-           <property name="icon">
-            <iconset resource="recources.qrc">
-             <normaloff>:/rec/img/edit.png</normaloff>:/rec/img/edit.png</iconset>
+            <string>PushButton</string>
            </property>
           </widget>
          </item>
@@ -262,9 +316,9 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>27</x>
+        <x>17</x>
         <y>17</y>
-        <width>611</width>
+        <width>631</width>
         <height>341</height>
        </rect>
       </property>
@@ -381,7 +435,11 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
           <widget class="QComboBox" name="comboBox_2_my_basket"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="searchzone_mybasket"/>
+          <widget class="QLineEdit" name="searchzone_mybasket">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="search_mybasket_tab3">
@@ -495,13 +553,24 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>2</width>
+      <height>2</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4"/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>717</width>
+     <width>733</width>
      <height>24</height>
     </rect>
    </property>

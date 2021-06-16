@@ -771,11 +771,17 @@ void main_page::on_update_spinbox_clicked()
                 (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()));
                 (*my_basket)[i].set_number(ui->spinBox->cleanText().toInt());
                 (*my_basket)[i].set_price( ui->spinBox->cleanText().toInt()*(*list_pointer)[j].get_price());
+                //delete that product
+                if(ui->spinBox->cleanText().toInt()==0)
+                {
+                     (*my_basket).erase(my_basket->begin()+i);
+                }
                 showchanges_tab3();
                 showchanges_tab2();
                 showchanges();
                 ui->spinBox->clear();
             }
+
             else
             {
                 QMessageBox::warning(this,"title","The purchase_number is out of range of existed items!");

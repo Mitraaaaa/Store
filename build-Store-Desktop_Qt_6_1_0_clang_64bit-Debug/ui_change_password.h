@@ -25,7 +25,7 @@ class Ui_change_password
 {
 public:
     QPushButton *changepassbutton;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
@@ -39,23 +39,56 @@ public:
         if (change_password->objectName().isEmpty())
             change_password->setObjectName(QString::fromUtf8("change_password"));
         change_password->resize(400, 300);
+        change_password->setStyleSheet(QString::fromUtf8("QDialog\n"
+"{\n"
+"      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,\n"
+"                stop:0 rgb(193, 192, 193), stop:1 rgb(255, 159, 159))\n"
+"\n"
+"}\n"
+"QLineEdit\n"
+"{\n"
+" border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-color:rgb(162, 10, 23);\n"
+"    border-radius: 4px;\n"
+"background-color:white;\n"
+"color:rgb(166, 5, 0);\n"
+"	font: 13pt \"Comic Sans MS\";\n"
+"}\n"
+"QLabel\n"
+"{\n"
+"	\n"
+"	font: 75 14pt \"Comic Sans MS\";\n"
+"color:black;\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"	\n"
+"	font: 75 14pt \"Comic Sans MS\";\n"
+"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
+"                stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));\n"
+"color:black;\n"
+"  	 border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-radius: 4px;\n"
+"}"));
         changepassbutton = new QPushButton(change_password);
         changepassbutton->setObjectName(QString::fromUtf8("changepassbutton"));
         changepassbutton->setGeometry(QRect(140, 220, 113, 32));
-        widget = new QWidget(change_password);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(19, 80, 371, 111));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(change_password);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(19, 80, 371, 111));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         verticalLayout_2->addWidget(label);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         verticalLayout_2->addWidget(label_2);
@@ -65,12 +98,12 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lineEditcurrentuser = new QLineEdit(widget);
+        lineEditcurrentuser = new QLineEdit(layoutWidget);
         lineEditcurrentuser->setObjectName(QString::fromUtf8("lineEditcurrentuser"));
 
         verticalLayout->addWidget(lineEditcurrentuser);
 
-        lineEditnew_pass = new QLineEdit(widget);
+        lineEditnew_pass = new QLineEdit(layoutWidget);
         lineEditnew_pass->setObjectName(QString::fromUtf8("lineEditnew_pass"));
 
         verticalLayout->addWidget(lineEditnew_pass);

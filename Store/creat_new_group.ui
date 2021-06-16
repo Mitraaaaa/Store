@@ -13,27 +13,79 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
+                stop:0 rgb(193, 192, 193), stop:1 rgb(255, 159, 159))
+
+}
+QLineEdit
+{
+ border-width: 1px;
+    border-style: solid;
+    border-color:rgb(162, 10, 23);
+    border-radius: 4px;
+background-color:white;
+color:rgb(166, 5, 0);
+	font: 14pt &quot;Comic Sans MS&quot;;
+}
+QPushButton
+{
+	
+	font: 75 14pt &quot;Comic Sans MS&quot;;
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                stop:0 white, stop: 0.4 white, stop:1 rgb(193, 192, 193));
+color:black;
+  	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+QLabel
+{
+	
+	font: 75 18pt &quot;Comic Sans MS&quot;;
+color:black;
+}
+</string>
+  </property>
   <widget class="QLineEdit" name="lineEditnewgroupname">
    <property name="geometry">
     <rect>
-     <x>92</x>
+     <x>82</x>
      <y>80</y>
-     <width>211</width>
-     <height>21</height>
+     <width>231</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="addnewgroupbutton">
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>140</y>
-     <width>113</width>
-     <height>32</height>
+     <y>150</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>add</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>40</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Group's name</string>
    </property>
   </widget>
  </widget>
