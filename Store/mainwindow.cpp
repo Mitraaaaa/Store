@@ -63,14 +63,8 @@ void MainWindow::save_user_pass_file()
 
 MainWindow::~MainWindow()
 {
+    delete user_pass;
     delete ui;
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    //ui->pushButton->
-
 }
 
 
@@ -120,6 +114,7 @@ void MainWindow::on_signup_clicked()
             (*(ui->password)).setStyleSheet(" background-color: #ffffcc");
     }
 }
+
 void MainWindow::on_login_clicked()
 {
        if(user_pass->size()!=0)

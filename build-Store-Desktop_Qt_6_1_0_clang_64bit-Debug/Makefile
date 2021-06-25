@@ -627,7 +627,8 @@ qrc_recources.cpp: ../Store/recources.qrc \
 		../Store/img/close.png \
 		../Store/img/images.png \
 		../Store/img/home.png \
-		../Store/img/logoutt.jpeg
+		../Store/img/logoutt.jpeg \
+		../Store/img/shutterstock_145160614.jpeg
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/rcc -name recources ../Store/recources.qrc -o qrc_recources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -938,7 +939,10 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../Store/change_password.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QMap \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QtAlgorithms \
-		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qalgorithms.h
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qalgorithms.h \
+		../Store/mainwindow.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QStringList \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstringlist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_page.o ../Store/main_page.cpp
 
 mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \

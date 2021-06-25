@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -28,6 +29,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QGridLayout *gridLayout;
     QGroupBox *welcomepage;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -41,6 +43,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QLineEdit *password;
+    QLabel *label_3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -57,6 +60,10 @@ public:
 " background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
 "                stop:0 white, stop: 0.4 rgb(155, 154, 156) stop:0.8 rgb(255, 163, 168));\n"
 "	font: 75 16pt \"Comic Sans MS\";\n"
+"	color:black;\n"
+"  	 border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-radius: 4px;\n"
 "}\n"
 "#signup\n"
 "{\n"
@@ -64,6 +71,10 @@ public:
 "                stop:0 white, stop: 0.2 rgb(255, 163, 168) , stop:0.7 rgb(155, 154, 156));\n"
 "	\n"
 "	font: 75 16pt \"Comic Sans MS\";\n"
+"color:black;\n"
+"  	 border-width: 1px;\n"
+"    border-style: solid;\n"
+"    border-radius: 4px;\n"
 "}\n"
 "QLineEdit\n"
 "{\n"
@@ -71,6 +82,7 @@ public:
 "    border-style: solid;\n"
 "    border-radius: 4px;\n"
 "	font: 15pt \"Papyrus\";\n"
+"background-color:rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "#centralwidget\n"
@@ -81,14 +93,24 @@ public:
 "\n"
 "QPushButton:hover {\n"
 "color:white;\n"
+"}\n"
+"QLabel\n"
+""
+                        "{\n"
+"color:balack;\n"
+"}\n"
+"QTextBrowser\n"
+"{\n"
+"	font: 14pt \"Comic Sans MS\";\n"
 "}"));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         welcomepage = new QGroupBox(centralwidget);
         welcomepage->setObjectName(QString::fromUtf8("welcomepage"));
-        welcomepage->setGeometry(QRect(12, 0, 361, 411));
         welcomepage->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(welcomepage);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 270, 291, 81));
+        layoutWidget->setGeometry(QRect(70, 290, 221, 81));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -106,7 +128,7 @@ public:
 
         layoutWidget1 = new QWidget(welcomepage);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(30, 40, 291, 151));
+        layoutWidget1->setGeometry(QRect(30, 80, 291, 151));
         verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -143,6 +165,14 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
+        label_3 = new QLabel(welcomepage);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(50, 30, 261, 41));
+        label_3->setStyleSheet(QString::fromUtf8("font: 18pt \"Comic Sans MS\";\n"
+"color:rgb(163, 37, 0)"));
+
+        gridLayout->addWidget(welcomepage, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -160,13 +190,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        welcomepage->setTitle(QCoreApplication::translate("MainWindow", "WELCOME!", nullptr));
+        welcomepage->setTitle(QString());
         login->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         signup->setText(QCoreApplication::translate("MainWindow", "Sign up", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "username :", nullptr));
         username->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "password :", nullptr));
         password->setText(QString());
+        label_3->setText(QCoreApplication::translate("MainWindow", "WELCOME TO OUR STORE!", nullptr));
     } // retranslateUi
 
 };

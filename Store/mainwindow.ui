@@ -23,6 +23,10 @@
  background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                 stop:0 white, stop: 0.4 rgb(155, 154, 156) stop:0.8 rgb(255, 163, 168));
 	font: 75 16pt &quot;Comic Sans MS&quot;;
+	color:black;
+  	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
 }
 #signup
 {
@@ -30,6 +34,10 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                 stop:0 white, stop: 0.2 rgb(255, 163, 168) , stop:0.7 rgb(155, 154, 156));
 	
 	font: 75 16pt &quot;Comic Sans MS&quot;;
+color:black;
+  	 border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
 }
 QLineEdit
 {
@@ -37,6 +45,7 @@ QLineEdit
     border-style: solid;
     border-radius: 4px;
 	font: 15pt &quot;Papyrus&quot;;
+background-color:rgb(255, 255, 255);
 }
 
 #centralwidget
@@ -47,111 +56,132 @@ background: qconicalgradient(cx:0.5, cy:0.5, angle:30,
 
 QPushButton:hover {
 color:white;
+}
+QLabel
+{
+color:balack;
+}
+QTextBrowser
+{
+	font: 14pt &quot;Comic Sans MS&quot;;
 }</string>
    </property>
-   <widget class="QGroupBox" name="welcomepage">
-    <property name="geometry">
-     <rect>
-      <x>12</x>
-      <y>0</y>
-      <width>361</width>
-      <height>411</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="title">
-     <string>WELCOME!</string>
-    </property>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>270</y>
-       <width>291</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QPushButton" name="login">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Login</string>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="signup">
-        <property name="text">
-         <string>Sign up</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>40</y>
-       <width>291</width>
-       <height>151</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="welcomepage">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>290</y>
+         <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QPushButton" name="login">
           <property name="styleSheet">
-           <string notr="true">font: 75 14pt &quot;Comic Sans MS&quot;;
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Login</string>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="signup">
+          <property name="text">
+           <string>Sign up</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>291</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;Comic Sans MS&quot;;
 </string>
-          </property>
-          <property name="text">
-           <string>username :</string>
-          </property>
-         </widget>
+            </property>
+            <property name="text">
+             <string>username :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="username">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QLineEdit" name="username">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">font: 75 14pt &quot;Comic Sans MS&quot;;</string>
+            </property>
+            <property name="text">
+             <string>password :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="password">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="styleSheet">
-           <string notr="true">font: 75 14pt &quot;Comic Sans MS&quot;;</string>
-          </property>
-          <property name="text">
-           <string>password :</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="password">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </widget>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>261</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 18pt &quot;Comic Sans MS&quot;;
+color:rgb(163, 37, 0)</string>
+       </property>
+       <property name="text">
+        <string>WELCOME TO OUR STORE!</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

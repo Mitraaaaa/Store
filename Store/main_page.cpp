@@ -461,6 +461,9 @@ void main_page::addchid_group(QTreeWidgetItem * pre_parent ,group each_group)
 
 main_page::~main_page()
 {
+    delete group_pointer;
+    delete list_pointer;
+    delete my_basket;
     delete ui;
 }
 
@@ -488,6 +491,9 @@ void main_page::on_actionLog_out_triggered()
             save_groups_file();
             //save my basket
             save_my_basket_file();
+            delete group_pointer;
+            delete list_pointer;
+            delete my_basket;
             MainWindow *mainWindow = new MainWindow();
                 mainWindow->show();
             this->close();
@@ -597,68 +603,89 @@ bool main_page::equal_products(products item1,products item2, bool compare_numbe
 void main_page::on_delete_2_clicked()
 {
     int i=ui->tree->currentIndex().row();
-    if(ui->tree->currentItem()->childCount()==0)
+    if(i!=-1)
     {
-        ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
-        i=ui->tree->currentIndex().row();
-
-    }
-    // we will also remove that item from the group
-    for(int k=0;k<group_pointer->size();k++)
-    {
-        QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
-        for(int j=0;j<groups_includes.size();j++)
+        if(ui->tree->currentItem()->childCount()==0)
         {
-            if(equal_products(groups_includes[j],(*list_pointer)[i],true,true))
+            ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+            i=ui->tree->currentIndex().row();
+
+        }
+        // we will also remove that item from the group
+        for(int k=0;k<group_pointer->size();k++)
+        {
+            QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+            for(int j=0;j<groups_includes.size();j++)
             {
-               (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+                if(equal_products(groups_includes[j],(*list_pointer)[i],true,true))
+                {
+                    (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+                }
             }
         }
-    }
-    //we should also delete that item from my_basket list if exists
-    for(int k=0;k<my_basket->size();k++)
-    {
-        if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
+        //we should also delete that item from my_basket list if exists
+        for(int k=0;k<my_basket->size();k++)
         {
-            (*my_basket).erase(my_basket->begin()+k);
-            showchanges_tab3();
-            break;
+            if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
+            {
+                (*my_basket).erase(my_basket->begin()+k);
+                showchanges_tab3();
+                break;
+            }
         }
+        //delete from product's list
+        (*list_pointer).erase(list_pointer->begin()+i);
+        ui->tree->removeItemWidget(ui->tree->currentItem(),0);
+        showchanges();
+        showchanges_tab2();
     }
-    //delete from product's list
-    (*list_pointer).erase(list_pointer->begin()+i);
-     ui->tree->removeItemWidget(ui->tree->currentItem(),0);
-     showchanges();
-     showchanges_tab2();
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
+    }
 
 }
 
 void main_page::on_edit_clicked()
 {
     //when clicked on the name of products
-    if(ui->tree->currentItem()->childCount()==0)
-    {
-       ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
-    }
-    int i=ui->tree->currentIndex().row();
-    editpage new_page(list_pointer,i,group_pointer);
-      new_page.setModal(true);
-      new_page.exec();
-      showchanges();
-      showchanges_tab2();
+   if(ui->tree->currentIndex().row()!=-1)
+   {
+       if(ui->tree->currentItem()->childCount()==0)
+       {
+           ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+       }
+       int i=ui->tree->currentIndex().row();
+       editpage new_page(list_pointer,i,group_pointer);
+       new_page.setModal(true);
+       new_page.exec();
+       showchanges();
+       showchanges_tab2();
+   }
+   else
+   {
+       QMessageBox::information(this,"title","Choose an item first!");
+   }
 }
 
 void main_page::on_addtogroup_clicked()
 {
-    if(ui->tree->currentItem()->childCount()==0)
+    if(ui->tree->currentIndex().row()!=-1)
     {
-      ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+        if(ui->tree->currentItem()->childCount()==0)
+        {
+            ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+        }
+        int i=ui->tree->currentIndex().row();
+        Add_group  new_page(group_pointer,(*list_pointer)[i]);
+        new_page.setModal(true);
+        new_page.exec();
+        showchanges_tab2();
     }
-    int i=ui->tree->currentIndex().row();
-    Add_group  new_page(group_pointer,(*list_pointer)[i]);
-    new_page.setModal(true);
-    new_page.exec();
-    showchanges_tab2();
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
+    }
 }
 
 void main_page::on_pushButton_2_clicked()
@@ -670,58 +697,73 @@ void main_page::on_deleteforgroups_clicked()
 {
     int i=ui->grouptree->currentIndex().row();
     //check if you are clicking on the group name we will remove group
-    if(ui->grouptree->currentItem()->parent()==nullptr)
+    if(i!=-1)
     {
-        (*group_pointer).erase(group_pointer->begin()+i);
-        ui->grouptree->removeItemWidget(ui->grouptree->currentItem(),0);
-        showchanges_tab2();
-    }
-    //in case you clicked on products we will remove product
-   else
-    {
-        if(ui->grouptree->currentItem()->childCount()!=0)
+        if(ui->grouptree->currentItem()->parent()==nullptr)
         {
-            //one of the itm's of group. it's a product so we already have the row of product in it's own group =>i
-            //all we need is it's group's row among all groups => j
-            ui->grouptree->currentItem()->parent()->removeChild((ui->grouptree->currentItem()));
-            if(ui->grouptree->currentItem()->childCount()!=0)
-            {
-                /*this will be done bc if you delete a product you will be on the next product after deletion
-                (your current item will be next if exist)
-                therefore i put the curser to the paretn to undrestand it's row */
-                ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
-            }
-            int j=ui->grouptree->currentIndex().row();
-            // i got an error here bc my get_pro_group was a copy not the refrence so i returned & and fix the problem :)))
-            (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
-             showchanges_tab2();
+            (*group_pointer).erase(group_pointer->begin()+i);
+            ui->grouptree->removeItemWidget(ui->grouptree->currentItem(),0);
+            showchanges_tab2();
         }
+        //in case you clicked on products we will remove product
         else
         {
-            //clicked on the details of a product so we have to find the product's row in the group =>i
-            //and the group's row among the group =>j
-            ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
-            i=ui->grouptree->currentIndex().row();
-            ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
-            int j=ui->grouptree->currentIndex().row();
-            (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
-             showchanges_tab2();
+            if(ui->grouptree->currentItem()->childCount()!=0)
+            {
+                //one of the itm's of group. it's a product so we already have the row of product in it's own group =>i
+                //all we need is it's group's row among all groups => j
+                ui->grouptree->currentItem()->parent()->removeChild((ui->grouptree->currentItem()));
+                if(ui->grouptree->currentItem()->childCount()!=0)
+                {
+                    /*this will be done bc if you delete a product you will be on the next product after deletion
+                (your current item will be next if exist)
+                therefore i put the curser to the paretn to undrestand it's row */
+                    ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
+                }
+                int j=ui->grouptree->currentIndex().row();
+                // i got an error here bc my get_pro_group was a copy not the refrence so i returned & and fix the problem :)))
+                (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
+                showchanges_tab2();
+            }
+            else
+            {
+                //clicked on the details of a product so we have to find the product's row in the group =>i
+                //and the group's row among the group =>j
+                ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
+                i=ui->grouptree->currentIndex().row();
+                ui->grouptree->currentItem()->parent()->removeChild(ui->grouptree->currentItem());
+                int j=ui->grouptree->currentIndex().row();
+                (*group_pointer)[j].get_pro_group().erase((*group_pointer)[j].get_pro_group().begin()+i);
+                showchanges_tab2();
 
+            }
         }
     }
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
+    }
+
 }
 
 void main_page::on_change_group_name_clicked()
 {
-    while(ui->grouptree->currentItem()->parent()!=0)
+    if(ui->grouptree->currentIndex().row()!=-1)
     {
-        ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
+        while(ui->grouptree->currentItem()->parent()!=0)
+        {
+            ui->grouptree->setCurrentItem(ui->grouptree->currentItem()->parent());
+        }
+        int i=ui->grouptree->currentIndex().row();
+        change_group_name new_page(group_pointer,i);
+        new_page.setModal(true);
+        new_page.exec();
+        showchanges_tab2();
     }
-    int i=ui->grouptree->currentIndex().row();
-    change_group_name new_page(group_pointer,i);
-    new_page.setModal(true);
-    new_page.exec();
-    showchanges_tab2();
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
+    }
 }
 
 void main_page::on_actionchange_user_pass_triggered()
@@ -735,117 +777,145 @@ void main_page::on_actionchange_user_pass_triggered()
 
 void main_page::on_add_mybasket_clicked()
 {
-    if(ui->tree->currentItem()->childCount()==0)
+    if(ui->tree->currentIndex().row()!=-1)
     {
-        ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
-    }
-    int i=ui->tree->currentIndex().row();
-    products added_to_my_basket =(*list_pointer)[i];
-    bool found=false;
-    for(int j=0;j<my_basket->size();j++)
-    {
-        if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
+        if(ui->tree->currentItem()->childCount()==0)
         {
-               found=true;
+            ui->tree->setCurrentItem(ui->tree->currentItem()->parent());
+        }
+        int i=ui->tree->currentIndex().row();
+        products added_to_my_basket =(*list_pointer)[i];
+        bool found=false;
+        for(int j=0;j<my_basket->size();j++)
+        {
+            if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
+            {
+                found=true;
+                if((*list_pointer)[i].get_number()>0)
+                {
+                    (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
+                    (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
+                    (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+                    if((*list_pointer)[i].get_number()==0)
+                    {
+                        list_pointer->erase(list_pointer->begin()+i);
+                    }
+                    showchanges();
+                    break;
+                }
+                else
+                {
+                    QMessageBox::warning(this,"title","This item has been finished!");
+                    break;
+                }
+            }
+        }
+        if(!found)
+        {
             if((*list_pointer)[i].get_number()>0)
             {
-                (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
-                (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
+                added_to_my_basket.set_number(1);
                 (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
-                if((*list_pointer)[i].get_number()==0)
-                {
-                    list_pointer->erase(list_pointer->begin()+i);
-                }
                 showchanges();
-                break;
+                my_basket->append(added_to_my_basket);
             }
-            else
-            {
-                QMessageBox::warning(this,"title","This item has been finished!");
-                break;
-            }
+            else  QMessageBox::warning(this,"title","This item has been finished!");
         }
+        showchanges_tab3();
     }
-    if(!found)
+    else
     {
-        if((*list_pointer)[i].get_number()>0)
-        {
-            added_to_my_basket.set_number(1);
-            (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
-            showchanges();
-            my_basket->append(added_to_my_basket);
-        }
-        else  QMessageBox::warning(this,"title","This item has been finished!");
+        QMessageBox::information(this,"title","Choose an item first!");
     }
-    showchanges_tab3();
 }
 
 void main_page::on_delete_from_list_clicked()
 {
     //delete from my basket
-   if( ui->basket_tree->currentItem()->childCount()==0)
-   {
-       ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
-   }
-    int i=ui->basket_tree->currentIndex().row();
-    (*my_basket).erase(my_basket->begin()+i);
-    showchanges_tab3();
+    if(ui->basket_tree->currentIndex().row()!=-1)
+    {
+        if( ui->basket_tree->currentItem()->childCount()==0)
+        {
+            ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
+        }
+        int i=ui->basket_tree->currentIndex().row();
+        (*my_basket).erase(my_basket->begin()+i);
+        showchanges_tab3();
+    }
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
+    }
 }
 
 void main_page::on_update_spinbox_clicked()
 {
-    if(ui->basket_tree->currentItem()->childCount()==0)
+    if(ui->basket_tree->currentIndex().row()!=-1)
     {
-        ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
-    }
-    int i=ui->basket_tree->currentIndex().row();
-    for(int j=0;j<list_pointer->size();j++)
-    {
-        if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+        if(ui->basket_tree->currentItem()->childCount()==0)
         {
-            if(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()<=(*list_pointer)[j].get_number())
-            {
-                (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()));
-                (*my_basket)[i].set_number(ui->spinBox->cleanText().toInt());
-                (*my_basket)[i].set_price( ui->spinBox->cleanText().toInt()*(*list_pointer)[j].get_price());
-                //delete that product
-                if(ui->spinBox->cleanText().toInt()==0)
-                {
-                     (*my_basket).erase(my_basket->begin()+i);
-                }
-                showchanges_tab3();
-                showchanges_tab2();
-                showchanges();
-                ui->spinBox->clear();
-            }
-
-            else
-            {
-                QMessageBox::warning(this,"title","The purchase_number is out of range of existed items!");
-            }
-            break;
+            ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
         }
+        int i=ui->basket_tree->currentIndex().row();
+        for(int j=0;j<list_pointer->size();j++)
+        {
+            if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+            {
+                if(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()<=(*list_pointer)[j].get_number())
+                {
+                    (*list_pointer)[j].set_number((*list_pointer)[j].get_number()-(ui->spinBox->cleanText().toInt()-(*my_basket)[i].get_number()));
+                    (*my_basket)[i].set_number(ui->spinBox->cleanText().toInt());
+                    (*my_basket)[i].set_price( ui->spinBox->cleanText().toInt()*(*list_pointer)[j].get_price());
+                    //delete that product
+                    if(ui->spinBox->cleanText().toInt()==0)
+                    {
+                        (*my_basket).erase(my_basket->begin()+i);
+                    }
+                    showchanges_tab3();
+                    showchanges_tab2();
+                    showchanges();
+                    ui->spinBox->clear();
+                }
+
+                else
+                {
+                    QMessageBox::warning(this,"title","The purchase_number is out of range of existed items!");
+                }
+                break;
+            }
+        }
+    }
+    else
+    {
+        QMessageBox::information(this,"title","Choose an item first!");
     }
 }
 
 void main_page::on_unreserved_clicked()
 {
-    if( ui->basket_tree->currentItem()->childCount()==0)
-    {
-        ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
-    }
-     int i=ui->basket_tree->currentIndex().row();
-     for(int j=0;j<list_pointer->size();j++)
+     if(ui->basket_tree->currentIndex().row()!=-1)
      {
-         if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+         if( ui->basket_tree->currentItem()->childCount()==0)
          {
-             (*list_pointer)[j].set_number((*list_pointer)[j].get_number()+(*my_basket)[i].get_number());
-             showchanges();
-             break;
+             ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
          }
+         int i=ui->basket_tree->currentIndex().row();
+         for(int j=0;j<list_pointer->size();j++)
+         {
+             if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
+             {
+                 (*list_pointer)[j].set_number((*list_pointer)[j].get_number()+(*my_basket)[i].get_number());
+                 showchanges();
+                 break;
+             }
+         }
+         (*my_basket).erase(my_basket->begin()+i);
+         showchanges_tab3();
      }
-     (*my_basket).erase(my_basket->begin()+i);
-     showchanges_tab3();
+     else
+     {
+         QMessageBox::information(this,"title","Choose an item first!");
+     }
 }
 
 void main_page::on_search_button_group_clicked()
