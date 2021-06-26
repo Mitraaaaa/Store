@@ -83,6 +83,7 @@ public:
 "    border-radius: 4px;\n"
 "	font: 15pt \"Papyrus\";\n"
 "background-color:rgb(255, 255, 255);\n"
+"	color:black;\n"
 "}\n"
 "\n"
 "#centralwidget\n"
@@ -92,11 +93,11 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"color:white;\n"
+"color:white;"
+                        "\n"
 "}\n"
 "QLabel\n"
-""
-                        "{\n"
+"{\n"
 "color:balack;\n"
 "}\n"
 "QTextBrowser\n"
@@ -159,6 +160,8 @@ public:
 
         password = new QLineEdit(layoutWidget1);
         password->setObjectName(QString::fromUtf8("password"));
+        password->setCursor(QCursor(Qt::IBeamCursor));
+        password->setEchoMode(QLineEdit::Password);
 
         horizontalLayout_2->addWidget(password);
 

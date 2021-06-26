@@ -32,7 +32,7 @@
    <property name="styleSheet">
     <string notr="true">QComboBox QAbstractItemView {
     selection-background-color: rgb(255, 138, 125);
-    color:black;
+   /* color:black;*/
 }
 QComboBox{
 backgroud-color:white;
@@ -71,6 +71,12 @@ font: 15pt &quot;Papyrus&quot;;
 QLabel
 {
 	font: 15pt &quot;Comic Sans MS&quot;;
+	color:rgb(0, 0, 0);
+}
+QSpinBox
+{
+background-color:white;
+color:black;
 }</string>
    </property>
    <widget class="QTabWidget" name="groups">
@@ -100,7 +106,7 @@ QLabel
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">color:rgb(0, 0, 0);</string>
     </property>
     <property name="tabPosition">
      <enum>QTabWidget::North</enum>
@@ -132,7 +138,7 @@ QLabel
        <rect>
         <x>18</x>
         <y>24</y>
-        <width>631</width>
+        <width>635</width>
         <height>354</height>
        </rect>
       </property>
@@ -211,7 +217,7 @@ QLabel
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="showchanges">
+          <widget class="QPushButton" name="current_list">
            <property name="text">
             <string>current list</string>
            </property>

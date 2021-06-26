@@ -46,6 +46,7 @@ QLineEdit
     border-radius: 4px;
 	font: 15pt &quot;Papyrus&quot;;
 background-color:rgb(255, 255, 255);
+	color:black;
 }
 
 #centralwidget
@@ -153,8 +154,14 @@ QTextBrowser
           </item>
           <item>
            <widget class="QLineEdit" name="password">
+            <property name="cursor">
+             <cursorShape>IBeamCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
             </property>
            </widget>
           </item>

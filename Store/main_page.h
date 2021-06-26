@@ -92,6 +92,9 @@ private slots:
 
     void on_sort_basket_button_clicked();
 
+
+    void on_current_list_clicked();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

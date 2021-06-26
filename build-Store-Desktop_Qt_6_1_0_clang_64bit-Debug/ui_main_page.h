@@ -57,7 +57,7 @@ public:
     QLineEdit *serchzone;
     QPushButton *searchbutton;
     QTreeWidget *tree;
-    QPushButton *showchanges;
+    QPushButton *current_list;
     QHBoxLayout *horizontalLayout;
     QPushButton *addtolist;
     QPushButton *add_mybasket;
@@ -189,7 +189,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("QComboBox QAbstractItemView {\n"
 "    selection-background-color: rgb(255, 138, 125);\n"
-"    color:black;\n"
+"   /* color:black;*/\n"
 "}\n"
 "QComboBox{\n"
 "backgroud-color:white;\n"
@@ -225,10 +225,16 @@ public:
 "font: 13pt \"Comic Sans MS\";\n"
 "font: 15pt \"Papyrus\";\n"
 "}\n"
-"QL"
-                        "abel\n"
+""
+                        "QLabel\n"
 "{\n"
 "	font: 15pt \"Comic Sans MS\";\n"
+"	color:rgb(0, 0, 0);\n"
+"}\n"
+"QSpinBox\n"
+"{\n"
+"background-color:white;\n"
+"color:black;\n"
 "}"));
         groups = new QTabWidget(centralwidget);
         groups->setObjectName(QString::fromUtf8("groups"));
@@ -240,7 +246,7 @@ public:
         font.setBold(true);
         groups->setFont(font);
         groups->setLayoutDirection(Qt::LeftToRight);
-        groups->setStyleSheet(QString::fromUtf8(""));
+        groups->setStyleSheet(QString::fromUtf8("color:rgb(0, 0, 0);"));
         groups->setTabPosition(QTabWidget::North);
         groups->setTabShape(QTabWidget::Rounded);
         groups->setIconSize(QSize(20, 20));
@@ -250,7 +256,7 @@ public:
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         layoutWidget = new QWidget(tab_3);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(18, 24, 631, 354));
+        layoutWidget->setGeometry(QRect(18, 24, 635, 354));
         verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -298,13 +304,13 @@ public:
 
         verticalLayout->addWidget(tree);
 
-        showchanges = new QPushButton(layoutWidget);
-        showchanges->setObjectName(QString::fromUtf8("showchanges"));
+        current_list = new QPushButton(layoutWidget);
+        current_list->setObjectName(QString::fromUtf8("current_list"));
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/rec/img/details.png"), QSize(), QIcon::Normal, QIcon::Off);
-        showchanges->setIcon(icon9);
+        current_list->setIcon(icon9);
 
-        verticalLayout->addWidget(showchanges);
+        verticalLayout->addWidget(current_list);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -705,7 +711,7 @@ public:
         comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
-        showchanges->setText(QCoreApplication::translate("main_page", "current list", nullptr));
+        current_list->setText(QCoreApplication::translate("main_page", "current list", nullptr));
         addtolist->setText(QCoreApplication::translate("main_page", "add to list", nullptr));
         add_mybasket->setText(QCoreApplication::translate("main_page", "add to mybasket", nullptr));
         addtogroup->setText(QCoreApplication::translate("main_page", "add to group", nullptr));

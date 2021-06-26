@@ -124,7 +124,9 @@ void main_page::default_view_tab1()
               }
            }
            ui->tree->setColumnCount(4);
+           ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
            ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
+          // ui->tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
            file.close();
@@ -220,7 +222,9 @@ void main_page::default_view_tab2()
                 }
 
                 ui->grouptree->setColumnCount(5);
+                ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
                 ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+                ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
                 for(int i=0;i<group_pointer->size();i++)
                 {
                     addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
@@ -272,6 +276,7 @@ void main_page::default_view_tab3() {
               }
            }
            ui->basket_tree->setColumnCount(4);
+           ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
            ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price");
            for(int i=0;i<my_basket->size();i++)
             addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
@@ -377,10 +382,23 @@ void main_page::save_main_products_list_file()
     }
 }
 
+void main_page::showchanges()
+{
+    ui->tree->clear();
+    ui->tree->setColumnCount(4);
+    ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
+    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
+   for(int i=0;i<list_pointer->size();i++)
+   {
+       addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
+   }
+}
+
 void main_page::showchanges_tab3()
 {
     ui->basket_tree->clear();
     ui->basket_tree->setColumnCount(4);
+    ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
     ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price");
     for(int i=0;i<my_basket->size();i++)
     {
@@ -394,21 +412,11 @@ void main_page::showchanges_tab3()
     ui->totalprice->setText(QString::number(total));
 }
 
-void main_page::showchanges()
-{
-    ui->tree->clear();
-    ui->tree->setColumnCount(4);
-    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
-   for(int i=0;i<list_pointer->size();i++)
-   {
-       addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
-   }
-}
-
 void main_page::showchanges_tab2()
 {
     ui->grouptree->clear();
     ui->grouptree->setColumnCount(4);
+    ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
     ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
     for(int i=0;i<group_pointer->size();i++)
     {
@@ -1288,5 +1296,10 @@ void main_page::on_sort_basket_button_clicked()
     if(ui->combo_basket_sorttype->currentText()=="Descending")
         std::reverse(my_basket->begin(),my_basket->end());
     showchanges_tab3();
+}
+
+void main_page::on_current_list_clicked()
+{
+    showchanges();
 }
 
