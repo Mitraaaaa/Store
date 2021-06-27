@@ -41,6 +41,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_search_by_tab1->addItem("Type");
     ui->combo_search_by_tab1->addItem("Number");
     ui->combo_search_by_tab1->addItem("Price");
+    ui->combo_search_by_tab1->addItem("Expire Date");
     //tab2 search
     ui->combobox_searchtab2_startwith->addItem("Start with");
     ui->combobox_searchtab2_startwith->addItem("Contains");
@@ -50,6 +51,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comosearchtab2->addItem("Type");
     ui->comosearchtab2->addItem("Number");
     ui->comosearchtab2->addItem("Price");
+    ui->comosearchtab2->addItem("Expire Date");
     //tab3 search
     ui->comboBox_2_my_basket->addItem("Start with");
     ui->comboBox_2_my_basket->addItem("Contains");
@@ -58,6 +60,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comboBox_mybasket->addItem("Type");
     ui->comboBox_mybasket->addItem("Number of purchase");
     ui->comboBox_mybasket->addItem("Price");
+    ui->comboBox_mybasket->addItem("Expire Date");
 
     //tab1 sort
     ui->combo_mainlist_sortby->addItem("Product's name");
@@ -581,6 +584,10 @@ void main_page::on_searchbutton_clicked()
                 {
                     addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
+                else if ((*list_pointer)[i].get_date().toString("yyyy/MM/dd").contains(search) && ui->combo_search_by_tab1->currentText()=="Expire Date")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
+                }
             }
         }
         else {
@@ -603,6 +610,10 @@ void main_page::on_searchbutton_clicked()
                     addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
                 else if(QString::number((*list_pointer)[i].get_price()).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Price")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
+                }
+                else if(((*list_pointer)[i].get_date().toString("yyyy/MM/dd")).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Expire Date")
                 {
                     addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
