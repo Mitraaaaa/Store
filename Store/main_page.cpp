@@ -210,6 +210,13 @@ void main_page::default_view_tab2()
                                break;
                            case 5:
                                pro_list.set_price(line.toDouble());
+                               i++;
+                               break;
+                           case 6:
+                               QString name=line;
+                               QStringList name_split = name.split("/");
+                               QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                               pro_list.set_exdate(d);
                                pro_group_list.append(pro_list);
                                i=1;
                                break;
@@ -231,9 +238,9 @@ void main_page::default_view_tab2()
                    }
                 }
 
-                ui->grouptree->setColumnCount(5);
+                ui->grouptree->setColumnCount(6);
                 ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-                ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+                ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"Price"<<"Expire Date");
                 ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
                 for(int i=0;i<group_pointer->size();i++)
                 {
@@ -280,14 +287,21 @@ void main_page::default_view_tab3() {
                   break;
               case 5:
                   my_basket_list.set_price(line.toDouble());
+                  i++;
+                  break;
+              case 6:
+                  QString name=line;
+                  QStringList name_split = name.split("/");
+                  QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                  my_basket_list.set_exdate(d);
                   my_basket->append(my_basket_list);
                   i=1;
                   break;
               }
            }
-           ui->basket_tree->setColumnCount(4);
+           ui->basket_tree->setColumnCount(5);
            ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-           ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price");
+           ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price"<<"Expire Date");
            for(int i=0;i<my_basket->size();i++)
             addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
@@ -410,9 +424,9 @@ void main_page::showchanges()
 void main_page::showchanges_tab3()
 {
     ui->basket_tree->clear();
-    ui->basket_tree->setColumnCount(4);
+    ui->basket_tree->setColumnCount(5);
     ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price");
+    ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price"<<"Expire Date");
     for(int i=0;i<my_basket->size();i++)
     {
         addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
@@ -428,9 +442,9 @@ void main_page::showchanges_tab3()
 void main_page::showchanges_tab2()
 {
     ui->grouptree->clear();
-    ui->grouptree->setColumnCount(4);
+    ui->grouptree->setColumnCount(5);
     ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+    ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price"<<"Expire Date");
     for(int i=0;i<group_pointer->size();i++)
     {
         addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
