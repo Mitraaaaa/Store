@@ -33,6 +33,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab3();
     //delete the ones that are expired
     check_exdate();
+    check_exdate_basket();
     QString username="Welcome " +user_iterator.key();
     ui->welcome->setText(username+ " !");
     //tab1 search
@@ -365,6 +366,16 @@ void main_page::check_exdate()
 
 void main_page::check_exdate_basket()
 {
+     QDate current=QDate::currentDate();
+    //if the product does not exist in main list and all of them are in basket , we delete the ones taht are expired
+    for(int i=0;i<my_basket->size();i++)
+    {
+        if(current.daysTo((*my_basket)[i].get_date())<=-1)
+        {
+             (*my_basket).erase(my_basket->begin()+i);
+            i--;
+        }
+    }
 
 }
 
@@ -379,14 +390,17 @@ void main_page::save_my_basket_file()
     else
     {
         QTextStream out(&file);
-        for(int i=0;i<my_basket->size();i++)
+        if(my_basket->size()!=0)
         {
-            out<<(*my_basket)[i].get_name()+"\n";
-            out<<(*my_basket)[i].get_consumer()+"\n";
-            out<<(*my_basket)[i].get_type()+"\n";
-            out<<QString::number((*my_basket)[i].get_number())+"\n";
-            out<<QString::number((*my_basket)[i].get_price())+"\n";
-            out<<(*my_basket)[i].get_date().toString("yyyy/MM/dd")+"\n";
+            for(int i=0;i<my_basket->size();i++)
+            {
+                out<<(*my_basket)[i].get_name()+"\n";
+                out<<(*my_basket)[i].get_consumer()+"\n";
+                out<<(*my_basket)[i].get_type()+"\n";
+                out<<QString::number((*my_basket)[i].get_number())+"\n";
+                out<<QString::number((*my_basket)[i].get_price())+"\n";
+                out<<(*my_basket)[i].get_date().toString("yyyy/MM/dd")+"\n";
+            }
         }
         file.close();
     }
@@ -402,20 +416,23 @@ void main_page::save_groups_file()
     else
     {
         QTextStream out(&group_file);
-        for(int i=0;i<group_pointer->size();i++)
+        if(group_pointer->size()!=0)
         {
-            out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
-            QList<products> list=(*group_pointer)[i].get_pro_group();
-            if(!list.empty())
+            for(int i=0;i<group_pointer->size();i++)
             {
-                for(int j=0;j<list.size();j++)
+                out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
+                QList<products> list=(*group_pointer)[i].get_pro_group();
+                if(!list.empty())
                 {
-                    out<<list[j].get_name()+"\n";
-                    out<<list[j].get_consumer()+"\n";
-                    out<<list[j].get_type()+"\n";
-                    out<<QString::number(list[j].get_number())+"\n";
-                    out<<QString::number(list[j].get_price())+"\n";
-                    out<<list[i].get_date().toString("yyyy/MM/dd")+"\n";
+                    for(int j=0;j<list.size();j++)
+                    {
+                        out<<list[j].get_name()+"\n";
+                        out<<list[j].get_consumer()+"\n";
+                        out<<list[j].get_type()+"\n";
+                        out<<QString::number(list[j].get_number())+"\n";
+                        out<<QString::number(list[j].get_price())+"\n";
+                        out<<list[i].get_date().toString("yyyy/MM/dd")+"\n";
+                    }
                 }
             }
         }
@@ -451,14 +468,17 @@ void main_page::save_main_products_list_file()
     }
     else{
           QTextStream out(&file);
-          for(int i=0;i<list_pointer->size();i++)
+          if(list_pointer->size()!=0)
           {
-              out<<(*list_pointer)[i].get_name()+"\n";
-              out<<(*list_pointer)[i].get_consumer()+"\n";
-              out<<(*list_pointer)[i].get_type()+"\n";
-              out<<QString::number((*list_pointer)[i].get_number())+"\n";
-              out<<QString::number((*list_pointer)[i].get_price())+"\n";
-              out<<(*list_pointer)[i].get_date().toString("yyyy/MM/dd")+"\n";
+              for(int i=0;i<list_pointer->size();i++)
+              {
+                  out<<(*list_pointer)[i].get_name()+"\n";
+                  out<<(*list_pointer)[i].get_consumer()+"\n";
+                  out<<(*list_pointer)[i].get_type()+"\n";
+                  out<<QString::number((*list_pointer)[i].get_number())+"\n";
+                  out<<QString::number((*list_pointer)[i].get_price())+"\n";
+                  out<<(*list_pointer)[i].get_date().toString("yyyy/MM/dd")+"\n";
+              }
           }
           file.close();
     }
