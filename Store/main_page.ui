@@ -828,6 +828,8 @@ color:black;
     <addaction name="menuReset"/>
     <addaction name="separator"/>
     <addaction name="actionLog_out"/>
+    <addaction name="separator"/>
+    <addaction name="actionsave_changes"/>
    </widget>
    <addaction name="menuuser_s_info"/>
   </widget>
@@ -923,6 +925,11 @@ color:black;
    </property>
    <property name="text">
     <string>My Basket</string>
+   </property>
+  </action>
+  <action name="actionsave_changes">
+   <property name="text">
+    <string>save changes</string>
    </property>
   </action>
  </widget>

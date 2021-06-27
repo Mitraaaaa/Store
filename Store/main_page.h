@@ -95,6 +95,8 @@ private slots:
 
     void on_current_list_clicked();
 
+    void on_actionsave_changes_triggered();
+
 private:
     Ui::main_page *ui;
     QList<products> *list_pointer;

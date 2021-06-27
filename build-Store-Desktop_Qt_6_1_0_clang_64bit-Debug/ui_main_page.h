@@ -45,6 +45,7 @@ public:
     QAction *actionMain_list;
     QAction *actionGroups_2;
     QAction *actionMy_Basket;
+    QAction *actionsave_changes;
     QWidget *centralwidget;
     QTabWidget *groups;
     QWidget *tab_3;
@@ -186,6 +187,8 @@ public:
         actionMy_Basket = new QAction(main_page);
         actionMy_Basket->setObjectName(QString::fromUtf8("actionMy_Basket"));
         actionMy_Basket->setIcon(icon2);
+        actionsave_changes = new QAction(main_page);
+        actionsave_changes->setObjectName(QString::fromUtf8("actionsave_changes"));
         centralwidget = new QWidget(main_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("QComboBox QAbstractItemView {\n"
@@ -678,6 +681,8 @@ public:
         menuuser_s_info->addAction(menuReset->menuAction());
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionLog_out);
+        menuuser_s_info->addSeparator();
+        menuuser_s_info->addAction(actionsave_changes);
         chnagepass->addAction(actionchange_user_pass);
         chnagepass->addSeparator();
         menuReset->addAction(actionMain_list);
@@ -712,6 +717,7 @@ public:
         actionMain_list->setText(QCoreApplication::translate("main_page", "Main List", nullptr));
         actionGroups_2->setText(QCoreApplication::translate("main_page", "Groups", nullptr));
         actionMy_Basket->setText(QCoreApplication::translate("main_page", "My Basket", nullptr));
+        actionsave_changes->setText(QCoreApplication::translate("main_page", "save changes", nullptr));
         comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
         serchzone->setPlaceholderText(QCoreApplication::translate("main_page", "search here", nullptr));

@@ -1,6 +1,12 @@
 pofak
 mitra
 junk
-1
-5
+2
+10
 2021/03/14
+havig
+mina
+sabzi
+5
+1.15
+2021/02/01

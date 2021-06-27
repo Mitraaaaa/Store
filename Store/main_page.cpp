@@ -949,14 +949,21 @@ void main_page::on_unreserved_clicked()
              ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
          }
          int i=ui->basket_tree->currentIndex().row();
+         bool found=false;
          for(int j=0;j<list_pointer->size();j++)
          {
              if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
              {
                  (*list_pointer)[j].set_number((*list_pointer)[j].get_number()+(*my_basket)[i].get_number());
                  showchanges();
+                 found=true;
                  break;
              }
+         }
+         if(!found)
+         {
+             list_pointer->append((*my_basket)[i]);
+             showchanges();
          }
          (*my_basket).erase(my_basket->begin()+i);
          showchanges_tab3();
@@ -1119,6 +1126,10 @@ void main_page::on_search_mybasket_tab3_clicked()
                 {
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
+                else if((*my_basket)[i].get_date().toString("yyyy/MM/dd").contains(search) && ui->comboBox_mybasket->currentText()=="Expire Date")
+                 {
+                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                 }
             }
 
         }
@@ -1143,6 +1154,10 @@ void main_page::on_search_mybasket_tab3_clicked()
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
                 else if(QString::number((*my_basket)[i].get_price()).left(search.size())==search && ui->comboBox_mybasket->currentText()=="Price")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if((*my_basket)[i].get_date().toString("yyyy/MM/dd").left(search.size())==search && ui->comboBox_mybasket->currentText()=="Expire Date")
                 {
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
@@ -1352,5 +1367,15 @@ void main_page::on_sort_basket_button_clicked()
 void main_page::on_current_list_clicked()
 {
     showchanges();
+}
+
+void main_page::on_actionsave_changes_triggered()
+{
+    //save product list
+    save_main_products_list_file();
+    //save group list
+    save_groups_file();
+    //save my basket
+    save_my_basket_file();
 }
 
