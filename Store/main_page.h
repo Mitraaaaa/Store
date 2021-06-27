@@ -34,6 +34,7 @@ public:
     void default_view_tab2();
     void default_view_tab3();
     void check_exdate();
+    void check_exdate_basket();
 
     ~main_page();
 

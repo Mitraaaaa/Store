@@ -551,6 +551,7 @@ public:
 
         current_basket = new QPushButton(layoutWidget2);
         current_basket->setObjectName(QString::fromUtf8("current_basket"));
+        current_basket->setIcon(icon2);
 
         verticalLayout_3->addWidget(current_basket);
 
@@ -652,7 +653,7 @@ public:
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         date_lable = new QLabel(centralwidget);
         date_lable->setObjectName(QString::fromUtf8("date_lable"));
-        date_lable->setGeometry(QRect(459, 20, 221, 20));
+        date_lable->setGeometry(QRect(519, 20, 161, 20));
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));

@@ -588,6 +588,10 @@ color:black;
          <property name="text">
           <string>current basket</string>
          </property>
+         <property name="icon">
+          <iconset resource="recources.qrc">
+           <normaloff>:/rec/img/basket.png</normaloff>:/rec/img/basket.png</iconset>
+         </property>
         </widget>
        </item>
        <item>
@@ -767,9 +771,9 @@ color:black;
    <widget class="QLabel" name="date_lable">
     <property name="geometry">
      <rect>
-      <x>459</x>
+      <x>519</x>
       <y>20</y>
-      <width>221</width>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>

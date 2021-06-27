@@ -31,6 +31,8 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab1();
     default_view_tab2();
     default_view_tab3();
+    //delete the ones that are expired
+    check_exdate();
     QString username="Welcome " +user_iterator.key();
     ui->welcome->setText(username+ " !");
     //tab1 search
@@ -86,7 +88,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sorttype->addItem("Descending");
     //show date
     QDate cd = QDate::currentDate();
-    ui->date_lable->setText(cd.toString()+"\n ("+cd.toString("yyyy/MM/dd")+")");
+    ui->date_lable->setText(cd.toString());
 }
 
 void main_page::default_view_tab1()
@@ -142,8 +144,6 @@ void main_page::default_view_tab1()
            ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
            ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price"<<"Expire Date");
           // ui->tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-           //delete the ones that are expired
-            check_exdate();
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
            file.close();
@@ -333,7 +333,7 @@ void main_page::check_exdate()
                 if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
                 {
                     (*my_basket).erase(my_basket->begin()+k);
-                    showchanges_tab3();
+                    //break bc we don't have repeatetive products in my basket
                     break;
                 }
             }
@@ -358,6 +358,14 @@ void main_page::check_exdate()
             i--;
         }
     }
+    showchanges();
+    showchanges_tab2();
+    showchanges_tab3();
+}
+
+void main_page::check_exdate_basket()
+{
+
 }
 
 void main_page::save_my_basket_file()
@@ -389,7 +397,7 @@ void main_page::save_groups_file()
     QFile group_file("group.txt");
     if(!group_file.open(QFile::WriteOnly | QFile::Text ))
     {
-        return;
+        QMessageBox::warning(this,"title","group.txt not opened");
     }
     else
     {
@@ -439,7 +447,7 @@ void main_page::save_main_products_list_file()
     QFile file ("list.txt");
     if(!file.open(QFile::WriteOnly | QFile::Text ))
     {
-        return;
+       QMessageBox::warning(this,"title","list.txt not opened");
     }
     else{
           QTextStream out(&file);
@@ -881,6 +889,7 @@ void main_page::on_add_mybasket_clicked()
         bool found=false;
         for(int j=0;j<my_basket->size();j++)
         {
+            //check if already exist in my basket
             if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
             {
                 found=true;
@@ -889,11 +898,31 @@ void main_page::on_add_mybasket_clicked()
                     (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
                     (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
                     (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+
+                    //change number also in group that contains this product
+                    for(int k=0;k<group_pointer->size();k++)
+                    {
+                        QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                        for(int s=0;s<groups_includes.size();s++)
+                        {
+                            if(equal_products(groups_includes[s],(*list_pointer)[i],false,true))
+                            {
+                                if((*list_pointer)[i].get_number()==0)
+                                (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+s);
+
+                                else
+                                {
+                                    (*group_pointer)[k].get_pro_group()[s].set_number((*list_pointer)[i].get_number());
+                                }
+                            }
+                        }
+                    }
                     if((*list_pointer)[i].get_number()==0)
                     {
                         list_pointer->erase(list_pointer->begin()+i);
                     }
                     showchanges();
+                    showchanges_tab2();
                     break;
                 }
                 else
@@ -905,10 +934,32 @@ void main_page::on_add_mybasket_clicked()
         }
         if(!found)
         {
+            //if the add product is not in the basket and this is the first order
             if((*list_pointer)[i].get_number()>0)
             {
                 added_to_my_basket.set_number(1);
                 (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+
+                //change number also in group that contains this product
+                for(int k=0;k<group_pointer->size();k++)
+                {
+                    QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                    for(int s=0;s<groups_includes.size();s++)
+                    {
+                        if(equal_products(groups_includes[s],(*list_pointer)[i],false,true))
+                        {
+                            if((*list_pointer)[i].get_number()==0)
+                            (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+s);
+
+                            else
+                            {
+                                (*group_pointer)[k].get_pro_group()[s].set_number((*list_pointer)[i].get_number());
+                            }
+                        }
+                    }
+                }
+
+                showchanges_tab2();
                 showchanges();
                 my_basket->append(added_to_my_basket);
             }
