@@ -7,6 +7,6 @@ junk
 havig
 mina
 sabzi
-5
-1.15
+6
+1.38
 2021/02/01

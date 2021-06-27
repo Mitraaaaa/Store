@@ -68,6 +68,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_mainlist_sortby->addItem("Type");
     ui->combo_mainlist_sortby->addItem("Number of existence");
     ui->combo_mainlist_sortby->addItem("Price");
+    ui->combo_mainlist_sortby->addItem("Expire Date");
     ui->combo_mainlist_sorttype->addItem("Ascending");
     ui->combo_mainlist_sorttype->addItem("Descending");
     //tab2 sort
@@ -80,6 +81,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sortby->addItem("Type");
     ui->combo_basket_sortby->addItem("Number of purcahse");
     ui->combo_basket_sortby->addItem("Price");
+    ui->combo_basket_sortby->addItem("Expire Date");
     ui->combo_basket_sorttype->addItem("Ascending");
     ui->combo_basket_sorttype->addItem("Descending");
     //show date
@@ -1300,6 +1302,11 @@ bool comparePro_price( products one, products two)
     return one.get_price() < two.get_price();
 }
 
+bool camparePro_Exdate(products one,products two)
+{
+    return one.get_date() <two.get_date();
+}
+
 bool compareGroup(group one , group two)
 {
     return one.get_group_name().toLower() < two.get_group_name().toLower();
@@ -1322,6 +1329,9 @@ void main_page::on_sort_mainlist_button_clicked()
 
     else if(type=="Price")
         std::sort(list_pointer->begin(),list_pointer->end(),comparePro_price);
+
+    else if(type=="Expire Date")
+         std::sort(list_pointer->begin(),list_pointer->end(),camparePro_Exdate);
 
     if(ui->combo_mainlist_sorttype->currentText()=="Descending")
         std::reverse(list_pointer->begin(),list_pointer->end());
@@ -1358,6 +1368,9 @@ void main_page::on_sort_basket_button_clicked()
 
     else if(type=="Price")
         std::sort(my_basket->begin(),my_basket->end(),comparePro_price);
+
+    else if(type=="Expire Date")
+         std::sort(my_basket->begin(),my_basket->end(),camparePro_Exdate);
 
     if(ui->combo_basket_sorttype->currentText()=="Descending")
         std::reverse(my_basket->begin(),my_basket->end());
