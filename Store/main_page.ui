@@ -115,7 +115,7 @@ color:black;
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -170,6 +170,9 @@ color:black;
              </property>
              <property name="maxLength">
               <number>102767</number>
+             </property>
+             <property name="placeholderText">
+              <string>search here</string>
              </property>
             </widget>
            </item>
@@ -399,7 +402,11 @@ color:black;
           </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="searchzone_tab2"/>
+          <widget class="QLineEdit" name="searchzone_tab2">
+           <property name="placeholderText">
+            <string>search  here</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="search_button_group">
@@ -552,6 +559,9 @@ color:black;
           <widget class="QLineEdit" name="searchzone_mybasket">
            <property name="text">
             <string/>
+           </property>
+           <property name="placeholderText">
+            <string>search here</string>
            </property>
           </widget>
          </item>

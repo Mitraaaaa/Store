@@ -16,7 +16,7 @@ class main_page : public QMainWindow
 {
     Q_OBJECT
     void addroot(QString name,QList<products> * list,int index,QString mark,QTreeWidget * tab);
-    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark);
+    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QDate exdate,QString mark);
     void addroot_group(QString group_name,QList<group> * group_pointer,int index);
     void addchid_group(QTreeWidgetItem * pre_parent ,group each_group);
 

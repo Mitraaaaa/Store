@@ -121,6 +121,13 @@ void main_page::default_view_tab1()
                   break;
               case 5:
                   pro_list.set_price(line.toDouble());
+                  i++;
+                  break;
+              case 6:
+                  QString name=line;
+                  QStringList name_split = name.split("/");
+                  QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                  pro_list.set_exdate(d);
                   list_pointer->append(pro_list);
                   i=1;
                   break;
@@ -128,7 +135,7 @@ void main_page::default_view_tab1()
            }
            ui->tree->setColumnCount(4);
            ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-           ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
+           ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price"<<"Expire Date");
           // ui->tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
@@ -310,6 +317,7 @@ void main_page::save_my_basket_file()
             out<<(*my_basket)[i].get_type()+"\n";
             out<<QString::number((*my_basket)[i].get_number())+"\n";
             out<<QString::number((*my_basket)[i].get_price())+"\n";
+            out<<(*my_basket)[i].get_date().toString("yyyy/MM/dd")+"\n";
         }
         file.close();
     }
@@ -338,6 +346,7 @@ void main_page::save_groups_file()
                     out<<list[j].get_type()+"\n";
                     out<<QString::number(list[j].get_number())+"\n";
                     out<<QString::number(list[j].get_price())+"\n";
+                    out<<list[i].get_date().toString("yyyy/MM/dd")+"\n";
                 }
             }
         }
@@ -380,6 +389,7 @@ void main_page::save_main_products_list_file()
               out<<(*list_pointer)[i].get_type()+"\n";
               out<<QString::number((*list_pointer)[i].get_number())+"\n";
               out<<QString::number((*list_pointer)[i].get_price())+"\n";
+              out<<(*list_pointer)[i].get_date().toString("yyyy/MM/dd")+"\n";
           }
           file.close();
     }
@@ -388,9 +398,9 @@ void main_page::save_main_products_list_file()
 void main_page::showchanges()
 {
     ui->tree->clear();
-    ui->tree->setColumnCount(4);
+    ui->tree->setColumnCount(5);
     ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
+    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"Price"<<"Expire Date");
    for(int i=0;i<list_pointer->size();i++)
    {
        addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
@@ -431,10 +441,10 @@ void main_page::addroot(QString name,QList<products> * list_pointer,int index,QS
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(tab);
     itm->setText(0, name);
-    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price(),mark);
+    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price(),(*list_pointer)[index].get_date(),mark);
 }
 
-void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark)
+void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QDate exdate,QString mark)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem();
     itm->setText(0,consumer);
@@ -448,6 +458,7 @@ void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type 
         itm->setText(2, QString::number(number));
     }
     itm->setText(3,QString::number(price)+" $");
+    itm->setText(4,exdate.toString("yyyy/MM/dd"));
     parent->addChild(itm);
 }
 
@@ -465,7 +476,7 @@ void main_page::addchid_group(QTreeWidgetItem * pre_parent ,group each_group)
       QTreeWidgetItem * itm=new QTreeWidgetItem();
       itm->setText(0,each_group.get_pro_group()[i].get_name());
       products pro=each_group.get_pro_group()[i];
-      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price(),"$");
+      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price(),pro.get_date(),"$");
       pre_parent->addChild(itm);
    }
 }

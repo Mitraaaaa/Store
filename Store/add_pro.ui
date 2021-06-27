@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
-    <height>306</height>
+    <width>455</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,8 +60,8 @@ color:black;
   <widget class="QPushButton" name="additem">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>240</y>
+     <x>180</x>
+     <y>270</y>
      <width>151</width>
      <height>32</height>
     </rect>
@@ -76,7 +76,7 @@ color:black;
      <x>40</x>
      <y>20</y>
      <width>361</width>
-     <height>191</height>
+     <height>231</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -134,13 +134,65 @@ color:black;
          <widget class="QLineEdit" name="name"/>
         </item>
         <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLineEdit" name="consumer"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLineEdit" name="type"/>
         </item>
         <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLineEdit" name="number"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLineEdit" name="price"/>
@@ -173,7 +225,7 @@ color:black;
            <string extracomment="year"/>
           </property>
           <property name="placeholderText">
-           <string/>
+           <string>yyyy</string>
           </property>
          </widget>
         </item>
@@ -185,7 +237,14 @@ color:black;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="month"/>
+         <widget class="QLineEdit" name="month">
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>MM</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_3">
@@ -195,7 +254,11 @@ color:black;
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="day"/>
+         <widget class="QLineEdit" name="day">
+          <property name="placeholderText">
+           <string>dd</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

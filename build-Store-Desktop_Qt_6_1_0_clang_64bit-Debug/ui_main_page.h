@@ -689,7 +689,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(0);
+        groups->setCurrentIndex(2);
         searchbutton->setDefault(false);
 
 
@@ -714,6 +714,7 @@ public:
         actionMy_Basket->setText(QCoreApplication::translate("main_page", "My Basket", nullptr));
         comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
+        serchzone->setPlaceholderText(QCoreApplication::translate("main_page", "search here", nullptr));
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_list->setText(QCoreApplication::translate("main_page", "current list", nullptr));
         addtolist->setText(QCoreApplication::translate("main_page", "add to list", nullptr));
@@ -725,6 +726,7 @@ public:
         label_6->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
         sort_mainlist_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Main List", nullptr));
+        searchzone_tab2->setPlaceholderText(QCoreApplication::translate("main_page", "search  here", nullptr));
         search_button_group->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
         pushButton_2->setText(QCoreApplication::translate("main_page", "current group_list", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
@@ -734,6 +736,7 @@ public:
         sort_groups_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         searchzone_mybasket->setText(QString());
+        searchzone_mybasket->setPlaceholderText(QCoreApplication::translate("main_page", "search here", nullptr));
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_basket->setText(QCoreApplication::translate("main_page", "current basket", nullptr));
         totalprice->setText(QString());

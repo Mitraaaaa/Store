@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -37,9 +38,13 @@ public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *name;
+    QSpacerItem *verticalSpacer;
     QLineEdit *consumer;
+    QSpacerItem *verticalSpacer_2;
     QLineEdit *type;
+    QSpacerItem *verticalSpacer_3;
     QLineEdit *number;
+    QSpacerItem *verticalSpacer_4;
     QLineEdit *price;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *year;
@@ -52,7 +57,7 @@ public:
     {
         if (add_pro->objectName().isEmpty())
             add_pro->setObjectName(QString::fromUtf8("add_pro"));
-        add_pro->resize(424, 306);
+        add_pro->resize(455, 313);
         add_pro->setStyleSheet(QString::fromUtf8("QDialog\n"
 "{\n"
 "      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,\n"
@@ -88,10 +93,10 @@ public:
 "}"));
         additem = new QPushButton(add_pro);
         additem->setObjectName(QString::fromUtf8("additem"));
-        additem->setGeometry(QRect(200, 240, 151, 32));
+        additem->setGeometry(QRect(180, 270, 151, 32));
         widget = new QWidget(add_pro);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(40, 20, 361, 191));
+        widget->setGeometry(QRect(40, 20, 361, 231));
         horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -139,20 +144,36 @@ public:
 
         verticalLayout_2->addWidget(name);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
         consumer = new QLineEdit(widget);
         consumer->setObjectName(QString::fromUtf8("consumer"));
 
         verticalLayout_2->addWidget(consumer);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
 
         type = new QLineEdit(widget);
         type->setObjectName(QString::fromUtf8("type"));
 
         verticalLayout_2->addWidget(type);
 
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
+
         number = new QLineEdit(widget);
         number->setObjectName(QString::fromUtf8("number"));
 
         verticalLayout_2->addWidget(number);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_4);
 
         price = new QLineEdit(widget);
         price->setObjectName(QString::fromUtf8("price"));
@@ -237,9 +258,12 @@ public:
 #endif // QT_CONFIG(accessibility)
         year->setInputMask(QString());
         year->setText(QString());
-        year->setPlaceholderText(QString());
+        year->setPlaceholderText(QCoreApplication::translate("add_pro", "yyyy", nullptr));
         label_2->setText(QCoreApplication::translate("add_pro", "/", nullptr));
+        month->setInputMask(QString());
+        month->setPlaceholderText(QCoreApplication::translate("add_pro", "MM", nullptr));
         label_3->setText(QCoreApplication::translate("add_pro", "/", nullptr));
+        day->setPlaceholderText(QCoreApplication::translate("add_pro", "dd", nullptr));
     } // retranslateUi
 
 };
