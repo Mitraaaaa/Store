@@ -310,7 +310,7 @@ void main_page::default_view_tab3() {
            for(int i=0;i<my_basket->size();i++)
             addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
-    int total=0;
+    double total=0;
     for(int i=0;i<my_basket->size();i++)
     {
       total+=(*my_basket)[i].get_price();
@@ -436,7 +436,7 @@ void main_page::showchanges_tab3()
     {
         addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
-    int total=0;
+    double total=0;
     for(int i=0;i<my_basket->size();i++)
     {
       total+=(*my_basket)[i].get_price();
