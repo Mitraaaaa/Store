@@ -124,6 +124,7 @@ public:
     QLabel *welcome;
     QWidget *layoutWidget3;
     QVBoxLayout *verticalLayout_4;
+    QLabel *date_lable;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
     QMenu *chnagepass;
@@ -646,6 +647,9 @@ public:
         verticalLayout_4 = new QVBoxLayout(layoutWidget3);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        date_lable = new QLabel(centralwidget);
+        date_lable->setObjectName(QString::fromUtf8("date_lable"));
+        date_lable->setGeometry(QRect(519, 20, 161, 20));
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -743,6 +747,7 @@ public:
         sort_basket_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
         welcome->setText(QString());
+        date_lable->setText(QString());
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
         menuReset->setTitle(QCoreApplication::translate("main_page", "Reset", nullptr));

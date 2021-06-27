@@ -79,6 +79,9 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sortby->addItem("Price");
     ui->combo_basket_sorttype->addItem("Ascending");
     ui->combo_basket_sorttype->addItem("Descending");
+    //show date
+    QDate cd = QDate::currentDate();
+    ui->date_lable->setText(cd.toString());
 }
 
 void main_page::default_view_tab1()
