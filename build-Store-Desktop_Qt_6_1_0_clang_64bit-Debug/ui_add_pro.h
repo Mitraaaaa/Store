@@ -24,7 +24,8 @@ QT_BEGIN_NAMESPACE
 class Ui_add_pro
 {
 public:
-    QWidget *layoutWidget;
+    QPushButton *additem;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLabel *name_2;
@@ -32,19 +33,26 @@ public:
     QLabel *type_2;
     QLabel *number_2;
     QLabel *price_2;
+    QLabel *label;
+    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *name;
     QLineEdit *consumer;
     QLineEdit *type;
     QLineEdit *number;
     QLineEdit *price;
-    QPushButton *additem;
+    QHBoxLayout *horizontalLayout_2;
+    QLineEdit *year;
+    QLabel *label_2;
+    QLineEdit *month;
+    QLabel *label_3;
+    QLineEdit *day;
 
     void setupUi(QDialog *add_pro)
     {
         if (add_pro->objectName().isEmpty())
             add_pro->setObjectName(QString::fromUtf8("add_pro"));
-        add_pro->resize(436, 306);
+        add_pro->resize(424, 306);
         add_pro->setStyleSheet(QString::fromUtf8("QDialog\n"
 "{\n"
 "      background: qconicalgradient(cx:0.5, cy:0.5, angle:30,\n"
@@ -78,75 +86,115 @@ public:
 "    border-style: solid;\n"
 "    border-radius: 4px;\n"
 "}"));
-        layoutWidget = new QWidget(add_pro);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(60, 20, 311, 231));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
+        additem = new QPushButton(add_pro);
+        additem->setObjectName(QString::fromUtf8("additem"));
+        additem->setGeometry(QRect(200, 240, 151, 32));
+        widget = new QWidget(add_pro);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(40, 20, 361, 191));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        name_2 = new QLabel(layoutWidget);
+        name_2 = new QLabel(widget);
         name_2->setObjectName(QString::fromUtf8("name_2"));
 
         verticalLayout->addWidget(name_2);
 
-        consumer_2 = new QLabel(layoutWidget);
+        consumer_2 = new QLabel(widget);
         consumer_2->setObjectName(QString::fromUtf8("consumer_2"));
 
         verticalLayout->addWidget(consumer_2);
 
-        type_2 = new QLabel(layoutWidget);
+        type_2 = new QLabel(widget);
         type_2->setObjectName(QString::fromUtf8("type_2"));
 
         verticalLayout->addWidget(type_2);
 
-        number_2 = new QLabel(layoutWidget);
+        number_2 = new QLabel(widget);
         number_2->setObjectName(QString::fromUtf8("number_2"));
 
         verticalLayout->addWidget(number_2);
 
-        price_2 = new QLabel(layoutWidget);
+        price_2 = new QLabel(widget);
         price_2->setObjectName(QString::fromUtf8("price_2"));
 
         verticalLayout->addWidget(price_2);
 
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        verticalLayout->addWidget(label);
+
 
         horizontalLayout->addLayout(verticalLayout);
 
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        name = new QLineEdit(layoutWidget);
+        name = new QLineEdit(widget);
         name->setObjectName(QString::fromUtf8("name"));
 
         verticalLayout_2->addWidget(name);
 
-        consumer = new QLineEdit(layoutWidget);
+        consumer = new QLineEdit(widget);
         consumer->setObjectName(QString::fromUtf8("consumer"));
 
         verticalLayout_2->addWidget(consumer);
 
-        type = new QLineEdit(layoutWidget);
+        type = new QLineEdit(widget);
         type->setObjectName(QString::fromUtf8("type"));
 
         verticalLayout_2->addWidget(type);
 
-        number = new QLineEdit(layoutWidget);
+        number = new QLineEdit(widget);
         number->setObjectName(QString::fromUtf8("number"));
 
         verticalLayout_2->addWidget(number);
 
-        price = new QLineEdit(layoutWidget);
+        price = new QLineEdit(widget);
         price->setObjectName(QString::fromUtf8("price"));
 
         verticalLayout_2->addWidget(price);
 
 
-        horizontalLayout->addLayout(verticalLayout_2);
+        verticalLayout_3->addLayout(verticalLayout_2);
 
-        additem = new QPushButton(add_pro);
-        additem->setObjectName(QString::fromUtf8("additem"));
-        additem->setGeometry(QRect(170, 260, 151, 32));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        year = new QLineEdit(widget);
+        year->setObjectName(QString::fromUtf8("year"));
+
+        horizontalLayout_2->addWidget(year);
+
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        horizontalLayout_2->addWidget(label_2);
+
+        month = new QLineEdit(widget);
+        month->setObjectName(QString::fromUtf8("month"));
+
+        horizontalLayout_2->addWidget(month);
+
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        day = new QLineEdit(widget);
+        day->setObjectName(QString::fromUtf8("day"));
+
+        horizontalLayout_2->addWidget(day);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_2);
+
+
+        horizontalLayout->addLayout(verticalLayout_3);
+
 
         retranslateUi(add_pro);
 
@@ -156,12 +204,42 @@ public:
     void retranslateUi(QDialog *add_pro)
     {
         add_pro->setWindowTitle(QCoreApplication::translate("add_pro", "Dialog", nullptr));
+#if QT_CONFIG(tooltip)
+        add_pro->setToolTip(QString());
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        add_pro->setStatusTip(QString());
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(whatsthis)
+        add_pro->setWhatsThis(QString());
+#endif // QT_CONFIG(whatsthis)
+        additem->setText(QCoreApplication::translate("add_pro", "Add", nullptr));
         name_2->setText(QCoreApplication::translate("add_pro", "name :", nullptr));
         consumer_2->setText(QCoreApplication::translate("add_pro", "consumer :", nullptr));
         type_2->setText(QCoreApplication::translate("add_pro", "type :", nullptr));
         number_2->setText(QCoreApplication::translate("add_pro", "number :", nullptr));
         price_2->setText(QCoreApplication::translate("add_pro", "price", nullptr));
-        additem->setText(QCoreApplication::translate("add_pro", "Add", nullptr));
+        label->setText(QCoreApplication::translate("add_pro", "expire date :", nullptr));
+#if QT_CONFIG(tooltip)
+        year->setToolTip(QString());
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        year->setStatusTip(QString());
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(whatsthis)
+        year->setWhatsThis(QString());
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(accessibility)
+        year->setAccessibleName(QString());
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        year->setAccessibleDescription(QString());
+#endif // QT_CONFIG(accessibility)
+        year->setInputMask(QString());
+        year->setText(QString());
+        year->setPlaceholderText(QString());
+        label_2->setText(QCoreApplication::translate("add_pro", "/", nullptr));
+        label_3->setText(QCoreApplication::translate("add_pro", "/", nullptr));
     } // retranslateUi
 
 };

@@ -58,6 +58,24 @@ void add_pro::on_additem_clicked()
             valid_add=false;
         }
         else item.set_price(ui->price->text().toDouble());
+        if(ui->year->text().isEmpty() || ui->month->text().isEmpty() || ui->day->text().isEmpty())
+        {
+            if(ui->year->text().isEmpty())
+                (*(ui->year)).setStyleSheet(" background-color: #ffffcc");
+            if(ui->month->text().isEmpty())
+                (*(ui->month)).setStyleSheet(" background-color: #ffffcc");
+            if(ui->day->text().isEmpty())
+                (*(ui->day)).setStyleSheet(" background-color: #ffffcc");
+            valid_add=false;
+        }
+        else
+        {
+            int year=ui->year->text().toInt();
+            int month= ui->month->text().toInt();
+            int day=ui->day->text().toInt();
+            QDate d(year,month,day);
+            item.set_exdate(d);
+        }
 
    if(valid_add)
    {
