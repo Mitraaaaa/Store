@@ -652,7 +652,7 @@ public:
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         date_lable = new QLabel(centralwidget);
         date_lable->setObjectName(QString::fromUtf8("date_lable"));
-        date_lable->setGeometry(QRect(519, 20, 161, 20));
+        date_lable->setGeometry(QRect(459, 20, 221, 20));
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -694,7 +694,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(2);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 

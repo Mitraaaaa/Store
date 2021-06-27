@@ -86,7 +86,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sorttype->addItem("Descending");
     //show date
     QDate cd = QDate::currentDate();
-    ui->date_lable->setText(cd.toString());
+    ui->date_lable->setText(cd.toString()+"\n ("+cd.toString("yyyy/MM/dd")+")");
 }
 
 void main_page::default_view_tab1()
@@ -142,6 +142,8 @@ void main_page::default_view_tab1()
            ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
            ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price"<<"Expire Date");
           // ui->tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+           //delete the ones that are expired
+            check_exdate();
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
            file.close();
@@ -243,10 +245,10 @@ void main_page::default_view_tab2()
                    }
                 }
 
-                ui->grouptree->setColumnCount(6);
+                ui->grouptree->setColumnCount(5);
                 ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
                 ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"Price"<<"Expire Date");
-                ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+               // ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
                 for(int i=0;i<group_pointer->size();i++)
                 {
                     addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
@@ -316,6 +318,46 @@ void main_page::default_view_tab3() {
       total+=(*my_basket)[i].get_price();
     }
     ui->totalprice->setText(QString::number(total));
+}
+
+void main_page::check_exdate()
+{
+    QDate current=QDate::currentDate();
+    for(int i=0;i<list_pointer->size();i++)
+    {
+        if(current.daysTo((*list_pointer)[i].get_date())<=-1)
+        {
+            //the expire date has passed so it should be delete from list and basket
+            for(int k=0;k<my_basket->size();k++)
+            {
+                if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
+                {
+                    (*my_basket).erase(my_basket->begin()+k);
+                    showchanges_tab3();
+                    break;
+                }
+            }
+
+            // we will also remove that item from the group
+            for(int k=0;k<group_pointer->size();k++)
+            {
+                QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                for(int j=0;j<groups_includes.size();j++)
+                {
+                    if(equal_products(groups_includes[j],(*list_pointer)[i],true,true))
+                    {
+                        (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+                    }
+                }
+            }
+
+            //the expire date has passed so it should be delete from list
+             (*list_pointer).erase(list_pointer->begin()+i);
+
+            //it should continue searching in the list to find other product that passed their expiration date
+            i--;
+        }
+    }
 }
 
 void main_page::save_my_basket_file()

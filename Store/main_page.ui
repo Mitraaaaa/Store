@@ -115,7 +115,7 @@ color:black;
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -767,9 +767,9 @@ color:black;
    <widget class="QLabel" name="date_lable">
     <property name="geometry">
      <rect>
-      <x>519</x>
+      <x>459</x>
       <y>20</y>
-      <width>161</width>
+      <width>221</width>
       <height>20</height>
      </rect>
     </property>

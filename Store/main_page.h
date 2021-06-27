@@ -33,6 +33,7 @@ public:
     void default_view_tab1();
     void default_view_tab2();
     void default_view_tab3();
+    void check_exdate();
 
     ~main_page();
 
