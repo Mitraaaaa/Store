@@ -634,6 +634,8 @@ bool main_page::equal_products(products item1,products item2, bool compare_numbe
         return false;
     if(item1.get_type()!=item2.get_type())
         return false;
+    if(item1.get_date()!=item2.get_date())
+        return false;
     if(compare_numbers)
     {
         if(item1.get_number()!=item2.get_number())
@@ -1015,6 +1017,11 @@ void main_page::on_search_button_group_clicked()
                                  addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
                                   break;
                              }
+                             else if(list_in_group[j].get_date().toString("yyyy/MM/dd").contains(search) && ui->comosearchtab2->currentText()=="Expire Date")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
                          }
                   }
 
@@ -1060,6 +1067,11 @@ void main_page::on_search_button_group_clicked()
                               break;
                          }
                          else if(QString::number(list_in_group[j].get_price()).left(search.size())==search && ui->comosearchtab2->currentText()=="Price")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
+                         else if(list_in_group[j].get_date().toString("yyyy/MM/dd").left(search.size())==search && ui->comosearchtab2->currentText()=="Expire Date")
                          {
                              addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
                               break;

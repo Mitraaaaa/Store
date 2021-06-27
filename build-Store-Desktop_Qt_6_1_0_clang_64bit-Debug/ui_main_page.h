@@ -689,7 +689,7 @@ public:
 
         retranslateUi(main_page);
 
-        groups->setCurrentIndex(2);
+        groups->setCurrentIndex(0);
         searchbutton->setDefault(false);
 
 
