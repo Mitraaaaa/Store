@@ -45,6 +45,7 @@ public:
     QAction *actionMain_list;
     QAction *actionGroups_2;
     QAction *actionMy_Basket;
+    QAction *actionsave_changes;
     QWidget *centralwidget;
     QTabWidget *groups;
     QWidget *tab_3;
@@ -124,6 +125,7 @@ public:
     QLabel *welcome;
     QWidget *layoutWidget3;
     QVBoxLayout *verticalLayout_4;
+    QLabel *date_lable;
     QMenuBar *menubar;
     QMenu *menuuser_s_info;
     QMenu *chnagepass;
@@ -185,6 +187,8 @@ public:
         actionMy_Basket = new QAction(main_page);
         actionMy_Basket->setObjectName(QString::fromUtf8("actionMy_Basket"));
         actionMy_Basket->setIcon(icon2);
+        actionsave_changes = new QAction(main_page);
+        actionsave_changes->setObjectName(QString::fromUtf8("actionsave_changes"));
         centralwidget = new QWidget(main_page);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("QComboBox QAbstractItemView {\n"
@@ -547,6 +551,7 @@ public:
 
         current_basket = new QPushButton(layoutWidget2);
         current_basket->setObjectName(QString::fromUtf8("current_basket"));
+        current_basket->setIcon(icon2);
 
         verticalLayout_3->addWidget(current_basket);
 
@@ -646,6 +651,9 @@ public:
         verticalLayout_4 = new QVBoxLayout(layoutWidget3);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        date_lable = new QLabel(centralwidget);
+        date_lable->setObjectName(QString::fromUtf8("date_lable"));
+        date_lable->setGeometry(QRect(519, 20, 161, 20));
         main_page->setCentralWidget(centralwidget);
         menubar = new QMenuBar(main_page);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -674,6 +682,8 @@ public:
         menuuser_s_info->addAction(menuReset->menuAction());
         menuuser_s_info->addSeparator();
         menuuser_s_info->addAction(actionLog_out);
+        menuuser_s_info->addSeparator();
+        menuuser_s_info->addAction(actionsave_changes);
         chnagepass->addAction(actionchange_user_pass);
         chnagepass->addSeparator();
         menuReset->addAction(actionMain_list);
@@ -708,8 +718,10 @@ public:
         actionMain_list->setText(QCoreApplication::translate("main_page", "Main List", nullptr));
         actionGroups_2->setText(QCoreApplication::translate("main_page", "Groups", nullptr));
         actionMy_Basket->setText(QCoreApplication::translate("main_page", "My Basket", nullptr));
+        actionsave_changes->setText(QCoreApplication::translate("main_page", "save changes", nullptr));
         comosearchtab1->setCurrentText(QString());
         serchzone->setText(QString());
+        serchzone->setPlaceholderText(QCoreApplication::translate("main_page", "search here", nullptr));
         searchbutton->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_list->setText(QCoreApplication::translate("main_page", "current list", nullptr));
         addtolist->setText(QCoreApplication::translate("main_page", "add to list", nullptr));
@@ -721,6 +733,7 @@ public:
         label_6->setText(QCoreApplication::translate("main_page", "sort type :", nullptr));
         sort_mainlist_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_3), QCoreApplication::translate("main_page", "Main List", nullptr));
+        searchzone_tab2->setPlaceholderText(QCoreApplication::translate("main_page", "search  here", nullptr));
         search_button_group->setText(QCoreApplication::translate("main_page", "saerch", nullptr));
         pushButton_2->setText(QCoreApplication::translate("main_page", "current group_list", nullptr));
         deleteforgroups->setText(QCoreApplication::translate("main_page", "delete", nullptr));
@@ -730,6 +743,7 @@ public:
         sort_groups_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_5), QCoreApplication::translate("main_page", "Groups", nullptr));
         searchzone_mybasket->setText(QString());
+        searchzone_mybasket->setPlaceholderText(QCoreApplication::translate("main_page", "search here", nullptr));
         search_mybasket_tab3->setText(QCoreApplication::translate("main_page", "search", nullptr));
         current_basket->setText(QCoreApplication::translate("main_page", "current basket", nullptr));
         totalprice->setText(QString());
@@ -743,6 +757,7 @@ public:
         sort_basket_button->setText(QCoreApplication::translate("main_page", "sort", nullptr));
         groups->setTabText(groups->indexOf(tab_4), QCoreApplication::translate("main_page", "Your Basket", nullptr));
         welcome->setText(QString());
+        date_lable->setText(QString());
         menuuser_s_info->setTitle(QCoreApplication::translate("main_page", "user's info", nullptr));
         chnagepass->setTitle(QCoreApplication::translate("main_page", "settings", nullptr));
         menuReset->setTitle(QCoreApplication::translate("main_page", "Reset", nullptr));

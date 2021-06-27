@@ -16,7 +16,7 @@ class main_page : public QMainWindow
 {
     Q_OBJECT
     void addroot(QString name,QList<products> * list,int index,QString mark,QTreeWidget * tab);
-    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark);
+    void addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QDate exdate,QString mark);
     void addroot_group(QString group_name,QList<group> * group_pointer,int index);
     void addchid_group(QTreeWidgetItem * pre_parent ,group each_group);
 
@@ -33,6 +33,8 @@ public:
     void default_view_tab1();
     void default_view_tab2();
     void default_view_tab3();
+    void check_exdate();
+    void check_exdate_basket();
 
     ~main_page();
 
@@ -94,6 +96,8 @@ private slots:
 
 
     void on_current_list_clicked();
+
+    void on_actionsave_changes_triggered();
 
 private:
     Ui::main_page *ui;

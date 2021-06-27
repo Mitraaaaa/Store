@@ -30,6 +30,11 @@ int products::get_number()
     return number;
 }
 
+QDate products::get_date()
+{
+    return exdate;
+}
+
 void products::set_name(QString name)
 {
     this->name=name;
@@ -53,4 +58,9 @@ void products::set_number(int number)
 void products::set_price(double price)
 {
     this->price=price;
+}
+
+void products::set_exdate(QDate exdate)
+{
+    this->exdate=exdate;
 }

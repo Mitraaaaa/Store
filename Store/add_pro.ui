@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>436</width>
-    <height>306</height>
+    <width>455</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="toolTip">
+   <string/>
+  </property>
+  <property name="statusTip">
+   <string/>
+  </property>
+  <property name="whatsThis">
+   <string/>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog
@@ -48,12 +57,25 @@ color:black;
     border-radius: 4px;
 }</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QPushButton" name="additem">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>180</x>
+     <y>270</y>
+     <width>151</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
      <y>20</y>
-     <width>311</width>
+     <width>361</width>
      <height>231</height>
     </rect>
    </property>
@@ -95,41 +117,154 @@ color:black;
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>expire date :</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QLineEdit" name="name"/>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="name"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="consumer"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="type"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="number"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="price"/>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLineEdit" name="consumer"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="type"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="number"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="price"/>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="year">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="statusTip">
+           <string/>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="accessibleName">
+           <string/>
+          </property>
+          <property name="accessibleDescription">
+           <string/>
+          </property>
+          <property name="inputMask">
+           <string extracomment="year"/>
+          </property>
+          <property name="text">
+           <string extracomment="year"/>
+          </property>
+          <property name="placeholderText">
+           <string>yyyy</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>/</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="month">
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>MM</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>/</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="day">
+          <property name="placeholderText">
+           <string>dd</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="additem">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>260</y>
-     <width>151</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add</string>
-   </property>
   </widget>
  </widget>
  <resources/>

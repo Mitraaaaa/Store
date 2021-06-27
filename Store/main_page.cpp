@@ -31,6 +31,9 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     default_view_tab1();
     default_view_tab2();
     default_view_tab3();
+    //delete the ones that are expired
+    check_exdate();
+    check_exdate_basket();
     QString username="Welcome " +user_iterator.key();
     ui->welcome->setText(username+ " !");
     //tab1 search
@@ -41,6 +44,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_search_by_tab1->addItem("Type");
     ui->combo_search_by_tab1->addItem("Number");
     ui->combo_search_by_tab1->addItem("Price");
+    ui->combo_search_by_tab1->addItem("Expire Date");
     //tab2 search
     ui->combobox_searchtab2_startwith->addItem("Start with");
     ui->combobox_searchtab2_startwith->addItem("Contains");
@@ -50,6 +54,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comosearchtab2->addItem("Type");
     ui->comosearchtab2->addItem("Number");
     ui->comosearchtab2->addItem("Price");
+    ui->comosearchtab2->addItem("Expire Date");
     //tab3 search
     ui->comboBox_2_my_basket->addItem("Start with");
     ui->comboBox_2_my_basket->addItem("Contains");
@@ -58,6 +63,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->comboBox_mybasket->addItem("Type");
     ui->comboBox_mybasket->addItem("Number of purchase");
     ui->comboBox_mybasket->addItem("Price");
+    ui->comboBox_mybasket->addItem("Expire Date");
 
     //tab1 sort
     ui->combo_mainlist_sortby->addItem("Product's name");
@@ -65,6 +71,7 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_mainlist_sortby->addItem("Type");
     ui->combo_mainlist_sortby->addItem("Number of existence");
     ui->combo_mainlist_sortby->addItem("Price");
+    ui->combo_mainlist_sortby->addItem("Expire Date");
     ui->combo_mainlist_sorttype->addItem("Ascending");
     ui->combo_mainlist_sorttype->addItem("Descending");
     //tab2 sort
@@ -77,8 +84,12 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sortby->addItem("Type");
     ui->combo_basket_sortby->addItem("Number of purcahse");
     ui->combo_basket_sortby->addItem("Price");
+    ui->combo_basket_sortby->addItem("Expire Date");
     ui->combo_basket_sorttype->addItem("Ascending");
     ui->combo_basket_sorttype->addItem("Descending");
+    //show date
+    QDate cd = QDate::currentDate();
+    ui->date_lable->setText(cd.toString());
 }
 
 void main_page::default_view_tab1()
@@ -118,6 +129,13 @@ void main_page::default_view_tab1()
                   break;
               case 5:
                   pro_list.set_price(line.toDouble());
+                  i++;
+                  break;
+              case 6:
+                  QString name=line;
+                  QStringList name_split = name.split("/");
+                  QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                  pro_list.set_exdate(d);
                   list_pointer->append(pro_list);
                   i=1;
                   break;
@@ -125,7 +143,7 @@ void main_page::default_view_tab1()
            }
            ui->tree->setColumnCount(4);
            ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-           ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price");
+           ui->tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number"<<"price"<<"Expire Date");
           // ui->tree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
            for(int i=0;i<list_pointer->size();i++)
             addroot((*list_pointer)[i].get_name(),list_pointer,i,"$", ui->tree);
@@ -200,6 +218,13 @@ void main_page::default_view_tab2()
                                break;
                            case 5:
                                pro_list.set_price(line.toDouble());
+                               i++;
+                               break;
+                           case 6:
+                               QString name=line;
+                               QStringList name_split = name.split("/");
+                               QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                               pro_list.set_exdate(d);
                                pro_group_list.append(pro_list);
                                i=1;
                                break;
@@ -223,8 +248,8 @@ void main_page::default_view_tab2()
 
                 ui->grouptree->setColumnCount(5);
                 ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-                ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
-                ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+                ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"Price"<<"Expire Date");
+               // ui->grouptree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
                 for(int i=0;i<group_pointer->size();i++)
                 {
                     addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
@@ -270,23 +295,88 @@ void main_page::default_view_tab3() {
                   break;
               case 5:
                   my_basket_list.set_price(line.toDouble());
+                  i++;
+                  break;
+              case 6:
+                  QString name=line;
+                  QStringList name_split = name.split("/");
+                  QDate d(name_split[0].toInt(),name_split[1].toInt(),name_split[2].toInt());
+                  my_basket_list.set_exdate(d);
                   my_basket->append(my_basket_list);
                   i=1;
                   break;
               }
            }
-           ui->basket_tree->setColumnCount(4);
+           ui->basket_tree->setColumnCount(5);
            ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-           ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price");
+           ui->basket_tree->setHeaderLabels(QStringList() <<"Consumer" << "Type" <<"Number of purchase"<<"price"<<"Expire Date");
            for(int i=0;i<my_basket->size();i++)
             addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
-    int total=0;
+    double total=0;
     for(int i=0;i<my_basket->size();i++)
     {
       total+=(*my_basket)[i].get_price();
     }
     ui->totalprice->setText(QString::number(total));
+}
+
+void main_page::check_exdate()
+{
+    QDate current=QDate::currentDate();
+    for(int i=0;i<list_pointer->size();i++)
+    {
+        if(current.daysTo((*list_pointer)[i].get_date())<=-1)
+        {
+            //the expire date has passed so it should be delete from list and basket
+            for(int k=0;k<my_basket->size();k++)
+            {
+                if(equal_products((*my_basket)[k],(*list_pointer)[i],false,false))
+                {
+                    (*my_basket).erase(my_basket->begin()+k);
+                    //break bc we don't have repeatetive products in my basket
+                    break;
+                }
+            }
+
+            // we will also remove that item from the group
+            for(int k=0;k<group_pointer->size();k++)
+            {
+                QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                for(int j=0;j<groups_includes.size();j++)
+                {
+                    if(equal_products(groups_includes[j],(*list_pointer)[i],true,true))
+                    {
+                        (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+j);
+                    }
+                }
+            }
+
+            //the expire date has passed so it should be delete from list
+             (*list_pointer).erase(list_pointer->begin()+i);
+
+            //it should continue searching in the list to find other product that passed their expiration date
+            i--;
+        }
+    }
+    showchanges();
+    showchanges_tab2();
+    showchanges_tab3();
+}
+
+void main_page::check_exdate_basket()
+{
+     QDate current=QDate::currentDate();
+    //if the product does not exist in main list and all of them are in basket , we delete the ones taht are expired
+    for(int i=0;i<my_basket->size();i++)
+    {
+        if(current.daysTo((*my_basket)[i].get_date())<=-1)
+        {
+             (*my_basket).erase(my_basket->begin()+i);
+            i--;
+        }
+    }
+
 }
 
 void main_page::save_my_basket_file()
@@ -300,13 +390,17 @@ void main_page::save_my_basket_file()
     else
     {
         QTextStream out(&file);
-        for(int i=0;i<my_basket->size();i++)
+        if(my_basket->size()!=0)
         {
-            out<<(*my_basket)[i].get_name()+"\n";
-            out<<(*my_basket)[i].get_consumer()+"\n";
-            out<<(*my_basket)[i].get_type()+"\n";
-            out<<QString::number((*my_basket)[i].get_number())+"\n";
-            out<<QString::number((*my_basket)[i].get_price())+"\n";
+            for(int i=0;i<my_basket->size();i++)
+            {
+                out<<(*my_basket)[i].get_name()+"\n";
+                out<<(*my_basket)[i].get_consumer()+"\n";
+                out<<(*my_basket)[i].get_type()+"\n";
+                out<<QString::number((*my_basket)[i].get_number())+"\n";
+                out<<QString::number((*my_basket)[i].get_price())+"\n";
+                out<<(*my_basket)[i].get_date().toString("yyyy/MM/dd")+"\n";
+            }
         }
         file.close();
     }
@@ -317,24 +411,28 @@ void main_page::save_groups_file()
     QFile group_file("group.txt");
     if(!group_file.open(QFile::WriteOnly | QFile::Text ))
     {
-        return;
+        QMessageBox::warning(this,"title","group.txt not opened");
     }
     else
     {
         QTextStream out(&group_file);
-        for(int i=0;i<group_pointer->size();i++)
+        if(group_pointer->size()!=0)
         {
-            out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
-            QList<products> list=(*group_pointer)[i].get_pro_group();
-            if(!list.empty())
+            for(int i=0;i<group_pointer->size();i++)
             {
-                for(int j=0;j<list.size();j++)
+                out<<"Group : "+(*group_pointer)[i].get_group_name()+"\n";
+                QList<products> list=(*group_pointer)[i].get_pro_group();
+                if(!list.empty())
                 {
-                    out<<list[j].get_name()+"\n";
-                    out<<list[j].get_consumer()+"\n";
-                    out<<list[j].get_type()+"\n";
-                    out<<QString::number(list[j].get_number())+"\n";
-                    out<<QString::number(list[j].get_price())+"\n";
+                    for(int j=0;j<list.size();j++)
+                    {
+                        out<<list[j].get_name()+"\n";
+                        out<<list[j].get_consumer()+"\n";
+                        out<<list[j].get_type()+"\n";
+                        out<<QString::number(list[j].get_number())+"\n";
+                        out<<QString::number(list[j].get_price())+"\n";
+                        out<<list[i].get_date().toString("yyyy/MM/dd")+"\n";
+                    }
                 }
             }
         }
@@ -366,17 +464,21 @@ void main_page::save_main_products_list_file()
     QFile file ("list.txt");
     if(!file.open(QFile::WriteOnly | QFile::Text ))
     {
-        return;
+       QMessageBox::warning(this,"title","list.txt not opened");
     }
     else{
           QTextStream out(&file);
-          for(int i=0;i<list_pointer->size();i++)
+          if(list_pointer->size()!=0)
           {
-              out<<(*list_pointer)[i].get_name()+"\n";
-              out<<(*list_pointer)[i].get_consumer()+"\n";
-              out<<(*list_pointer)[i].get_type()+"\n";
-              out<<QString::number((*list_pointer)[i].get_number())+"\n";
-              out<<QString::number((*list_pointer)[i].get_price())+"\n";
+              for(int i=0;i<list_pointer->size();i++)
+              {
+                  out<<(*list_pointer)[i].get_name()+"\n";
+                  out<<(*list_pointer)[i].get_consumer()+"\n";
+                  out<<(*list_pointer)[i].get_type()+"\n";
+                  out<<QString::number((*list_pointer)[i].get_number())+"\n";
+                  out<<QString::number((*list_pointer)[i].get_price())+"\n";
+                  out<<(*list_pointer)[i].get_date().toString("yyyy/MM/dd")+"\n";
+              }
           }
           file.close();
     }
@@ -385,9 +487,9 @@ void main_page::save_main_products_list_file()
 void main_page::showchanges()
 {
     ui->tree->clear();
-    ui->tree->setColumnCount(4);
+    ui->tree->setColumnCount(5);
     ui->tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"price");
+    ui->tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number"<<"Price"<<"Expire Date");
    for(int i=0;i<list_pointer->size();i++)
    {
        addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
@@ -397,14 +499,14 @@ void main_page::showchanges()
 void main_page::showchanges_tab3()
 {
     ui->basket_tree->clear();
-    ui->basket_tree->setColumnCount(4);
+    ui->basket_tree->setColumnCount(5);
     ui->basket_tree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price");
+    ui->basket_tree->setHeaderLabels(QStringList() <<"Product/Consumer" << "Type" <<"Number of purchase"<<"price"<<"Expire Date");
     for(int i=0;i<my_basket->size();i++)
     {
         addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
     }
-    int total=0;
+    double total=0;
     for(int i=0;i<my_basket->size();i++)
     {
       total+=(*my_basket)[i].get_price();
@@ -415,9 +517,9 @@ void main_page::showchanges_tab3()
 void main_page::showchanges_tab2()
 {
     ui->grouptree->clear();
-    ui->grouptree->setColumnCount(4);
+    ui->grouptree->setColumnCount(5);
     ui->grouptree->header()->setStyleSheet("QHeaderView::section { background-color:#ff8c8c; color:black; }");
-    ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price");
+    ui->grouptree->setHeaderLabels(QStringList()<<"Group/Product/Consumer"<< "Type" <<"Number"<<"price"<<"Expire Date");
     for(int i=0;i<group_pointer->size();i++)
     {
         addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
@@ -428,10 +530,10 @@ void main_page::addroot(QString name,QList<products> * list_pointer,int index,QS
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem(tab);
     itm->setText(0, name);
-    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price(),mark);
+    addchid(itm,(*list_pointer)[index].get_consumer(),(*list_pointer)[index].get_type(),(*list_pointer)[index].get_number(),(*list_pointer)[index].get_price(),(*list_pointer)[index].get_date(),mark);
 }
 
-void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QString mark)
+void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type ,int number,double price,QDate exdate,QString mark)
 {
     QTreeWidgetItem * itm=new QTreeWidgetItem();
     itm->setText(0,consumer);
@@ -445,6 +547,7 @@ void main_page::addchid(QTreeWidgetItem * parent ,QString consumer,QString type 
         itm->setText(2, QString::number(number));
     }
     itm->setText(3,QString::number(price)+" $");
+    itm->setText(4,exdate.toString("yyyy/MM/dd"));
     parent->addChild(itm);
 }
 
@@ -462,7 +565,7 @@ void main_page::addchid_group(QTreeWidgetItem * pre_parent ,group each_group)
       QTreeWidgetItem * itm=new QTreeWidgetItem();
       itm->setText(0,each_group.get_pro_group()[i].get_name());
       products pro=each_group.get_pro_group()[i];
-      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price(),"$");
+      addchid(itm,pro.get_consumer(),pro.get_type(),pro.get_number(),pro.get_price(),pro.get_date(),"$");
       pre_parent->addChild(itm);
    }
 }
@@ -553,6 +656,10 @@ void main_page::on_searchbutton_clicked()
                 {
                     addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
+                else if ((*list_pointer)[i].get_date().toString("yyyy/MM/dd").contains(search) && ui->combo_search_by_tab1->currentText()=="Expire Date")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
+                }
             }
         }
         else {
@@ -578,6 +685,10 @@ void main_page::on_searchbutton_clicked()
                 {
                     addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
                 }
+                else if(((*list_pointer)[i].get_date().toString("yyyy/MM/dd")).left(search.size())==search && ui->combo_search_by_tab1->currentText()=="Expire Date")
+                {
+                    addroot((*list_pointer)[i].get_name(),list_pointer,i,"$",ui->tree);
+                }
             }
         }
     }
@@ -594,6 +705,8 @@ bool main_page::equal_products(products item1,products item2, bool compare_numbe
     if(item1.get_consumer()!=item2.get_consumer())
         return false;
     if(item1.get_type()!=item2.get_type())
+        return false;
+    if(item1.get_date()!=item2.get_date())
         return false;
     if(compare_numbers)
     {
@@ -796,6 +909,7 @@ void main_page::on_add_mybasket_clicked()
         bool found=false;
         for(int j=0;j<my_basket->size();j++)
         {
+            //check if already exist in my basket
             if(equal_products(added_to_my_basket,(*my_basket)[j],false,false))
             {
                 found=true;
@@ -804,11 +918,31 @@ void main_page::on_add_mybasket_clicked()
                     (*my_basket)[j].set_number(((*my_basket)[j].get_number())+1);
                     (*my_basket)[j].set_price( (*my_basket)[j].get_price()+added_to_my_basket.get_price());
                     (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+
+                    //change number also in group that contains this product
+                    for(int k=0;k<group_pointer->size();k++)
+                    {
+                        QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                        for(int s=0;s<groups_includes.size();s++)
+                        {
+                            if(equal_products(groups_includes[s],(*list_pointer)[i],false,true))
+                            {
+                                if((*list_pointer)[i].get_number()==0)
+                                (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+s);
+
+                                else
+                                {
+                                    (*group_pointer)[k].get_pro_group()[s].set_number((*list_pointer)[i].get_number());
+                                }
+                            }
+                        }
+                    }
                     if((*list_pointer)[i].get_number()==0)
                     {
                         list_pointer->erase(list_pointer->begin()+i);
                     }
                     showchanges();
+                    showchanges_tab2();
                     break;
                 }
                 else
@@ -820,10 +954,32 @@ void main_page::on_add_mybasket_clicked()
         }
         if(!found)
         {
+            //if the add product is not in the basket and this is the first order
             if((*list_pointer)[i].get_number()>0)
             {
                 added_to_my_basket.set_number(1);
                 (*list_pointer)[i].set_number((*list_pointer)[i].get_number()-1);
+
+                //change number also in group that contains this product
+                for(int k=0;k<group_pointer->size();k++)
+                {
+                    QList<products> groups_includes=(*group_pointer)[k].get_pro_group();
+                    for(int s=0;s<groups_includes.size();s++)
+                    {
+                        if(equal_products(groups_includes[s],(*list_pointer)[i],false,true))
+                        {
+                            if((*list_pointer)[i].get_number()==0)
+                            (*group_pointer)[k].get_pro_group().erase((*group_pointer)[k].get_pro_group().begin()+s);
+
+                            else
+                            {
+                                (*group_pointer)[k].get_pro_group()[s].set_number((*list_pointer)[i].get_number());
+                            }
+                        }
+                    }
+                }
+
+                showchanges_tab2();
                 showchanges();
                 my_basket->append(added_to_my_basket);
             }
@@ -908,14 +1064,21 @@ void main_page::on_unreserved_clicked()
              ui->basket_tree->setCurrentItem(ui->basket_tree->currentItem()->parent());
          }
          int i=ui->basket_tree->currentIndex().row();
+         bool found=false;
          for(int j=0;j<list_pointer->size();j++)
          {
              if(equal_products((*my_basket)[i],(*list_pointer)[j],false,false))
              {
                  (*list_pointer)[j].set_number((*list_pointer)[j].get_number()+(*my_basket)[i].get_number());
                  showchanges();
+                 found=true;
                  break;
              }
+         }
+         if(!found)
+         {
+             list_pointer->append((*my_basket)[i]);
+             showchanges();
          }
          (*my_basket).erase(my_basket->begin()+i);
          showchanges_tab3();
@@ -976,6 +1139,11 @@ void main_page::on_search_button_group_clicked()
                                  addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
                                   break;
                              }
+                             else if(list_in_group[j].get_date().toString("yyyy/MM/dd").contains(search) && ui->comosearchtab2->currentText()=="Expire Date")
+                             {
+                                 addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                                  break;
+                             }
                          }
                   }
 
@@ -1025,6 +1193,11 @@ void main_page::on_search_button_group_clicked()
                              addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
                               break;
                          }
+                         else if(list_in_group[j].get_date().toString("yyyy/MM/dd").left(search.size())==search && ui->comosearchtab2->currentText()=="Expire Date")
+                         {
+                             addroot_group((*group_pointer)[i].get_group_name(),group_pointer,i);
+                              break;
+                         }
                      }
                  }
              }
@@ -1068,6 +1241,10 @@ void main_page::on_search_mybasket_tab3_clicked()
                 {
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
+                else if((*my_basket)[i].get_date().toString("yyyy/MM/dd").contains(search) && ui->comboBox_mybasket->currentText()=="Expire Date")
+                 {
+                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                 }
             }
 
         }
@@ -1092,6 +1269,10 @@ void main_page::on_search_mybasket_tab3_clicked()
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
                 else if(QString::number((*my_basket)[i].get_price()).left(search.size())==search && ui->comboBox_mybasket->currentText()=="Price")
+                {
+                    addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
+                }
+                else if((*my_basket)[i].get_date().toString("yyyy/MM/dd").left(search.size())==search && ui->comboBox_mybasket->currentText()=="Expire Date")
                 {
                     addroot((*my_basket)[i].get_name(),my_basket,i,"X",ui->basket_tree);
                 }
@@ -1234,6 +1415,11 @@ bool comparePro_price( products one, products two)
     return one.get_price() < two.get_price();
 }
 
+bool camparePro_Exdate(products one,products two)
+{
+    return one.get_date() <two.get_date();
+}
+
 bool compareGroup(group one , group two)
 {
     return one.get_group_name().toLower() < two.get_group_name().toLower();
@@ -1256,6 +1442,9 @@ void main_page::on_sort_mainlist_button_clicked()
 
     else if(type=="Price")
         std::sort(list_pointer->begin(),list_pointer->end(),comparePro_price);
+
+    else if(type=="Expire Date")
+         std::sort(list_pointer->begin(),list_pointer->end(),camparePro_Exdate);
 
     if(ui->combo_mainlist_sorttype->currentText()=="Descending")
         std::reverse(list_pointer->begin(),list_pointer->end());
@@ -1293,6 +1482,9 @@ void main_page::on_sort_basket_button_clicked()
     else if(type=="Price")
         std::sort(my_basket->begin(),my_basket->end(),comparePro_price);
 
+    else if(type=="Expire Date")
+         std::sort(my_basket->begin(),my_basket->end(),camparePro_Exdate);
+
     if(ui->combo_basket_sorttype->currentText()=="Descending")
         std::reverse(my_basket->begin(),my_basket->end());
     showchanges_tab3();
@@ -1301,5 +1493,15 @@ void main_page::on_sort_basket_button_clicked()
 void main_page::on_current_list_clicked()
 {
     showchanges();
+}
+
+void main_page::on_actionsave_changes_triggered()
+{
+    //save product list
+    save_main_products_list_file();
+    //save group list
+    save_groups_file();
+    //save my basket
+    save_my_basket_file();
 }
 

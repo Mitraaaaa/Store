@@ -651,6 +651,8 @@ moc_add_group.cpp: ../Store/add_group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/add_group.h -o moc_add_group.cpp
@@ -661,6 +663,8 @@ moc_add_pro.cpp: ../Store/add_pro.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
 		moc_predefs.h \
@@ -676,6 +680,8 @@ moc_change_group_name.cpp: ../Store/change_group_name.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/change_group_name.h -o moc_change_group_name.cpp
@@ -700,6 +706,8 @@ moc_creat_new_group.cpp: ../Store/creat_new_group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
 	/Users/omrani/Qt/6.1.0/clang_64/libexec/moc $(DEFINES) --include /Users/omrani/Documents/AP_Project/Store/build-Store-Desktop_Qt_6_1_0_clang_64bit-Debug/moc_predefs.h -I/Users/omrani/Qt/6.1.0/clang_64/mkspecs/macx-clang -I/Users/omrani/Documents/AP_Project/Store/Store -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtGui.framework/Headers -I/Users/omrani/Qt/6.1.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/omrani/Qt/6.1.0/clang_64/lib ../Store/creat_new_group.h -o moc_creat_new_group.cpp
@@ -712,6 +720,8 @@ moc_editpage.cpp: ../Store/editpage.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../Store/group.h \
 		moc_predefs.h \
 		../../../../Qt/6.1.0/clang_64/libexec/moc
@@ -725,6 +735,8 @@ moc_main_page.cpp: ../Store/main_page.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../Store/group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QTreeWidget \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
@@ -809,6 +821,8 @@ add_group.o: ../Store/add_group.cpp ../Store/add_group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		ui_add_group.h \
 		../Store/creat_new_group.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o add_group.o ../Store/add_group.cpp
@@ -819,6 +833,8 @@ add_pro.o: ../Store/add_pro.cpp ../Store/add_pro.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h \
 		ui_add_pro.h \
@@ -835,6 +851,8 @@ change_group_name.o: ../Store/change_group_name.cpp ../Store/change_group_name.h
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		ui_change_group_name.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o change_group_name.o ../Store/change_group_name.cpp
 
@@ -857,6 +875,8 @@ creat_new_group.o: ../Store/creat_new_group.cpp ../Store/creat_new_group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		ui_creat_new_group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
@@ -884,6 +904,8 @@ editpage.o: ../Store/editpage.cpp ../Store/editpage.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../Store/group.h \
 		ui_editpage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editpage.o ../Store/editpage.cpp
@@ -892,6 +914,8 @@ group.o: ../Store/group.cpp ../Store/group.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QList \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qlist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o group.o ../Store/group.cpp
@@ -917,6 +941,8 @@ main_page.o: ../Store/main_page.cpp ../Store/main_page.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../Store/group.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QTreeWidget \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qtreewidget.h \
@@ -958,6 +984,8 @@ mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
 		../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.1.0/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../Store/main_page.h \
@@ -973,7 +1001,9 @@ mainwindow.o: ../Store/mainwindow.cpp ../Store/mainwindow.h \
 
 products.o: ../Store/products.cpp ../Store/products.h \
 		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Qt/6.1.0/clang_64/lib/QtCore.framework/Headers/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o products.o ../Store/products.cpp
 
 qrc_recources.o: qrc_recources.cpp 
