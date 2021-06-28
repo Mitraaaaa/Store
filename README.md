@@ -163,7 +163,7 @@
 
 ### Search 
 
-* Search can be done 14 differents way excaltyl the same way done in main list .(one exp is shown bellow)
+* Search can be done 14 differents way excalty the same way done in main list .(one exp is shown bellow)
 
 <img src="guide%20pic/search-group.png" width="500" higth="500" >
 
@@ -171,3 +171,59 @@
 
 
 <img src="guide%20pic/search-group-by-product'sname.png" width="500" higth="500" >
+
+## My Basket (Tab 3) :
+
+* Your basket is designed individualy for you, you can add products from main list and delete them.
+* The changes you make in your basket will be saved and shown to you other times.
+* Each different person has it's own basket.
+* Total price of you products in your basket are shown in the down left.
+* Each time you add a product from main list , the number of existence is decreased and the same amount will be added to the number of purchase in your basket(in other words main list and my basket are synced.)
+
+
+* main list before adding to my basket
+<img src="guide%20pic/b-mainlist-befor-add-basket.png" width="500" higth="500" >
+
+* mainlist after adding multiple products from list to my basket(as you can see the same number added to my basket is decreased from main list)
+<img src="guide%20pic/b-mainlist-after-add-multiple.png" width="500" higth="500" >
+
+* My Basket after adding multiple product to it (as you can see the number of purchase is the same amount of decrease in main list, in other word the are synced.)
+* Also the price is also up to date.
+<img src="guide%20pic/b-basket-multiple-add.png" width="500" higth="500" >
+
+## Update (spinner box) :
+
+* You can set number of purchase using this spinner box.
+* You can increase the number of purchase using spinner box without having to go back to the main list .
+* You will be warned if you choose a number of purchase that is more than all of the existed product of the same kind you want.
+* With every increase and decrease the main list is synced.
+
+<img src="guide%20pic/b-spiner.png" width="500" higth="500" >
+<img src="guide%20pic/b-spiner-after.png" width="500" higth="500" >
+
+* As you can see the main list is also synced.
+<img src="guide%20pic/b-mainlist-after-add-multiple.png" width="500" higth="500" >
+<img src="guide%20pic/b-spiner-sync-mainlist.png" width="500" higth="500" >
+
+## Delete :
+
+* If you delete a product from your list that means you have bought it and now you don't want it in your list.
+* You can clicked on the product or it's details (doesn't matter), and push delete buttun, it will be deleted from your list.
+
+<img src="guide%20pic/b-delete-from-basket.png" width="500" higth="500" >
+<img src="guide%20pic/b-after-delete.png" width="500" higth="500" >
+
+## Unreserve :
+
+* There is a difference between deleting and unreserving you may realize, delete will delete the product from list, but unreserve will take it back to the main list and delete it from your basket.
+* In other words *unreserving* means you have chnaged your mind and want to turn the product back to the shop.
+
+<img src="guide%20pic/b-basket-before-reserve.png" width="500" higth="500" >
+
+* main list before unreseving :
+<img src="guide%20pic/b-before-resevre-mainlist.png" width="500" higth="500" >
+* main list after unreserving :
+<img src="guide%20pic/b-mailist-after-reserve.png" width="500" higth="500" >
+
+## Search and Sort
+* Search and sort is also possible here, it is the same way as two other tabs.
