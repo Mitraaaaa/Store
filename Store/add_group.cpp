@@ -10,9 +10,12 @@ Add_group::Add_group(QList<group> * group,products chosen,QWidget *parent) :
 {
     ui->setupUi(this);
     this->setFixedSize(this->width(),this->height());
-    for(int i=0;i<group_pointer->size();i++)
+    if(group_pointer->size()!=0)
     {
-        ui->comboBox->addItem((*group_pointer)[i].get_group_name());
+        for(int i=0;i<group_pointer->size();i++)
+        {
+            ui->comboBox->addItem((*group_pointer)[i].get_group_name());
+        }
     }
 }
 
@@ -23,13 +26,16 @@ Add_group::~Add_group()
 
 void Add_group::on_addtogroup_clicked()
 {
-    for(int i=0;i<group_pointer->size();i++)
+    if(group_pointer->size()!=0)
     {
-     if( ui->comboBox->currentText()==(*group_pointer)[i].get_group_name())
-     {
-            (*group_pointer)[i].add_to_group(chosen_products);
-         break;
-     }
+        for(int i=0;i<group_pointer->size();i++)
+        {
+            if( ui->comboBox->currentText()==(*group_pointer)[i].get_group_name())
+            {
+                (*group_pointer)[i].add_to_group(chosen_products);
+                break;
+            }
+        }
     }
     this->close();
 }
