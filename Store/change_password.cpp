@@ -21,5 +21,6 @@ void change_password::on_changepassbutton_clicked()
    {
        it.value()=ui->lineEditnew_pass->text();
    }
+   this->close();
 }
 
