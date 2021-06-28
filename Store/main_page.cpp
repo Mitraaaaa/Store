@@ -89,7 +89,8 @@ main_page::main_page(QMap<QString,QString> *user_pass,QMap<QString, QString>::it
     ui->combo_basket_sorttype->addItem("Descending");
     //show date
     QDate cd = QDate::currentDate();
-    ui->date_lable->setText(cd.toString());
+    QStringList date=cd.toString().split(" ");
+    ui->date_lable->setText(date[0]+' '+date[1]+" ("+cd.toString("yyyy/MM/dd")+')');
 }
 
 void main_page::default_view_tab1()
