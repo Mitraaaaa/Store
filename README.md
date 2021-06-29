@@ -3,8 +3,8 @@
 ## Login page :
 
 * You can enter your username and password if you have already signed up (case sensetive : lower & upper case must be considered).
-* Incase you haven't signed up yet, you can choose a username and password (you 'll get an error to choose another username if your it's already taken).
-* You 'll be able to change your password latter in the main page.
+* Incase you haven't signed up yet, you can choose a username and password (you 'll get an error to choose another username if it's already taken).
+* You 'll be able to change your password later in the main page.
 
 <img src="guide%20pic/login-page.png" width="300">
 
@@ -21,10 +21,10 @@
 
 ## User's info :
 
-* You can change your password.(in order to do that you are asked to enter your current username
-* Log out option is located here.(in case you clicked on it you'll be asked whether you want to save your changes or not).
-* After loging out you 'll be back at the login page.
-* Reset option will earase all info that you have(The warns differ based on part you choose(main list or groups or my basket).
+* You can change your password (In order to do that you are asked to enter your current username).
+* Log out option is located here.(In case you clicked on it ,you'll be asked whether you want to save your changes or not).
+* After Loging out you 'll be back at the Login page.
+* Reset option will erase all  the information you have(The warns differ based on your choice (Main List or Groups or My Basket)).
 * Save changes will save all the changes you have made without having to log out.
 
  ### Change password :
@@ -38,7 +38,7 @@
 
 ### Reset main list :
 
-* When you click on reset main list you 'll be warned like this, the same happen when clicked on reset groups & my basket with different content in warn.
+* When you click on *reset Main List* you 'll be warned like this, the same happen when clicked on reset Groups & My Basket with different content in warning.
 
 <img src="guide%20pic/reset%20main%20list%20warn.png" width="500" higth="500" >
 
@@ -46,34 +46,34 @@
 
 ### Add to list 
 
-* When you clicked on the *add product* button a new form will open for you to fill in properties.
-* In order to add products the information you need to fill are shown in the picture.
+* When you clicked on the *add product* button, a new form will open for you to fill in properties.
+* The information you need to fill while adding a product to your Main List, are shown in the picture.
 
 
 <img src="guide%20pic/add-product.png" width="500" higth="500" >
 
-* You are not allowed to leave a property blank therefore you 'll be warn to fill all .(the balnked filled are shown by another color.)
+* You are not allowed to leave a property blank! therefore you 'll be warn to fill all .(the balnk is shown by another color.)
 
 <img src="guide%20pic/fill%20all%20property%20warn.png" width="500" higth="500" >
 
 * The expiration date will be checked ; so if you enter a date that has passed the current date ,You'll be warned .
 <img src="guide%20pic/expiration%20date.png" width="500" higth="500" >
 
-* Your list after adding multiple products (details of each product can be shown when clicked on it).->like a tree
+* Your list after adding multiple products (details of each product can be shown when clicked on it)->like a tree
 
 <img src="guide%20pic/main%20list%20after%20additon.png" width="500" higth="500" >
 <img src="guide%20pic/main%20list%20products%20deatils.png" width="500" higth="500" >
 
-* You can resize the header. the details are synched also.
+* You can resize the header. the details are synched as well.
 
 <img src="guide%20pic/resizable%20header.png" width="500" higth="500" >
 
 ### Edit product 
 
-* Every operation except add to list , needs you to choose a product first( the product itself or details ) otherewise you 'll be warned to choose an item first.
-* when clicked on *Edit* a form will be opened filled with current information , you can change it as you wish.(Though  here also you can't leave anything blank and the warning will be the same when you leave a property blank, when adding an item to list).
-* Ever changes you make will effect on groups including that products too(will be more clear latter when talking about Groups tab).
-*  
+* Every operation except *Adding to list* , needs you to choose a product first( the product itself or details ), otherewise you 'll be warned to choose an item first.
+* when clicked on *Edit*, a form will be opened filled with current information , you can change it as you wish.(Though  here also you can't leave anything blank and the warning will be the same as mentioned before.
+* Every change you make will effect Groups including that products too (will be more clear later when talking about Groups tab).
+
 <img src="guide%20pic/edit-pro.png" width="500" higth="500" >
 
 #### The warning :
@@ -82,7 +82,7 @@
 ### Search in list :
 
 * Search in list is possible in 12 differents way ( product's name and details -> start with or containing the word or charecter you enter).
-* Some exp are to be shown in the figures bellow.
+* Some examples are to be shown in the figures below.
 
 <img src="guide%20pic/search%20main%20list.png" width="500" higth="500" >
 <img src="guide%20pic/search%20mainlist%202.png" width="500" higth="500" >
@@ -95,19 +95,19 @@
 <img src="guide%20pic/search consumer-strtwth-mainlist.png" width="500" higth="500" >
 <img src="guide%20pic/search-consumer-contain-mainlist.png" width="500" higth="500" >
 
-* there are other searches that can be done that are not shown here (you can try them yourself or see them in )
+* There are other searches that can be done ,but are not shown here (you can try them yourself in the app ).
 
 ### Sort in main list :
 
-* Sort can be done in 12 different ways based on details in Ascending or Descending order.(some example are shown bellow).
+* Sort can be done in 12 different ways based on details in Ascending or Descending order.(some example are shown below).
 
 <img src="guide%20pic/sortby-show.png" width="500" higth="500" >
 <img src="guide%20pic/sort-type-show.png" width="500" higth="500" >
 
-* sort by product's name in descending order :
+* Sort by product's name in Descending order :
 <img src="guide%20pic/sort-pro-desending.png" width="500" higth="500" >
 
-* sort by price in Ascending order :
+* Sort by price in Ascending order :
 <img src="guide%20pic/sort-price-ascend.png" width="500" higth="500" >
 
 * Sort by number of existence in both Ascending and Descending way
@@ -118,27 +118,27 @@
 <img src="guide%20pic/sort-expire-ascend.png" width="500" higth="500" >
 <img src="guide%20pic/sort-expire-descend.png" width="500" higth="500" >
 
-* Other sorts are not shown here(you can try it in the app)
+* Other sorts are not shown here(you can try it in the app).
 
 
 ### Add to group :
 
-* You can *choose* a product in tha main list and add it to the group you desire.
+* You can *choose* a product in tha Main List and add it to the group you desire.
 <img src="guide%20pic/add-to-group-list.png" width="500" higth="500" >
 
-* You can created a group and add your product to it if the group you want is not in the list (the new group will be in the group list for adding from now on).
+* You can created a group and add your product to it if the group you want is not already in the list. (The new group will be in the group list for adding from now on).
 <img src="guide%20pic/creat-new-group.png" width="500" higth="500" >
 
-## Groups (tab2) :
+## Groups (Tab2) :
 
-* You can see all the products that you add from main list ,plus the groups that you created.
-* Searching and Sorting is also possible here the same as it was in the main lis(tab1).
+* You can see all the products that you have added from Main List ,plus the groups that you created.
+* Searching and Sorting is also possible here the same as it was in the Main List (tab1).
 * Details of each product can be shown here too as well as each group's content.
 
 <img src="guide%20pic/details-of-each-pro-groups.png" width="500" higth="500" >
 
 ### Change group's name
-* you can change group's name if you desire :
+* You can change group's name if you desire :
 <img src="guide%20pic/change-group-name.png" width="500" higth="500" >
 
 ### Deletion :
@@ -152,7 +152,7 @@
 <img src="guide%20pic/delete-group.png" width="500" higth="500" >
 <img src="guide%20pic/deleted-group.png" width="500" higth="500" >
 
-* it's possible to have groups with no including products :
+* It's possible to have groups with no including products :
 <img src="guide%20pic/group-without-pro.png" width="500" higth="500" >
 
 ### Sort
@@ -163,7 +163,7 @@
 
 ### Search 
 
-* Search can be done 14 differents way excalty the same way done in main list .(one exp is shown bellow)
+* Search can be done 14 differents ways excalty the same way done in Main List .
 
 <img src="guide%20pic/search-group.png" width="500" higth="500" >
 
@@ -174,29 +174,29 @@
 
 ## My Basket (Tab 3) :
 
-* Your basket is designed individualy for you, you can add products from main list and delete them.
-* The changes you make in your basket will be saved and shown to you other times.
+* Your basket is designed individualy for you, you can add products from Main List or delete them.
+* The changes you make in your basket will be saved and be shown to you other times.
 * Each different person has it's own basket.
-* Total price of you products in your basket are shown in the down left.
-* Each time you add a product from main list , the number of existence is decreased and the same amount will be added to the number of purchase in your basket(in other words main list and my basket are synced.)
+* Total price of you products in your basket is shown in the down left.
+* Each time you add a product from Main List , the number of existence is decreased and the same amount will be added to the number of purchase in your basket(in other words Main List and My Basket are synced.)
 
 
-* main list before adding to my basket
+* Main List before adding to My Basket
 <img src="guide%20pic/b-mainlist-befor-add-basket.png" width="500" higth="500" >
 
-* mainlist after adding multiple products from list to my basket(as you can see the same number added to my basket is decreased from main list)
+* Main List after adding multiple products from list to My Basket(as you can see the same number added to My Basket is decreased from main list)
 <img src="guide%20pic/b-mainlist-after-add-multiple.png" width="500" higth="500" >
 
-* My Basket after adding multiple product to it (as you can see the number of purchase is the same amount of decrease in main list, in other word the are synced.)
+* My Basket after adding multiple product to it (as you can see the number of purchase is the same amount of decrease in Main List, in other words the are synced.)
 * Also the price is also up to date.
 <img src="guide%20pic/b-basket-multiple-add.png" width="500" higth="500" >
 
 ## Update (spinner box) :
 
-* You can set number of purchase using this spinner box.
-* You can increase the number of purchase using spinner box without having to go back to the main list .
+* You can set *?number of purchase* using this spinner box.
+* You can increase or decrease the number of purchase using spinner box without having to go back to the main list .
 * You will be warned if you choose a number of purchase that is more than all of the existed product of the same kind you want.
-* With every increase and decrease the main list is synced.
+* With every increase and decrease the Main List is synced.
 
 <img src="guide%20pic/b-spiner.png" width="500" higth="500" >
 <img src="guide%20pic/b-spiner-after.png" width="500" higth="500" >
@@ -215,14 +215,14 @@
 
 ## Unreserve :
 
-* There is a difference between deleting and unreserving you may realize, delete will delete the product from list, but unreserve will take it back to the main list and delete it from your basket.
-* In other words *unreserving* means you have chnaged your mind and want to turn the product back to the shop.
+* There is a difference between deleting and unreserving you may realize, delete will delete the product from list, but unreserve will take it back to the Main List and delete it from your Basket.
+* In other words *unreserving* means you have changed your mind and want to turn the product back to the shop.
 
 <img src="guide%20pic/b-basket-before-reserve.png" width="500" higth="500" >
 
-* main list before unreseving :
+* Main List before unreseving :
 <img src="guide%20pic/b-before-resevre-mainlist.png" width="500" higth="500" >
-* main list after unreserving :
+* Main List after unreserving :
 <img src="guide%20pic/b-mailist-after-reserve.png" width="500" higth="500" >
 
 ## Search and Sort
