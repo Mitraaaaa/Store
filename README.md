@@ -1,5 +1,8 @@
 # Store
 
+Advanced-Programming project 
+written by Mitra Omrani
+
 ## Login page :
 
 * You can enter your username and password if you have already signed up (case sensetive : lower & upper case must be considered).
